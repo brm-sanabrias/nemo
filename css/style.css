@@ -2,7 +2,23 @@
 * https://github.com/cortesc/HTML
 * Copyright (c) 2015 Cristian Cortés; Licensed MIT */
 a {
-  color: #e72430;
+  color: #2196f3;
+  position: relative;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+a:after {
+  background-color: #085b9d;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: " ";
+  display: inline;
+  height: 0.23rem;
+  width: 0%;
   -o-transition: all ease-in-out 0.3s;
   -ms-transition: all ease-in-out 0.3s;
   -webkit-transition: all ease-in-out 0.3s;
@@ -10,59 +26,63 @@ a {
   transition: all ease-in-out 0.3s;
 }
 a:hover {
-  color: #901018;
-  text-decoration: underline;
+  color: #085b9d;
+}
+a:hover:after {
+  width: 100%;
 }
 body {
-  background-color: #fff;
-  color: #000;
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 1.4em;
+  background-color: #e6e6e6;
+  color: #494949;
+  font-family: 'Roboto Mono', sans-serif;
+  font-size: 1.4rem;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'veggieburgerregular', sans-serif;
-}
-.bg {
-  background-attachment: fixed;
-  background-position: top center;
-  background-repeat: no-repeat;
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  background-size: 100%;
-}
-.bg-home {
-  background-image: url("../images/bg-home.jpg");
-}
-.bg-productos {
-  background-image: url("../images/bg-producto.jpg");
-}
-.bg-receta {
-  background-image: url("../images/bg-receta.jpg");
-}
-.bg-recetario {
-  background-image: url("../images/bg-recetario.jpg");
-}
-.bg-temporada {
-  background-image: url("../images/bg-temporada.jpg");
-}
-.row {
+.crear-marca {
+  display: block;
   margin: 0 auto;
-  max-width: 83.3em;
+  text-transform: Capitalize;
+  width: 17rem;
 }
-.u-no-border .row {
-  padding: 0;
-  margin: 0;
-  max-width: 100%;
+h1.logo {
+  margin: 0.5rem auto 0 3rem;
+  width: 4.5rem;
 }
-.u-bg-blanco {
-  background-color: rgba(255,255,255,0.8);
+h1.logo:hover {
+  background-color: transparent;
 }
-.u-no-border {
-  padding: 0;
-  margin: 0;
+.left li:hover {
+  background-color: transparent;
+}
+.navbar-fixed,
+.blue {
+  height: 6rem;
+}
+.navbar-fixed .header-search-wrapper,
+.blue .header-search-wrapper {
+  margin: 1.6rem auto 0 8rem;
+}
+.resultados-marcas {
+  margin: 1rem auto;
+  width: 68rem;
+}
+.resultados-marcas li {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%/4;
+}
+.resultados-marcas li a:after {
+  display: none !important;
+}
+.resultados-marcas li figure,
+.resultados-marcas li .marca {
+  display: inline-block;
+  vertical-align: middle;
+}
+.resultados-marcas li figure {
+  margin: 0 0.3rem;
+  width: 5.5rem;
+}
+.resultados-marcas li .marca {
+  color: #494949;
+  margin-left: 0.5rem;
 }
