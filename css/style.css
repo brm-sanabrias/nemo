@@ -1,0 +1,1745 @@
+/*! Nemo - v0.1.0 - 2015-12-12
+* https://github.com/cortesc/HTML
+* Copyright (c) 2015 Cristian Cortés; Licensed MIT */
+@font-face {
+  font-family: 'veggieburgerregular';
+  src: url("../fonts/VeggiMed-webfont.eot");
+  src: url("../fonts/VeggiMed-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/VeggiMed-webfont.woff") format('woff'), url("../fonts/VeggiMed-webfont.ttf") format('truetype'), url("../fonts/VeggiMed-webfont.svg#veggieburgerregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'maggi';
+  src: url("../fonts/maggi.eot?x1q4q5");
+  src: url("../fonts/maggi.eot?x1q4q5#iefix") format('embedded-opentype'), url("../fonts/maggi.ttf?x1q4q5") format('truetype'), url("../fonts/maggi.woff?x1q4q5") format('woff'), url("../fonts/maggi.svg?x1q4q5#maggi") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon {
+  font-family: 'maggi';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-calendar:before {
+  content: "\e90e";
+}
+.icon-compartir:before {
+  content: "\e90f";
+}
+.icon-liviano:before {
+  content: "\e910";
+}
+.icon-ninos:before {
+  content: "\e911";
+}
+.icon-contacto:before {
+  content: "\e900";
+}
+.icon-fb:before {
+  content: "\e901";
+}
+.icon-home:before {
+  content: "\e902";
+}
+.icon-lunch:before {
+  content: "\e903";
+}
+.icon-productos:before {
+  content: "\e904";
+}
+.icon-profile:before {
+  content: "\e905";
+}
+.icon-recetas:before {
+  content: "\e906";
+}
+.icon-share:before {
+  content: "\e907";
+}
+.icon-temporada:before {
+  content: "\e908";
+}
+.icon-timer:before {
+  content: "\e909";
+}
+.icon-tips:before {
+  content: "\e90a";
+}
+.icon-tw:before {
+  content: "\e90b";
+}
+.icon-video:before {
+  content: "\e90c";
+}
+.icon-yt:before {
+  content: "\e90d";
+}
+a {
+  color: #e72430;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+a:hover {
+  color: #901018;
+  text-decoration: underline;
+}
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.4em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'veggieburgerregular', sans-serif;
+}
+.bg {
+  background-attachment: fixed;
+  background-position: top center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
+.bg-home {
+  background-image: url("../images/bg-home.jpg");
+}
+.bg-productos {
+  background-image: url("../images/bg-producto.jpg");
+}
+.bg-receta {
+  background-image: url("../images/bg-receta.jpg");
+}
+.bg-recetario {
+  background-image: url("../images/bg-recetario.jpg");
+}
+.bg-temporada {
+  background-image: url("../images/bg-temporada.jpg");
+}
+.row {
+  margin: 0 auto;
+  max-width: 83.3em;
+}
+.u-no-border .row {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+header {
+  background-color: #fbef35;
+  border-bottom: 0.5em solid #fff;
+  border-top: 0.5em solid #e72430;
+  position: relative;
+  width: 100%;
+}
+header .icon-profile {
+  color: #e72430;
+}
+header .login {
+  display: none;
+}
+footer {
+  background-color: #fcf153;
+  border-bottom: 0.5em solid #e72430;
+  color: #901018;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+footer .social-links {
+  margin-top: -10px;
+}
+footer .social-links span {
+  display: block;
+  margin-bottom: 1em;
+}
+footer .social-links a {
+  font-size: 3em;
+}
+footer .social-links a:hover {
+  text-decoration: none;
+}
+.nav {
+  margin-left: -4em;
+  margin-right: -4em;
+}
+.nav li {
+  border: none;
+  color: #fff;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.nav li:after {
+  border: 0.3em #fff solid;
+  bottom: -1.6em;
+  content: "";
+  display: block;
+  position: absolute;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  width: 0%;
+}
+.nav li.active:after {
+  border-color: #e72430;
+  width: 100%;
+}
+.nav li.active a {
+  background-color: transparent !important;
+  border: none;
+  color: #fff;
+}
+.nav li.active a:hover {
+  background-color: #e72430;
+}
+.nav li:hover:after {
+  border-color: #e72430;
+  width: 100%;
+}
+.navbar {
+  margin-bottom: 0;
+}
+.navbar .icon-bar {
+  color: #e72430;
+}
+.navbar-default {
+  background-color: transparent;
+  border: none;
+}
+.navbar-default .navbar-nav li {
+  text-align: center;
+  max-width: 9em;
+}
+.navbar-default .navbar-nav li a {
+  color: #4f4f4f;
+  font-size: 1.1em;
+  text-align: center;
+  line-height: 1em;
+}
+.navbar-default .icon-menu a:before {
+  color: #e72430;
+  cursor: pointer;
+  display: block;
+  font-family: 'maggi';
+  font-size: 3.6em;
+  margin-bottom: 0.6em;
+}
+.navbar-default .icon-menu a span {
+  display: block;
+}
+.navbar-default .contacto a:before {
+  content: "\e900";
+}
+.navbar-default .home a:before {
+  content: "\e902";
+}
+.navbar-default .producto,
+.navbar-default .productos_y_promociones {
+  width: 100% !important;
+}
+.navbar-default .producto:after,
+.navbar-default .productos_y_promociones:after {
+  bottom: -0.5em;
+}
+.navbar-default .producto a:before,
+.navbar-default .productos_y_promociones a:before {
+  content: "\e904";
+}
+.navbar-default .recetas a:before {
+  content: "\e906";
+}
+.navbar-default .temporada a:before,
+.navbar-default .temporadas a:before {
+  content: "\e908";
+}
+.navbar-default .video a:before,
+.navbar-default .video_recetas a:before {
+  content: "\e90c";
+}
+.navbar-default .navbar-toggle {
+  background-color: transparent !important;
+  border: none;
+  color: #e72430;
+  position: relative;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.navbar-default .navbar-toggle:active,
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #eee005 !important;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #e72430;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.navbar-default .navbar-toggle .icon-bar:nth-child(2) {
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.navbar-default .navbar-toggle .icon-bar:nth-child(3) {
+  margin-top: -0.1em;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.navbar-default .navbar-toggle .icon-bar:last-child {
+  margin-top: -0.16em;
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.navbar-default .collapsed .icon-bar {
+  display: block !important;
+  margin: 0.2em !important;
+  opacity: 0.99 !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)" !important;
+  filter: alpha(opacity=99) !important;
+  -o-transform: none !important;
+  -ms-transform: none !important;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  transform: none !important;
+}
+.form-text {
+  background-image: url("../images/search-icon.png");
+  background-position: 8em center;
+  background-repeat: no-repeat;
+  border: 2px solid #e72430;
+  -webkit-border-radius: 4em;
+  border-radius: 4em;
+  color: #4f4f4f;
+  max-width: 11em;
+  padding: 0.5em;
+  text-align: center;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.form-text::-webkit-input-placeholder {
+  color: #b9b9b9 !important;
+}
+.form-text::-moz-placeholder {
+  color: #b9b9b9 !important;
+}
+.form-text:-ms-input-placeholder {
+  color: #b9b9b9 !important;
+}
+.form-text:-moz-placeholder {
+  color: #b9b9b9 !important;
+}
+.form-text:hover,
+.form-text:focus,
+.form-text:active {
+  border-color: #c11520;
+}
+.form-text:active,
+.form-text:focus {
+  background-position: 14em;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  outline: none;
+}
+.login {
+  border-bottom: 0.5em solid #e72430;
+}
+.login h2 {
+  text-align: center;
+}
+.login input {
+  border: 2px solid #e72430;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.login input:focus {
+  border-color: #901018;
+  outline: 0 !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.login input[type="submit"] {
+  background-color: #e72430;
+  border: none;
+  display: inline-block;
+  font-size: 1.4em;
+  margin: 1em auto;
+  width: 100%;
+}
+.login .cerrar-login {
+  background-color: #e72430;
+  margin: 0.5em auto;
+  display: block;
+  width: 3em;
+}
+.login .cerrar-login:focus,
+.login .cerrar-login:active {
+  outline: 0 !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+.carousel-caption {
+  background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, #fff 100%);
+  background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, #fff 100%);
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, #fff 100%);
+  background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, #fff 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #fff 100%);
+  bottom: 0;
+  left: 0;
+  padding-top: 6em;
+  right: 0;
+  width: 100%;
+}
+.carousel-caption h3 {
+  color: #000;
+  font-size: 3em;
+}
+.carousel-temporadas .carousel-caption {
+  background-color: #fff;
+  padding-top: 1em;
+  max-height: 8em;
+}
+.carousel-temporadas .carousel-caption p {
+  color: #000;
+  text-shadow: none;
+}
+#block-brm-maggi-slider-recetario .cont-secun {
+  display: block;
+  margin: 0 auto;
+  max-width: 74em;
+  vertical-align: middle;
+  width: 100%;
+}
+#block-brm-maggi-slider-recetario .cont-secun-item {
+  background-color: #fff;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5em;
+  max-width: 15em;
+}
+#block-brm-maggi-slider-recetario .cont-secun-item h3 {
+  font-family: 'Droid Sans', sans-serif;
+}
+#block-brm-maggi-slider-recetario .cont-secun-item img {
+  display: block;
+  height: auto;
+  max-width: 14.5em;
+  vertical-align: middle;
+  width: 100%;
+}
+.activo .producto-categoria {
+  background-position-y: 4em !important;
+  height: 13.4em !important;
+  padding-top: 6em !important;
+}
+.botones-redes-wrapper {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.25);
+  display: none;
+  margin-left: 1em;
+  position: absolute;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  z-index: 2;
+}
+.block-quicktabs h2.block-title {
+  display: none;
+}
+.datos {
+  text-align: center;
+}
+.datos h4 {
+  background-color: #fbcc1e;
+  font-family: 'Droid Sans', sans-serif;
+  padding: 0.5em 0;
+  text-align: center;
+}
+.dummy img {
+  display: block;
+  height: auto;
+  margin: 1em auto;
+  max-width: 15em;
+  vertical-align: middle;
+  width: 100%;
+}
+.estrellas {
+  color: #fbef35;
+  display: inline-block;
+  float: right;
+  margin-top: 1em;
+  vertical-align: middle;
+}
+.estrellas span {
+  font-size: 1.3em;
+  text-shadow: 0px 0px 1px #e72430;
+}
+.estrellas .glyphicon-star-empty {
+  color: #e72430;
+  text-shadow: none;
+}
+.extra-tools {
+  display: inline-block;
+  font-size: 1.4em;
+  margin-left: 1em;
+  margin-top: 0.6em;
+  vertical-align: middle;
+}
+.extra-tools .icon-timer {
+  color: #0a89ce;
+}
+.extra-tools .icon-share {
+  cursor: pointer;
+}
+.producto .productoSazon .producto-categoria {
+  color: #000;
+  font-weight: 400;
+}
+.producto .productoSazon .producto-categoria a {
+  color: #000;
+}
+.productos img {
+  display: block;
+  height: auto;
+  max-width: 103%;
+  vertical-align: middle;
+  width: 103%;
+}
+.productos .content {
+  background-color: transparent !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  height: 20.5em;
+  overflow: hidden;
+  position: relative;
+  width: 20.5em;
+}
+.productos .content:hover {
+  -o-transform: none !important;
+  -ms-transform: none !important;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  transform: none !important;
+}
+.productos .producto {
+  padding: 0;
+}
+.productos .producto-categoria {
+  background-image: url("../images/logo-maggi.svg");
+  background-color: rgba(251,239,53,0.9);
+  background-position: center 0.5em;
+  background-repeat: no-repeat;
+  -webkit-background-size: 3em;
+  -moz-background-size: 3em;
+  background-size: 3em;
+  bottom: 0;
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 700;
+  height: 4.6em;
+  padding-top: 2.5em;
+  position: absolute;
+  text-align: center;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+  width: 100%;
+}
+.productos .producto-categoria:hover {
+  background-position-y: 4em;
+  height: 13.4em;
+  padding-top: 6em;
+}
+.recetas-relacionadas h2 {
+  font-size: 2.3em;
+}
+.recetas .content {
+  background-color: #fff;
+  border-bottom: 0.5em solid #000;
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  margin-bottom: 2.6em;
+  max-width: 25em;
+  padding: 0.5em;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+.recetas .content:hover {
+  border-color: #e72430;
+  -o-transform: translateY(-1.2em);
+  -ms-transform: translateY(-1.2em);
+  -webkit-transform: translateY(-1.2em);
+  -moz-transform: translateY(-1.2em);
+  transform: translateY(-1.2em);
+}
+.recetas .content img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.recetas .receta-dia .block-content {
+  height: 29em;
+}
+.recetas .receta-dia .img-receta {
+  height: 24em;
+  position: relative;
+  max-width: 24em;
+}
+.recetas .receta-dia .img-receta .descripcion {
+  background-color: rgba(251,204,30,0.85);
+  bottom: 0;
+  color: #000;
+  padding-left: 1em;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+.recetas .receta-dia .img-receta .descripcion:hover {
+  text-decoration: none;
+}
+.recetas .receta-dia .img-receta .descripcion h3 {
+  line-height: 1em;
+  margin-bottom: 0;
+  margin-top: 0.3em;
+}
+.recetas .receta-dia .img-receta .descripcion .dia-receta {
+  margin-bottom: 0.5em;
+}
+.recetas .receta-dia span {
+  display: inline-block;
+  font-size: 1.4em;
+  margin-left: 1em;
+  margin-top: 1em;
+  vertical-align: middle;
+}
+.recetas .receta-dia .icon-timer {
+  color: #0a89ce;
+}
+.recetas .receta-dia .icon-share {
+  cursor: pointer;
+}
+.recetas .receta-dia .time:before {
+  color: #0a89ce;
+  content: "\e909";
+  display: inline;
+  font-family: 'maggi';
+}
+.recetas .receta-dia .tiempo-medida {
+  margin-left: 0;
+}
+.recetas .receta-dia-producto .img-receta {
+  height: 24em;
+  position: relative;
+  max-width: 24em;
+}
+.recetas .receta-dia-producto .img-receta .descripcion {
+  background-color: rgba(251,204,30,0.85);
+  bottom: 0;
+  color: #000;
+  font-size: 1.4em;
+  padding: 1em;
+  position: absolute;
+  width: 100%;
+  z-index: 3;
+}
+.recetas .receta-dia-producto .img-receta .descripcion:hover {
+  text-decoration: none;
+}
+.recetas .receta-dia-producto .img-receta .descripcion h3 {
+  line-height: 1em;
+  margin-bottom: 0;
+  margin-top: 0.3em;
+}
+.receta-sugerida {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  margin: 1em auto;
+  padding: 0;
+}
+.receta-sugerida img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+.receta-sugerida p {
+  display: inline-block;
+  font-size: 1.5em;
+  margin-top: 2.6em;
+  text-align: center;
+  vertical-align: middle;
+  width: 60%;
+}
+.receta-sugerida p a {
+  display: block;
+  font-size: 1.6em;
+}
+.receta-sugerida .img-sugerida {
+  padding: 0;
+  margin: 0;
+}
+.receta-sugerida .icon-lunch {
+  color: #e72430;
+  display: inline-block;
+  font-size: 6em;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  vertical-align: middle;
+}
+.slider-video {
+  padding-bottom: 44% !important;
+}
+.slider-botones .active {
+  background-color: #fbcc1e;
+  border: none !important;
+}
+.slider-botones .content {
+  background-color: rgba(255,255,255,0.5);
+  border: none;
+  padding: 0;
+}
+.slider-botones .content h4 {
+  border-bottom: 1px solid #901018;
+  color: #901018;
+  cursor: pointer;
+  font-family: Roboto;
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+  padding: 1em 0;
+  text-align: center;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.slider-botones .content h4:last-child {
+  border: none;
+}
+.slider-botones .content h4 span {
+  color: #e72430;
+  display: block;
+  font-size: 3em;
+}
+.slider-botones .content h4:hover {
+  background-color: rgba(251,204,30,0.75);
+}
+.slider-botones .content:hover {
+  -o-transform: none;
+  -ms-transform: none;
+  -webkit-transform: none;
+  -moz-transform: none;
+  transform: none;
+}
+.resultados-productos {
+  margin-top: 3em;
+}
+.resultados-productos .dummies {
+  background-color: #fff;
+  border-bottom: 0.5em solid #000;
+  -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.2);
+  margin-bottom: 2.6em;
+  max-width: 25em;
+  padding: 0;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+.resultados-productos .dummies:hover {
+  border-color: #e72430;
+  -o-transform: translateY(-1.2em);
+  -ms-transform: translateY(-1.2em);
+  -webkit-transform: translateY(-1.2em);
+  -moz-transform: translateY(-1.2em);
+  transform: translateY(-1.2em);
+}
+.resultados-productos .dummies a:last-of-type {
+  background-color: #fbcc1e;
+  color: #000;
+  display: block;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.3em;
+  height: 100%;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+.resultados-productos .dummies .img-producto {
+  height: 18em;
+  overflow: hidden;
+  position: relative;
+  max-width: 24em;
+}
+.resultados-productos .dummies .img-producto img {
+  display: block;
+  height: auto;
+  margin: 0.5em auto 0;
+  max-width: 9.7em;
+  vertical-align: middle;
+  width: 100%;
+}
+.resultados-productos .dummies .img-producto a {
+  background-color: transparent;
+  color: #000;
+  display: block;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 1.3em;
+  height: 100%;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+.resultados-productos .dummies .img-producto a:hover {
+  text-decoration: none;
+}
+.resultados-productos .dummies .img-producto:hover {
+  text-decoration: none;
+}
+.titular-bg {
+  background-image: url("../images/bg-titulares.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fbef35;
+  font-size: 3.7em;
+  padding: 0.5em;
+  text-align: center;
+}
+.titular-bg .glyphicon-search {
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.video-receta-home .content {
+  max-width: none;
+}
+.video-receta-home .embed-responsive-16by9 {
+  padding-bottom: 44%;
+}
+.video-receta-home p {
+  font-size: 1.2em;
+  text-align: center;
+}
+.filtro,
+.views-widget-filter-field_receta_categoria_para_comp_tid,
+.views-widget-filter-field_receta_categoria_tid,
+.views-widget-filter-field_receta_categoria_liviana_tid,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 {
+  background-color: #fbef35;
+  border-bottom: 0.5em solid #fbef35;
+  color: #e72430;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto 2em;
+  min-height: 5em;
+  padding: 0.5em;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  vertical-align: middle;
+  width: 24.75%;
+}
+.filtro:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid:after,
+.views-widget-filter-field_receta_categoria_tid:after,
+.views-widget-filter-field_receta_categoria_liviana_tid:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:after {
+  color: #e72430;
+  display: block;
+  font-family: 'maggi';
+  font-size: 5em;
+  text-align: center;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+}
+.filtro:hover,
+.views-widget-filter-field_receta_categoria_para_comp_tid:hover,
+.views-widget-filter-field_receta_categoria_tid:hover,
+.views-widget-filter-field_receta_categoria_liviana_tid:hover,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:hover,
+.filtro:active,
+.views-widget-filter-field_receta_categoria_para_comp_tid:active,
+.views-widget-filter-field_receta_categoria_tid:active,
+.views-widget-filter-field_receta_categoria_liviana_tid:active,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:active,
+.filtro:focus,
+.views-widget-filter-field_receta_categoria_para_comp_tid:focus,
+.views-widget-filter-field_receta_categoria_tid:focus,
+.views-widget-filter-field_receta_categoria_liviana_tid:focus,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:focus {
+  background-color: #faed17;
+  border-color: #e72430;
+}
+.filtro:hover:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid:hover:after,
+.views-widget-filter-field_receta_categoria_tid:hover:after,
+.views-widget-filter-field_receta_categoria_liviana_tid:hover:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:hover:after,
+.filtro:active:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid:active:after,
+.views-widget-filter-field_receta_categoria_tid:active:after,
+.views-widget-filter-field_receta_categoria_liviana_tid:active:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:active:after,
+.filtro:focus:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid:focus:after,
+.views-widget-filter-field_receta_categoria_tid:focus:after,
+.views-widget-filter-field_receta_categoria_liviana_tid:focus:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:focus:after {
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.filtro-dias:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid-dias:after,
+.views-widget-filter-field_receta_categoria_tid-dias:after,
+.views-widget-filter-field_receta_categoria_liviana_tid-dias:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1-dias:after {
+  content: "\e90e";
+}
+.filtro-compartir:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid-compartir:after,
+.views-widget-filter-field_receta_categoria_tid-compartir:after,
+.views-widget-filter-field_receta_categoria_liviana_tid-compartir:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1-compartir:after {
+  content: "\e90f";
+}
+.filtro-livianas:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid-livianas:after,
+.views-widget-filter-field_receta_categoria_tid-livianas:after,
+.views-widget-filter-field_receta_categoria_liviana_tid-livianas:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1-livianas:after {
+  content: "\e910";
+}
+.filtro-ninos:after,
+.views-widget-filter-field_receta_categoria_para_comp_tid-ninos:after,
+.views-widget-filter-field_receta_categoria_tid-ninos:after,
+.views-widget-filter-field_receta_categoria_liviana_tid-ninos:after,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1-ninos:after {
+  content: "\e911";
+}
+.filtro button,
+.views-widget-filter-field_receta_categoria_para_comp_tid button,
+.views-widget-filter-field_receta_categoria_tid button,
+.views-widget-filter-field_receta_categoria_liviana_tid button,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 button,
+.filtro select,
+.views-widget-filter-field_receta_categoria_para_comp_tid select,
+.views-widget-filter-field_receta_categoria_tid select,
+.views-widget-filter-field_receta_categoria_liviana_tid select,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 select {
+  background-color: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #e72430;
+  cursor: pointer;
+  font-size: 1.6em;
+  text-align: center;
+  width: 100%;
+}
+.filtro button:active,
+.views-widget-filter-field_receta_categoria_para_comp_tid button:active,
+.views-widget-filter-field_receta_categoria_tid button:active,
+.views-widget-filter-field_receta_categoria_liviana_tid button:active,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 button:active,
+.filtro select:active,
+.views-widget-filter-field_receta_categoria_para_comp_tid select:active,
+.views-widget-filter-field_receta_categoria_tid select:active,
+.views-widget-filter-field_receta_categoria_liviana_tid select:active,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 select:active,
+.filtro button:focus,
+.views-widget-filter-field_receta_categoria_para_comp_tid button:focus,
+.views-widget-filter-field_receta_categoria_tid button:focus,
+.views-widget-filter-field_receta_categoria_liviana_tid button:focus,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 button:focus,
+.filtro select:focus,
+.views-widget-filter-field_receta_categoria_para_comp_tid select:focus,
+.views-widget-filter-field_receta_categoria_tid select:focus,
+.views-widget-filter-field_receta_categoria_liviana_tid select:focus,
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1 select:focus {
+  outline: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.views-widget-filter-field_receta_categoria_para_comp_tid:after {
+  content: "\e90e";
+}
+.views-widget-filter-field_receta_categoria_tid:after {
+  content: "\e90f";
+}
+.views-widget-filter-field_receta_categoria_liviana_tid:after {
+  content: "\e910";
+}
+.views-widget-filter-field_receta_categoria_para_ni_o_tid_1:after {
+  content: "\e911";
+}
+.datos .box {
+  background-color: #fbcc1e;
+  display: inline-block;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  width: 23%;
+}
+.datos .box:before {
+  background-image: url("../images/receta-datos-interes.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: 300%;
+  -moz-background-size: 300%;
+  background-size: 300%;
+  content: " ";
+  display: inline-block;
+  height: 5.3em;
+  left: -0.9em;
+  max-width: 5.3em;
+  position: relative;
+  vertical-align: middle;
+  width: 100%;
+}
+.datos .box .help {
+  margin: 0 auto;
+  text-align: center;
+}
+.datos .box .numero {
+  color: #fff;
+  font-size: 1.8em;
+  margin: 0 auto;
+  text-align: center;
+}
+.datos .box .textos {
+  display: inline-block;
+  margin-left: 0.6em;
+  padding: 0.05em;
+  vertical-align: middle;
+}
+.datos .box-calorias:before {
+  background-position: right;
+}
+.datos .box-nivel:before {
+  content: none;
+}
+.datos .box-nivel img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.datos .box-nivel ul,
+.datos .box-nivel li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.datos .box-nivel ul h2,
+.datos .box-nivel li h2 {
+  display: none;
+}
+.datos .box-porciones:before {
+  background-position: center;
+}
+.enviar,
+.comprar {
+  background-color: #e72430;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 1.3em;
+  margin: 0.5em auto;
+  padding: 0.8em 1em;
+  text-align: center;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+.enviar:hover,
+.comprar:hover {
+  background-color: #901018;
+  text-decoration: none;
+  color: #fff;
+  -o-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  -webkit-transform: translateY(-5px);
+  -moz-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+.imagen-big {
+  border-bottom: 0.5em solid #e72430;
+  position: relative;
+}
+.imagen-big img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.receta-contenido,
+.producto-contenido {
+  position: relative;
+}
+.receta-contenido h1,
+.producto-contenido h1 {
+  text-align: center;
+}
+.receta-contenido h3,
+.producto-contenido h3 {
+  font-family: 'Droid Sans', sans-serif;
+}
+.receta-contenido ol,
+.producto-contenido ol,
+.receta-contenido .paso,
+.producto-contenido .paso {
+  counter-reset: li;
+  position: relative;
+}
+.receta-contenido ol li,
+.producto-contenido ol li,
+.receta-contenido .paso li,
+.producto-contenido .paso li {
+  list-style: none;
+  margin-bottom: 1em;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+.receta-contenido ol li:before,
+.producto-contenido ol li:before,
+.receta-contenido .paso li:before,
+.producto-contenido .paso li:before {
+  position: absolute;
+  left: 1.2em;
+  ((null)): 0;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  color: #901018;
+  content: counter(li);
+  counter-increment: li;
+  font-weight: 700;
+  padding: 0.1em;
+  text-align: center;
+  -o-transition: all ease-in-out 0.2s;
+  -ms-transition: all ease-in-out 0.2s;
+  -webkit-transition: all ease-in-out 0.2s;
+  -moz-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+}
+.receta-contenido .box-comentarios textarea,
+.producto-contenido .box-comentarios textarea {
+  background-color: transparent;
+  border: 2px solid #e72430;
+  padding: 0.5em;
+  -o-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+  width: 100%;
+}
+.receta-contenido .box-comentarios:focus,
+.producto-contenido .box-comentarios:focus,
+.receta-contenido .box-comentarios:active,
+.producto-contenido .box-comentarios:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0;
+  outline: none;
+  border-color: #901018;
+}
+.receta-contenido .box-comentarios input,
+.producto-contenido .box-comentarios input {
+  float: right;
+}
+.receta-contenido .extra-tools,
+.producto-contenido .extra-tools {
+  font-size: 1.8em !important;
+  margin: 0 auto;
+  margin-left: 1.5em;
+}
+.receta-contenido .extra-tools .glyphicon-heart-empty,
+.producto-contenido .extra-tools .glyphicon-heart-empty {
+  color: #e72430;
+}
+.receta-contenido .estrellas,
+.producto-contenido .estrellas {
+  margin: 0 auto;
+  margin-left: 4em;
+  font-size: 1.8em;
+  float: none !important;
+}
+.receta-contenido .ingredientes img,
+.producto-contenido .ingredientes img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.receta-contenido .ingredientes ul,
+.producto-contenido .ingredientes ul,
+.receta-contenido .ingredientes .listado,
+.producto-contenido .ingredientes .listado {
+  list-style-type: none;
+}
+.receta-contenido .ingredientes ul span,
+.producto-contenido .ingredientes ul span,
+.receta-contenido .ingredientes .listado span,
+.producto-contenido .ingredientes .listado span {
+  color: #901018;
+}
+.receta-contenido .row,
+.producto-contenido .row {
+  padding: 0.5em;
+}
+.ingredientes .field-collection-view .field-name-field-unidad {
+  display: inline-block;
+}
+.ingredientes .field-collection-view .field-name-field-unidad ul,
+.ingredientes .field-collection-view .field-name-field-unidad li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.u-bg-blanco {
+  background-color: rgba(255,255,255,0.8);
+}
+.u-no-border {
+  padding: 0;
+  margin: 0;
+}
+@media (max-width: 1130px) {
+  .datos .box {
+    margin-left: 1em;
+    width: 22%;
+  }
+  .datos .box:before {
+    height: 4.5em;
+    max-width: 4.5em;
+  }
+  .datos .box .textos {
+    margin-left: 0;
+  }
+  .filtro,
+  .views-widget-filter-field_receta_categoria_para_comp_tid,
+  .views-widget-filter-field_receta_categoria_tid,
+  .views-widget-filter-field_receta_categoria_liviana_tid,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 {
+    width: 24.5%;
+  }
+  .nav {
+    margin-left: 0em;
+  }
+  .navbar-default .navbar-nav li {
+    max-width: 8em;
+  }
+  .navbar-default .icon-menu:before {
+    width: auto;
+  }
+  .navbar-default .video:after {
+    bottom: -0.5em;
+  }
+  .productos .content {
+    height: 18.5em;
+    width: 18.5em;
+  }
+  .receta-dia .block-content {
+    max-height: 25em;
+  }
+}
+@media (max-width: 1024px) {
+  .datos .box:before {
+    height: 4em;
+    max-width: 4em;
+  }
+  .nav {
+    margin-left: -2em;
+  }
+  .nav li:after {
+    bottom: -1.4em;
+  }
+  .navbar-default .icon-menu:before {
+    width: auto;
+  }
+  .navbar-default .video:after {
+    bottom: -1.4em;
+  }
+  .productos .content {
+    height: 18.5em;
+    width: 100%;
+    max-width: 18.5em;
+  }
+  .slider-video {
+    padding-bottom: 53.2% !important;
+  }
+}
+@media (max-width: 960px) {
+  .datos .box {
+    margin-left: 0;
+    width: 22%;
+  }
+  .datos .box:before {
+    left: -0.6em;
+    height: 3.9em;
+    max-width: 3.9em;
+  }
+  .datos .box .textos {
+    font-size: 0.8em;
+  }
+  .estrellas {
+    margin: 0 auto;
+    float: none;
+  }
+  .form-text {
+    background-position: 5.8em center;
+    max-width: 8em;
+  }
+  .nav {
+    margin-left: -3.2em;
+  }
+  .navbar-default .navbar-nav li a {
+    font-size: 0.9em;
+  }
+  .slider-video {
+    padding-bottom: 59.2% !important;
+  }
+  .receta-sugerida p {
+    margin-top: 1.6em;
+  }
+  .recetas .receta-dia .img-receta {
+    height: 17em;
+  }
+  .recetas .receta-dia .extra-tools {
+    margin-left: 0.4em;
+  }
+  .video-receta-home p {
+    font-size: 1em;
+  }
+}
+@media (max-width: 860px) {
+  .datos {
+    margin-left: -3em;
+    width: 116%;
+  }
+  .navbar-default .navbar-nav li {
+    max-width: 6.5em;
+  }
+  .navbar-default .navbar-nav li:after {
+    bottom: -1.3em;
+  }
+  .navbar-default .navbar-nav li:before {
+    font-size: 2.6em;
+  }
+  .navbar-default .navbar-nav li a {
+    font-size: 0.8em;
+  }
+  .navbar-default .navbar-nav .producto:after,
+  .navbar-default .navbar-nav .video:after {
+    bottom: -0.6em !important;
+  }
+  .productos .content {
+    height: 15.5em;
+  }
+  .receta-sugerida p {
+    margin-top: 1em;
+  }
+  .receta-sugerida .icon-lunch {
+    margin-top: -0.2em;
+  }
+  .recetas .receta-dia .img-receta {
+    height: 15em;
+  }
+  .recetas .receta-dia .block-content {
+    max-height: 20.6em;
+  }
+  .recetas .receta-dia .extra-tools {
+    margin-left: 0em;
+    font-size: 1em;
+  }
+}
+@media (max-width: 760px) {
+  header {
+    border-bottom: none;
+  }
+  .bg {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  .datos {
+    margin-left: 0;
+    width: 100%;
+  }
+  .datos .box:before {
+    height: 4.6em;
+    left: -1.2em;
+    max-width: 4.6em;
+  }
+  .dia-semana {
+    cursor: pointer;
+  }
+  .navbar-collapse {
+    left: -108%;
+    margin-top: 3em;
+    position: relative;
+    width: 43em;
+  }
+  .navbar-collapse .nav {
+    margin-left: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+  .navbar-collapse .nav li {
+    border-bottom: 0.1em solid #e72430;
+    max-width: none;
+  }
+  .navbar-collapse .nav li a {
+    font-size: 1em;
+  }
+  .navbar-collapse .navbar-right {
+    border: none;
+  }
+  .navbar-collapse .navbar-right .form-text {
+    background-position: 98% center;
+    max-width: 100%;
+    width: 100%;
+  }
+  .navbar {
+    margin-top: 2em;
+  }
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
+    border-color: #e72430;
+  }
+  .navbar-nav .icon-menu:after {
+    content: " " !important;
+    display: none;
+  }
+  .navbar-nav .icon-menu a:before {
+    content: " " !important;
+    display: none;
+  }
+  .productos .content {
+    height: auto;
+    margin: 0.5em auto;
+  }
+  .recetas .content {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .recetas .content img {
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .recetas .content:hover {
+    -o-transform: none;
+    -ms-transform: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+  }
+  .recetas .receta-dia img {
+    display: none;
+  }
+  .recetas .receta-dia .content {
+    background-color: transparent;
+    border-bottom: 0.1em solid #000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    max-height: 3.5em;
+    padding: 0;
+    overflow: hidden;
+  }
+  .recetas .receta-dia .extra-tools,
+  .recetas .receta-dia .estrellas {
+    display: none;
+  }
+  .recetas .receta-dia .img-receta {
+    height: auto;
+    max-width: 100%;
+  }
+  .recetas .receta-dia .img-receta .descripcion {
+    display: block;
+    padding: 0.8em 0;
+    position: relative;
+    text-align: center;
+  }
+  .recetas .receta-dia .img-receta .descripcion h3 {
+    font-family: 'Droid Sans', sans-serif;
+    text-transform: uppercase;
+  }
+  .recetas .receta-dia .img-receta .descripcion p {
+    display: none;
+  }
+  .receta-activa {
+    margin: 1em auto;
+  }
+  .receta-activa .block-content {
+    height: 47em !important;
+    max-height: none !important;
+  }
+  .receta-activa .block-content .time {
+    display: none !important;
+  }
+  .receta-activa .content {
+    background-color: #fff !important;
+    border-bottom: 0.5em solid #000 !important;
+    max-height: none !important;
+    padding: 0.5em !important;
+  }
+  .receta-activa .content img {
+    display: block !important;
+  }
+  .receta-activa .content .extra-tools,
+  .receta-activa .content .estrellas {
+    display: inline-block !important;
+  }
+  .receta-activa .content .descripcion {
+    padding-left: 1em !important;
+    position: absolute !important;
+    text-align: left !important;
+  }
+  .receta-activa .content .descripcion h3 {
+    font-family: 'veggieburgerregular', sans-serif !important;
+    text-transform: capitalize !important;
+  }
+  .receta-activa .content .descripcion p {
+    display: block !important;
+  }
+  .recetas-relacionadas {
+    display: none;
+  }
+  .video-receta-home {
+    margin-bottom: 1em;
+  }
+  .videos {
+    direction: rtl;
+    margin-top: 2em;
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  .videos .col-xs-12 {
+    direction: ltr;
+    -o-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+  }
+  .videos .slider-video,
+  .videos .slider-botones {
+    margin-top: 1em;
+  }
+}
+@media (max-width: 700px) {
+  #carousel-example-temporadas .carousel-caption {
+    position: relative;
+  }
+  .datos {
+    margin-left: 0;
+    width: 100%;
+  }
+  .datos .box {
+    margin-bottom: 0.5em;
+    width: 45%;
+  }
+  .datos .box:before {
+    height: 5.4em;
+    left: -4.2em;
+    max-width: 5.4em;
+  }
+  .datos .box .textos {
+    font-size: 1em;
+  }
+  .datos .box-nivel img {
+    margin: 0 auto;
+  }
+  .filtro,
+  .views-widget-filter-field_receta_categoria_para_comp_tid,
+  .views-widget-filter-field_receta_categoria_tid,
+  .views-widget-filter-field_receta_categoria_liviana_tid,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 {
+    width: 23.75%;
+  }
+  .filtro:after,
+  .views-widget-filter-field_receta_categoria_para_comp_tid:after,
+  .views-widget-filter-field_receta_categoria_tid:after,
+  .views-widget-filter-field_receta_categoria_liviana_tid:after,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1:after {
+    font-size: 3.6em;
+  }
+  .filtro button,
+  .views-widget-filter-field_receta_categoria_para_comp_tid button,
+  .views-widget-filter-field_receta_categoria_tid button,
+  .views-widget-filter-field_receta_categoria_liviana_tid button,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 button,
+  .filtro select,
+  .views-widget-filter-field_receta_categoria_para_comp_tid select,
+  .views-widget-filter-field_receta_categoria_tid select,
+  .views-widget-filter-field_receta_categoria_liviana_tid select,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 select {
+    font-size: 0.9em;
+  }
+  .filtro button,
+  .views-widget-filter-field_receta_categoria_para_comp_tid button,
+  .views-widget-filter-field_receta_categoria_tid button,
+  .views-widget-filter-field_receta_categoria_liviana_tid button,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 button {
+    min-height: 2.8em;
+  }
+  .navbar-collapse {
+    left: -130%;
+    width: 38em;
+  }
+  .titular-bg {
+    font-size: 2.7em;
+  }
+}
+@media (max-width: 670px) {
+  .navbar-collapse {
+    left: -21em;
+    width: 40em;
+  }
+}
+@media (max-width: 640px) {
+  .datos .box:before {
+    left: -1.8em;
+  }
+}
+@media (max-width: 480px) {
+  .datos .box:before {
+    left: -0.6em;
+  }
+  .filtro,
+  .views-widget-filter-field_receta_categoria_para_comp_tid,
+  .views-widget-filter-field_receta_categoria_tid,
+  .views-widget-filter-field_receta_categoria_liviana_tid,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1 {
+    border-bottom: 0.1em solid #e72430;
+    display: block;
+    font-size: 1.4em;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+  .filtro:last-child,
+  .views-widget-filter-field_receta_categoria_para_comp_tid:last-child,
+  .views-widget-filter-field_receta_categoria_tid:last-child,
+  .views-widget-filter-field_receta_categoria_liviana_tid:last-child,
+  .views-widget-filter-field_receta_categoria_para_ni_o_tid_1:last-child {
+    border-bottom: none;
+    margin-bottom: 1em;
+  }
+  .navbar-collapse {
+    width: 25em;
+  }
+  .receta-contenido .estrellas,
+  .producto-contenido .estrellas {
+    margin-left: 2em;
+  }
+  .receta-contenido .extra-tools,
+  .producto-contenido .extra-tools {
+    margin-left: 0;
+  }
+}
+@media (max-width: 400px) {
+  .datos .box:before {
+    height: 4.3em;
+    left: -0.6em;
+    width: 4.3em;
+  }
+  .datos .box .textos {
+    font-size: 0.8em;
+  }
+  .navbar-collapse {
+    left: -11.7em;
+    width: 21em;
+  }
+  .receta-sugerida p {
+    width: 100%;
+  }
+  .receta-sugerida .icon-lunch {
+    display: none;
+  }
+}
+@media (max-width: 360px) {
+  .datos .box:before {
+    height: 3.9em;
+    width: 3.9em;
+  }
+  .receta-contenido .estrellas,
+  .producto-contenido .estrellas {
+    margin-left: 0em;
+  }
+}
