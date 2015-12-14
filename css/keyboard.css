@@ -1,4 +1,5 @@
 #keyboard_parent {
+    display: none;
     margin: 100px auto;
     width: 688px;
     background: rgba(0, 0, 0, 0.5);
