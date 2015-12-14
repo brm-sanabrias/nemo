@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var barraProgreso = document.getElementById('progress'),
 	barraVacia = document.getElementById('inactiveProgress'),
 	barraText = document.getElementsByTagName('progress-helper'),
@@ -68,7 +67,7 @@ $(document).ready(function() {
 
 
 
-=======
+
 var marcas = "";
 $(function() {
     var $write = $('#search'),
@@ -174,4 +173,4 @@ $(document).ready(function() {
 
     });
 });
->>>>>>> d5df7147a5cc0e202dd1f4e11691920193081113
+
