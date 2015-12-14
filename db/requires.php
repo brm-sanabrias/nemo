@@ -6,14 +6,14 @@ $_SESSION['email']="HOLA";
 
 global $prefijo;
 
-//require($prefijo."db/DBO.php");
+require($prefijo."db/DBO.php");
 
 //DataObjects
 
-//require($prefijo."db/requires.ini.php");
+require($prefijo."db/requires.ini.php");
 
 //Clases
-//require($prefijo."class/class.General.inc.php");
+require($prefijo."class/class.General.inc.php");
 //require($prefijo."class/datosGrafica.php");
 
 //Smarty
