@@ -37,29 +37,157 @@ body {
   font-family: 'Roboto Mono', sans-serif;
   font-size: 1.4rem;
 }
-.crear-marca {
+.side-botones {
+  height: 25rem;
+}
+.crear-marca,
+.agregar-marca {
   display: block;
   margin: 0 auto;
-  text-transform: Capitalize;
+  text-transform: capitalize;
   width: 17rem;
 }
-h1.logo {
-  margin: 0.5rem auto 0 3rem;
+.agregar-marca {
+  font-size: 1.8rem;
+  height: 3rem;
+  text-transform: initial;
+  width: 21rem;
+}
+.cyan h1,
+.deep-purple h1 {
+  margin: 0;
+  text-align: center;
+}
+.logo {
+  margin: 1.5rem auto 0 3rem;
   width: 4.5rem;
 }
-h1.logo:hover {
+.logo:hover {
   background-color: transparent;
 }
 .left li:hover {
   background-color: transparent;
 }
 .navbar-fixed,
-.blue {
-  height: 6rem;
+.blue,
+.cyan,
+.deep-purple {
+  height: 8rem;
 }
 .navbar-fixed .header-search-wrapper,
-.blue .header-search-wrapper {
+.blue .header-search-wrapper,
+.cyan .header-search-wrapper,
+.deep-purple .header-search-wrapper {
   margin: 1.6rem auto 0 8rem;
+}
+.navbar-fixed .header-search-wrapper i,
+.blue .header-search-wrapper i,
+.cyan .header-search-wrapper i,
+.deep-purple .header-search-wrapper i {
+  top: 1rem;
+  font-size: 2.4rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input,
+.blue .header-search-wrapper input.header-search-input,
+.cyan .header-search-wrapper input.header-search-input,
+.deep-purple .header-search-wrapper input.header-search-input {
+  height: 3rem;
+  font-size: 1.8rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input::-webkit-input-placeholder,
+.blue .header-search-wrapper input.header-search-input::-webkit-input-placeholder,
+.cyan .header-search-wrapper input.header-search-input::-webkit-input-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input::-webkit-input-placeholder {
+  font-size: 1.8rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input::-moz-placeholder,
+.blue .header-search-wrapper input.header-search-input::-moz-placeholder,
+.cyan .header-search-wrapper input.header-search-input::-moz-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input::-moz-placeholder {
+  font-size: 1.8rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:-ms-input-placeholder,
+.blue .header-search-wrapper input.header-search-input:-ms-input-placeholder,
+.cyan .header-search-wrapper input.header-search-input:-ms-input-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:-ms-input-placeholder {
+  font-size: 1.8rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:-moz-placeholder,
+.blue .header-search-wrapper input.header-search-input:-moz-placeholder,
+.cyan .header-search-wrapper input.header-search-input:-moz-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:-moz-placeholder {
+  font-size: 1.8rem;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:focus,
+.blue .header-search-wrapper input.header-search-input:focus,
+.cyan .header-search-wrapper input.header-search-input:focus,
+.deep-purple .header-search-wrapper input.header-search-input:focus {
+  color: #2196f3 !important;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:focus::-webkit-input-placeholder,
+.blue .header-search-wrapper input.header-search-input:focus::-webkit-input-placeholder,
+.cyan .header-search-wrapper input.header-search-input:focus::-webkit-input-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:focus::-webkit-input-placeholder {
+  color: #2196f3 !important;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:focus::-moz-placeholder,
+.blue .header-search-wrapper input.header-search-input:focus::-moz-placeholder,
+.cyan .header-search-wrapper input.header-search-input:focus::-moz-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:focus::-moz-placeholder {
+  color: #2196f3 !important;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:focus:-ms-input-placeholder,
+.blue .header-search-wrapper input.header-search-input:focus:-ms-input-placeholder,
+.cyan .header-search-wrapper input.header-search-input:focus:-ms-input-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:focus:-ms-input-placeholder {
+  color: #2196f3 !important;
+}
+.navbar-fixed .header-search-wrapper input.header-search-input:focus:-moz-placeholder,
+.blue .header-search-wrapper input.header-search-input:focus:-moz-placeholder,
+.cyan .header-search-wrapper input.header-search-input:focus:-moz-placeholder,
+.deep-purple .header-search-wrapper input.header-search-input:focus:-moz-placeholder {
+  color: #2196f3 !important;
+}
+footer {
+  margin: 0.5rem auto;
+  width: 30%;
+  position: absolute;
+  bottom: 0.3rem;
+  left: 35%;
+  padding: 0;
+}
+footer .paso {
+  position: relative;
+  text-align: center;
+}
+footer .paso span {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+footer .paso .btn-floating {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  height: 100px !important;
+  width: 100px !important;
+}
+footer .paso .btn-floating i {
+  font-size: 3rem;
+  line-height: 6rem !important;
+}
+footer .paso .progreso {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.85rem;
+}
+footer .paso .progreso canvas {
+  position: absolute;
+  top: 0;
+  ((null)): 0;
+}
+footer .paso .progreso input {
+  display: none;
 }
 .resultados-marcas {
   margin: 1rem auto;
@@ -85,4 +213,41 @@ h1.logo:hover {
 .resultados-marcas li .marca {
   color: #494949;
   margin-left: 0.5rem;
+}
+ul.content-pant {
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+ul.content-pant li {
+  background-color: #fff;
+  margin-left: 38px;
+  display: inline-block;
+  padding: 6px;
+}
+ul.content-pant li:first-child {
+  margin: 0;
+}
+.marcas-sugerencias li {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  width: 31.666666666666668%;
+}
+.marcas-sugerencias li img {
+  max-width: 8rem;
+}
+.marcas-sugerencias li figure,
+.marcas-sugerencias li .user {
+  display: inline-block;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.marcas-sugerencias li figure {
+  margin: 0 0.3rem;
+  width: 5.5rem;
+}
+.marcas-sugerencias li .user {
+  color: #494949;
+  margin-left: 2.8rem;
 }

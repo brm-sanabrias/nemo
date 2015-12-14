@@ -3,7 +3,9 @@ bin/
 bin-debug/
 bin-release/
 templates_c/
+node_modules/
 db/DBO.php
+redes.php
 
 # Other files and folders
 .settings/
