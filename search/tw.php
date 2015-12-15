@@ -7,7 +7,7 @@ function queryTwitter($search)
     $url = "https://api.twitter.com/1.1/users/search.json";
     //if($search != "")
         //$search = "#".$search;
-    $query = array( 'count' => 100, 'q' => urlencode($search), "result_type" => "recent");
+    $query = array( 'count' => 5, 'q' => urlencode($search), "result_type" => "recent");
     $oauth_access_token = "336107062-3FRWmW9u2WqAD8K2BYkkhRyYPiuElAls5xGSPxHO";
     $oauth_access_token_secret = "EYOobKPmD0Ym4f30AEOM0xGjlfnaan1Vt17fkUYuJKOnY";
     $consumer_key = "zCYb1EGbavxyFI26TSCYpDVHT";
