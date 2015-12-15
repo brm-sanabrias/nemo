@@ -7,7 +7,9 @@ jQuery(document).ready(function($) {
         dataType: 'json',
         success: function(data) {
             marcas = data;
+
             $('.resultados-marcas').html('');
+
 
         },
         type: 'GET'
@@ -15,7 +17,9 @@ jQuery(document).ready(function($) {
 
 
 
+
     $('.keyboard-input').focusin(function() {
+
         animate("keyboard_parent", "bounceIn");
     }).focusout(function() {
 
@@ -27,7 +31,9 @@ jQuery(document).ready(function($) {
 
 
 $(function() {
+
     var $write = $('.keyboard-input'),
+
         shift = false,
         capslock = false;
 

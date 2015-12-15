@@ -12,11 +12,12 @@
 	//include 'php busqueda/fb.php';
 	///LANZO TWITTER
 	exec('php search/tw.php '.$terminoBuscar);
-	///LANZO YOUTUBE 
+
 
 	exec('php search/yt.php '.$terminoBuscar);
 	
 	///LANZO CASPER
 	//echo exec('casperjs --ignore-ssl-errors=true search/google.js --search="'.$terminoBuscar.'"');
 	//printVar($_COOKIE);
+
 ?>
