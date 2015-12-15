@@ -5,22 +5,7 @@ class General
 	* Se crea la tupla en la tabla dada
 	* @param tabla: Nombre del DBO de la tabla
 	*/
-	
-	public function guardarEncuesta($datos)
-		{//DB_DataObject::debugLevel(1);
-		$dat=explode(",",$datos);
-		$en=DB_DataObject::Factory("encuesta");
-		$en->motivo=$dat[0];
-		$en->encontro=$dat[1];
-		$en->opciones=$dat[2];
-		$en->pregunta_uno=$dat[3];
-		$en->pregunta_dos=$dat[4];
-		$en->pregunta_tres=$dat[5];
-		$en->pregunta_cuatro=$dat[6];
-		$en->pregunta_cinco=$dat[7];
-		$en->insert();
-		$en->free();
-		}
+
 
 	public function setInstancia($tabla, $campoExcluir = NULL){
 		//DB_DataObject::debugLevel(1);
@@ -58,66 +43,7 @@ class General
 		return ($ret);
 	}
 	
-	
-	//Funcion Para manejo de Paginacion
-	public function pagination( $mPage, $mCantidad, $totalPag ){
-		$PrimerValor = 5; //Total de Paginas a Mostrar
-		$SegundoValor = 2;  //Paginas en cada lado de la pagina donde nos encontramos
-		$TercerValor = 3; //Posiciones central del total de las paginas a mostrar
-		$paginas = ceil($totalPag/$mCantidad); //total de paginas
-		
-		if( $paginas>$PrimerValor ) {
-			$current_page = ($mPage);
-			if( $mPage==1 ) {
-				$first_page = 1;
-				$last_page=$PrimerValor;
-			}elseif( $current_page >= $TercerValor && $current_page <= ($paginas-$SegundoValor) ) {
-				$first_page = $current_page-$SegundoValor;
-				$last_page = $current_page+$SegundoValor;
-			}elseif( $current_page<$TercerValor ) {
-				$first_page = 1;
-				$last_page = $current_page+$SegundoValor+($TercerValor-$current_page);
-			}else{
-				$first_page = $current_page-$SegundoValor-(($current_page+$SegundoValor)-$paginas);
-				$last_page = $paginas;
-			}
-		}else{
-			$first_page = 1;
-			if($paginas==0){ $last_page = 1; }else{ $last_page = $paginas; }
-		}
-		//Link's de Navegacion entre paginas
-		$Paginacion = '<ul class="pagination" id="paginacion">';
-		for($i=$first_page;$i<($last_page+1);$i++) {
-			if($mPage==$i) {
-			$Paginacion .= '<li><a href="javascript:;">'.$i.'</a></li>';
-			} else {
-		
-				$Paginacion .= '<li class="current"><a class="page" onclick="cargarDatos('.$i.')" href="javascript:;">'.$i.'</a></li>';
-				
-			}
-			//if( $i != $last_page ){ $Paginacion .= '&nbsp;-&nbsp;'; }
-		}
-		$Paginacion .= '</ul>';
-		if( $mPage==1 ) { $current_page = 1; } else { $current_page = $mPage; }
-		//Link´s de Primero y anterior 					
-		if( $mPage>1 ) {
-			$mLinkPrimero = '<a class="page" onclick="cargarDatos('.$i.')" href="javascript:;">[&nbsp;Primero&nbsp;]</a>';
-			$mLinkAtras = '<a class="page prev" onclick="cargarDatos('.($current_page-1).')" href="javascript:;">[&nbsp;Anterior&nbsp;]</a>';						
-		}else{
-			$mLinkPrimero = '[&nbsp;Primero&nbsp;]';
-			$mLinkAtras = '<a class="page prev" href="javascript:;">[&nbsp;Anterior&nbsp;]</a>';
-		}
-		//Link´s de Siguiente y ultimo
-		if( $current_page < $paginas ) {										
-			$mLinkUltimo = '<a class="page" onclick="cargarDatos('.$paginas.')" href="javascript:;">[&nbsp;Ultimo&nbsp;]</a>';
-			$mLinkSiguiente = '<a class="page next" onclick="cargarDatos('.($current_page+1).')" href="javascript:;">[&nbsp;Siguiente&nbsp;]</a>';						
-		}else{
-			$mLinkUltimo = '[&nbsp;Ultimo&nbsp;]';
-			$mLinkSiguiente = '<a class="page next" href="javascript:;">[&nbsp;Siguiente&nbsp;]</a>';
-		}
-		
-		return array("pagination"=>$Paginacion, "mLinkPrimero"=>$mLinkPrimero, "mLinkAtras"=>$mLinkAtras, "mLinkUltimo"=>$mLinkUltimo, "mLinkSiguiente"=>$mLinkSiguiente, "totalPaginas"=>$paginas);
-	}
+
 	
 	/**
 	* Traemos total de registros de nuestra tabla
