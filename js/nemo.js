@@ -7,7 +7,7 @@ var barraProgreso = document.getElementById('progress'),
 $(document).ready(function() {
 
 //cambio de click para hacer reveal card//
-   	$(document).on('click', '.agregar-marca', function(e) {
+   	$(document).on('click', '.mostrar-keyb', function(e) {
 
 
    		     $(this).parent().find('.card-panel').css('overflow', 'hidden');

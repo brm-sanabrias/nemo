@@ -41,13 +41,15 @@ body {
   height: 25rem;
 }
 .crear-marca,
-.agregar-marca {
+.agregar-marca,
+.mostrar-keyb {
   display: block;
   margin: 0 auto;
   text-transform: capitalize;
   width: 17rem;
 }
-.agregar-marca {
+.agregar-marca,
+.mostrar-keyb {
   font-size: 1.8rem;
   height: 3rem;
   text-transform: initial;
@@ -169,17 +171,25 @@ footer .paso span {
 footer .paso .btn-floating {
   -webkit-border-radius: 100%;
   border-radius: 100%;
-  height: 100px !important;
-  width: 100px !important;
+  height: 100px;
+  width: 100px;
 }
 footer .paso .btn-floating i {
   font-size: 3rem;
   line-height: 6rem !important;
 }
+footer .paso .disabled {
+  background-color: #494949 !important;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  height: 28px;
+  width: 28px;
+  margin-top: 4rem;
+}
 footer .paso .progreso {
   position: absolute;
   top: 1.4rem;
-  left: 1.85rem;
+  left: 1.65rem;
 }
 footer .paso .progreso canvas {
   position: absolute;
@@ -250,4 +260,7 @@ ul.content-pant li:first-child {
 .marcas-sugerencias li .user {
   color: #494949;
   margin-left: 2.8rem;
+}
+.card-reveal .row {
+  margin-top: 7rem;
 }
