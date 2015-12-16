@@ -6,6 +6,9 @@ templates_c/
 node_modules/
 
 db/DBO.php
+#Ignore results
+search/results/
+
 
 redes.php
 
