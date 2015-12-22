@@ -8,7 +8,7 @@ class General
 
 
 	public function setInstancia($tabla, $campoExcluir = NULL){
-		//DB_DataObject::debugLevel(1);
+		DB_DataObject::debugLevel(1);
 		//Crea una nueva instancia de $tabla a partir de DataObject
 		$objDBO = DB_DataObject::Factory($tabla);
 		

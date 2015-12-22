@@ -9,9 +9,9 @@ jQuery(document).ready(function($) {
 		$noTengo.attr('onclick','selectFacebook()');
 		$.each(data.data, function(index, val) {
 			 if(index<=5){
-			 	 items.push( "<li class='marca' id='" + val.id + "'>" + val.name + "</li>" );
+			 		$marcasSuge.append('<li class="marca" id="'+ val.id +'" onclick="selectFacebook('+val.id+')"><figure><img src="'+val.picture.data.url+'" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1" width="200" height="200"></figure><span class="user">'+ val.name + '</span></li>')
+				 
 			 }
-			 $marcasSuge.append('<li class="marca" id="'+ val.id +'" onclick="selectFacebook('+val.id+')"><figure><img src="'+val.picture.data.url+'" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1" width="200" height="200"></figure><span class="user">'+ val.name + '</span></li>')
 		});
 	});
 });
@@ -75,17 +75,19 @@ function selectYoutube(ytId){
 				}
 			});
 		});	
-		endSteps();
+	
+		setTimeout(function(){ 	endSteps();}, 1000);
 	}else{
 		Selection.push('N/A');
 	}
+
 }
 function endSteps(){
-	console.log(Selection);
+	var SelectionSerialize = JSON.stringify( Selection );
 	$.ajax({
 		url: 'saveData.php',
 		type: 'POST',
-		data: serialize(Selection)
+		data: {datos:SelectionSerialize}
 	})
 	.done(function() {
 		console.log("success");
