@@ -7,7 +7,6 @@ templates_c/
 node_modules/
 */*.map
 #Ignore results
-search/results/
 
 DBO.php
 db/DBO.php

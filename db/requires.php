@@ -1,6 +1,8 @@
 <?php
 @ini_set("display_errors","0");
 error_reporting(0);
+ini_set('max_execution_time', 0);
+ini_set('memory_limit', '-1');
 session_start();
 $_SESSION['email']="HOLA";
 
@@ -14,6 +16,7 @@ require($prefijo."db/requires.ini.php");
 
 //Clases
 require($prefijo."class/class.General.inc.php");
+require($prefijo."class/class.MongoNemo.inc.php");
 //require($prefijo."class/datosGrafica.php");
 
 //Smarty
