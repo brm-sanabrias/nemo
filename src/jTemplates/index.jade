@@ -10,7 +10,7 @@ block content
 		div.row
 			div.col.s12.m12.l12
 				ul.resultados-marcas
-					- for (var x = 0; x < 4; x++)
+					//- for (var x = 0; x < 4; x++)
 						li
 							a(href="#")
 								figure
@@ -25,3 +25,6 @@ block content
 	| {#include file='keyboard.html'#}
 
 block Scripts
+	script(src='js/libs/jquery.js')
+	script(src='js/libs/materialize.min.js')
+	script(src='js/nemo.ini.js')
