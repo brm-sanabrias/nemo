@@ -1,14 +1,59 @@
-ul.content-pant
 
-	width 80%
-	margin 0 
+.mask
+	width 90%
+	margin 6rem auto 3rem
 	padding 0
-	
-	li
-		background-color #FFF
-		margin-left 38px
-		display inline-block
-		padding 6px	
+	overflow hidden
 
-		&:first-child
-			margin 0
+	.content-pant
+
+		width 200%
+		margin 0 auto
+		padding 0
+		
+		li
+			cursor pointer
+			display inline-block
+			vertical-align middle
+			text-align center
+			
+			figure
+				background-color #fff
+				max-width 16rem
+				overflow hidden
+				padding 0.5rem
+				position relative
+				
+				img
+					max-width 100%
+				
+				.mdi-navigation-check
+					background-color rgba($Verde, .5)
+					bottom 0
+					color #fff
+					// display none
+					font-size 4.3rem
+					left 0
+					position absolute
+					right 0
+					text-align center
+					top 0
+					
+					&:before
+						position absolute
+						top 35%
+						bottom 0
+						left 0
+						right 0
+			
+
+.web
+	button
+		height 3rem
+		
+		i
+			font-size 1.4rem
+
+	.mostrar-keyb
+		display inline-block
+		
