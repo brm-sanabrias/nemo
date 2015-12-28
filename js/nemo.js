@@ -21,7 +21,7 @@ $(document).ready(function() {
 
    	});
 
-   	//Pintamos check sobre marcas seleccionadas
+   	// Pintamos check sobre marcas seleccionadas
    	$(document).on('click',  '.marca' , function () {
    		 
    		/*$('.mdi-navigation-check', this).addClass('animated bounceIn');
@@ -49,6 +49,35 @@ $(document).ready(function() {
    			console.log( $('.mdi-navigation-check hide').length);
  
    			$('.continuar').removeClass('blue').addClass('orange darken-4').html('No tengo cuenta aquí <i class="right mdi-navigation-close"></i>');
+
+   			$('.mostrar-keyb').removeClass('disabled');
+   		};
+
+   	});
+
+   	//Pintamos check sobre web seleccionadas
+   	$(document).on('click',  '.screen' , function () {
+   		 
+
+   		if ( $('.mdi-navigation-check', this).hasClass('hide') ) {
+			$('.mdi-navigation-check', this).addClass('animated bounceIn');
+	   		$('.mdi-navigation-check', this).removeClass('hide');
+	   		$('.mostrar-keyb').addClass('disabled');
+	   		if(!$('.continuar').hasClass('blue'))
+	   			$('.continuar').removeClass('orange darken-4').addClass('blue').html('Terminé <i class="right mdi-navigation-arrow-forward"></i>');
+   		}else{
+
+   			$('.mdi-navigation-check', this).removeClass('bounceIn');
+
+	   		$('.mdi-navigation-check', this).addClass('hide');
+
+	   		
+   		};
+
+   		if ($('.screen .hide').length == $('.mdi-navigation-check').length ) {
+   			console.log( $('.mdi-navigation-check hide').length);
+ 
+   			$('.continuar').removeClass('blue').addClass('orange darken-4').html('No tengo sitio web <i class="right mdi-navigation-close"></i>');
 
    			$('.mostrar-keyb').removeClass('disabled');
    		};
