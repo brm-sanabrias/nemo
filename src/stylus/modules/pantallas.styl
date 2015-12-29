@@ -1,3 +1,32 @@
+.analytics
+	> img
+		centrar(2rem, 25rem) 
+		display block
+		
+
+	
+	input
+		font-size 1.7rem
+		margin-left 4rem !important
+		
+		&[type=text], &[type=password], &[type=email], &[type=url], &[type=time], &[type=date], &[type=datetime-local], &[type=tel], &[type=number], &[type=search], textarea.materialize-textarea			
+
+			&:focus:not([readonly])
+
+				border-bottom 1px solid $Azul
+				box-shadow 0 1px 0 0 $Azul
+				
+	label
+		font-size 1.7rem
+		margin-left 4rem !important
+		top 0.5rem
+
+	.active
+		color $Azul !important
+
+	.prefix
+		font-size 3rem !important
+
 
 .mask
 	width 90%
@@ -32,12 +61,12 @@
 					bottom 0
 					color #fff
 					// display none
-					font-size 4.3rem
+					font-size 8.8rem
 					left 0
 					position absolute
 					right 0
 					text-align center
-					top 0
+					top -27%
 					
 					&:before
 						position absolute
@@ -46,6 +75,18 @@
 						left 0
 						right 0
 			
+
+
+.ingresar-url
+	margin-top 16rem
+	
+	.keyboard-input
+		font-size 1.7rem
+
+	.valign-wrapper
+		height 10rem
+		
+
 
 .web
 	button
