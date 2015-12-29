@@ -117,6 +117,7 @@ function searchBrand(term) {
     }
 }
 function selectBrand(idBrand){
+    setLoader
 	setCookie("idBrand", idBrand, 1);
     $.ajax({
       url: 'launcher.php',
@@ -135,4 +136,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
+function setLoader(){
+
+}
 
