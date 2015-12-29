@@ -40,7 +40,8 @@
     </div>
   </header>
   <div class="container web">
-    <div class="row">
+    <!--Screens de Casper-->
+    <div class="row hide">
       <div class="col s12 m12 l12">
         <div class="mask">
           <ul class="content-pant">
@@ -87,6 +88,38 @@
           </ul>
         </div>
       </div>
+    </div>
+    <!--/-Screens de Casper-->
+    <!--Card de ingreso de sitio web-->
+    <div class="row ingresar-url animated hide">
+      <div class="col s9 m9 l9">
+        <div class="card card-panel">
+          <div>
+            <form action="#">
+              <div class="row">
+                <div class="input-field col l10">
+                  <input type="text" placeholder="Ingresa la URL de tu sitio web" class="validate keyboard-input">
+                </div>
+                <div class="input-field col l2">
+                  <button type="submit" name="" class="btn green waves-effect waves-light"><i class="mdi-content-send"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s3 m3 l3">
+        <div class="valign-wrapper">
+          <button class="valign waves-effect waves-light btn blue continuar">
+            Terminé <i class="right mdi-navigation-arrow-forward"></i>
+            
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--/-Card de ingreso de sitio web-->
+    <!--Botones-->
+    <div class="row hide">
       <div class="col s6 m6 l6 push-l4">
         <button class="waves-effect waves-light btn green mostrar-keyb">
           No es ninguna
@@ -97,10 +130,53 @@
           No tengo sitio web
           <i class="right mdi-navigation-close"></i>
           
+        </button>
+      </div>
+    </div>
+    <!--/-Botones-->
+    <!--Ingreso de cuenta de analytics-->
+    <div class="row analytics"><img src="images/g-analytics.svg" alt="Google Analytics" title="Google Analytics" class="responsive-img">
+      <div class="col s9 m9 l9">
+        <div class="card card-panel">
+          <div>
+            <form action="#">
+              <div class="row">
+                <div class="input-field col l10"><i class="mdi-action-account-circle prefix"></i>
+                  <input type="text" name="usuario" class="validate keyboard-input">
+                  <label for="usuario">Usuario</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col l10"><i class="mdi-action-lock-outline prefix"></i>
+                  <input type="text" name="pass" class="validate keyboard-input">
+                  <label for="pass">Contraseña</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col l12">
+                  <button type="submit" name="" class="btn green waves-effect waves-light right"><i class="mdi-content-send"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s3 m3 l3">
+        <button class="waves-effect waves-light btn blue continuar">
+          Terminé <i class="right mdi-navigation-arrow-forward"></i>
+          
+        </button>
+        <button class="waves-effect waves-light btn orange darken-4 continuar">
+          No tengo cuenta aquí
+          <i class="right mdi-navigation-close"></i>
+          
           
         </button>
       </div>
     </div>
+    <!--/-Ingreso de cuenta de analytics-->
+    
+    
   </div>{#include file='keyboard.html'#}
   <!--Footer-->
   <footer>
@@ -135,5 +211,6 @@
   <script src="js/libs/jquery.js"></script>
   <script src="js/libs/materialize.min.js"></script>
   <script src="js/nemo.js"></script>
+  <script src="js/nemo.ini.js"></script>
   <script src="js/nemo.web.js"></script>
 </body></html>

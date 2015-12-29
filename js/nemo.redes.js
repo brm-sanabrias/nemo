@@ -99,4 +99,53 @@ function endSteps(){
 		console.log("complete");
 	});
 	
-}
+};
+
+//cambio de click para hacer reveal card//
+   	$(document).on('click', '.mostrar-keyb', function(e) {
+
+
+   			$(this).addClass('disabled');
+
+   		    $(this).parent().find('.card-panel').css('overflow', 'hidden');
+
+   		    $(this).parent().find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});
+
+   		    $(this).parent().find('.card-reveal input').focus();
+
+
+   	});
+
+   	// Pintamos check sobre marcas seleccionadas
+   	$(document).on('click',  '.marca' , function () {
+   		 
+   		/*$('.mdi-navigation-check', this).addClass('animated bounceIn');
+   		$('.mdi-navigation-check', this).removeClass('hide');
+   		
+   		$('.continuar').removeClass('orange darken-4').addClass('blue').html('Terminé <i class="right mdi-navigation-arrow-forward"></i>');*/
+
+
+   		if ( $('.mdi-navigation-check', this).hasClass('hide') ) {
+			$('.mdi-navigation-check', this).addClass('animated bounceIn');
+	   		$('.mdi-navigation-check', this).removeClass('hide');
+	   		$('.mostrar-keyb').addClass('disabled');
+	   		if(!$('.continuar').hasClass('blue'))
+	   			$('.continuar').removeClass('orange darken-4').addClass('blue').html('Terminé <i class="right mdi-navigation-arrow-forward"></i>');
+   		}else{
+
+   			$('.mdi-navigation-check', this).removeClass('bounceIn');
+
+	   		$('.mdi-navigation-check', this).addClass('hide');
+
+	   		
+   		};
+
+   		if ($('.marca .hide').length == $('.mdi-navigation-check').length ) {
+   			console.log( $('.mdi-navigation-check hide').length);
+ 
+   			$('.continuar').removeClass('blue').addClass('orange darken-4').html('No tengo cuenta aquí <i class="right mdi-navigation-close"></i>');
+
+   			$('.mostrar-keyb').removeClass('disabled');
+   		};
+
+   	});

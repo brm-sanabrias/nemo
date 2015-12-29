@@ -10,7 +10,7 @@ if (!defined('PATH_SEPARATOR')) {
     }
 }
 $include_path = ini_get("include_path");
-$path="/Library/WebServer/Documents/";
+$path="/Users/barcom/desktop/brm/tech/nemo/html/";
 @ini_set("include_path", $include_path . PATH_SEPARATOR .$path."PEAR");
 //echo $include_path;
 require_once($path."PEAR/MDB2.php");
