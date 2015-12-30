@@ -1,0 +1,54 @@
+  <!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="es-CO"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="es-CO"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="es-CO"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es-CO"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>brm - Nemo</title>
+  <meta name="description" content="Meta description Ready">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if lt IE]>
+  <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <script src="js/libs/jquery.js"></script>
+  <script type="text/javascript" src="js/libs/tagcanvas.js"></script>
+  <script src="js/libs/modernizr-2.6.2.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function() {
+	  if(!$('#myCanvas').tagcanvas({
+	    //textColour: '#ff0000',
+	    outlineColour: '#ff00ff',
+	    reverse: true,
+	    depth: 0.8,
+	    maxSpeed: 0.05,
+	    textFont: null,
+	    textColour: null,
+	    weightMode:'both',
+	    weight: true,
+	    weightGradient: {
+	     0:    '#f00', // red
+	     0.33: '#ff0', // yellow
+	     0.66: '#0f0', // green
+	     1:    '#00f'  // blue
+	    }
+	  },'tags')) {
+	    // something went wrong, hide the canvas container
+	    //$('#myCanvasContainer').hide();
+	  }
+	});
+  </script>
+</head>
+<body>
+  <div id="myCanvasContainer">
+    <canvas width="700" height="700" id="myCanvas">
+      <p>Anything in here will be replaced on browsers that support the canvas element</p>
+    </canvas>
+  </div>
+  <div id="tags"  style="font-size: 50%">
+  	{#foreach from=$wordCloud item=word#}
+		<a href="#" style="font-size: {#$word.med#}ex">{#$word.word#}</a>
+	{#/foreach#}
+
+  </div>
+</body></html>
