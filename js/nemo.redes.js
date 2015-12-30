@@ -87,7 +87,13 @@ function selectFacebook(fbId){
 	}
 }
 function unselectFacebook(fbId){
-	console.log("unselectFacebook");
+	for (i = 0; i < Selection.length; i++) {
+        if (Selection[i].id == fbId) {
+			console.log(".netbox-fb >#"+Selection[i].id);
+			$(".netbox-fb >#"+Selection[i].id).remove();
+            Selection.splice(i,1);
+        }
+    }
 }
 function finishFacebook(){
 	flag=1;
@@ -121,7 +127,12 @@ function selectTwitter(twId){
 	
 }
 function unselectTwitter(twId){
-
+	for (i = 0; i < Selection.length; i++) {
+        if (Selection[i].id == twId) {
+			$(".netbox-tw >#"+Selection[i].id).remove();
+            Selection.splice(i,1);
+        }
+    }
 }
 function finishTwitter(){
 	flag=2;
@@ -157,6 +168,12 @@ function selectYoutube(ytId){
 
 }
 function unselectYoutube(ytId){
+	for (i = 0; i < Selection.length; i++) {
+        if (Selection[i].id.channelId== ytId) {
+			$(".netbox-yt >#"+Selection[i].id.channelId).remove();
+            Selection.splice(i,1);
+        }
+    }
 }
 function endSteps(){
 	var SelectionSerialize = JSON.stringify( Selection );
