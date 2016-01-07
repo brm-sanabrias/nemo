@@ -6,9 +6,13 @@ bin-release/
 templates_c/
 node_modules/
 */*.map
+<<<<<<< HEAD
 #Ignore results
 publication/results/
 publication/db/DBO.php
+
+#Ignore results
+
 
 # Other files and folders
 .settings/
