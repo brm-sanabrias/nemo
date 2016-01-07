@@ -1,0 +1,100 @@
+.analytics
+	> img
+		centrar(2rem, 25rem) 
+		display block
+		
+
+	
+	input
+		font-size 1.7rem
+		margin-left 4rem !important
+		
+		&[type=text], &[type=password], &[type=email], &[type=url], &[type=time], &[type=date], &[type=datetime-local], &[type=tel], &[type=number], &[type=search], textarea.materialize-textarea			
+
+			&:focus:not([readonly])
+
+				border-bottom 1px solid $Azul
+				box-shadow 0 1px 0 0 $Azul
+				
+	label
+		font-size 1.7rem
+		margin-left 4rem !important
+		top 0.5rem
+
+	.active
+		color $Azul !important
+
+	.prefix
+		font-size 3rem !important
+
+
+.mask
+	width 90%
+	margin 6rem auto 3rem
+	padding 0
+	overflow hidden
+
+	.content-pant
+
+		width 200%
+		margin 0 auto
+		padding 0
+		
+		li
+			cursor pointer
+			display inline-block
+			vertical-align middle
+			text-align center
+			
+			figure
+				background-color #fff
+				max-width 16rem
+				overflow hidden
+				padding 0.5rem
+				position relative
+				
+				img
+					max-width 100%
+				
+				.mdi-navigation-check
+					background-color rgba($Verde, .5)
+					bottom 0
+					color #fff
+					// display none
+					font-size 8.8rem
+					left 0
+					position absolute
+					right 0
+					text-align center
+					top -27%
+					
+					&:before
+						position absolute
+						top 35%
+						bottom 0
+						left 0
+						right 0
+			
+
+
+.ingresar-url
+	margin-top 16rem
+	
+	.keyboard-input
+		font-size 1.7rem
+
+	.valign-wrapper
+		height 10rem
+		
+
+
+.web
+	button
+		height 3rem
+		
+		i
+			font-size 1.4rem
+
+	.mostrar-keyb
+		display inline-block
+		

@@ -1,0 +1,66 @@
+
+extends partials/base.jade
+
+block title
+	-var titulo = "Redes";
+	title brm - Nemo
+
+block content
+
+	div.container
+		div.row
+			div.col.m6.netbox-indicator
+				
+				div.circle.netbox.netbox-fb
+					img.marca-seleccionada(src="images/marca-sample.png")
+					img.marca-seleccionada(src="images/marca-sample-a.jpg")
+					img.marca-seleccionada(src="images/marca-sample-b.jpg")
+					img.marca-seleccionada(src="images/marca-sample-c.jpg")
+					img.marca-seleccionada(src="images/marca-sample-d.jpg")
+
+				div.circle.netbox.netbox-tw.u-inactivo
+
+				div.circle.netbox.netbox-yt.u-inactivo
+
+		div.row
+			div.col.s9.m9.l9
+
+				div.card.card-panel
+					div.card-content
+						ul.marcas-sugerencias
+							- for (var x = 0; x < 6; x++)
+								li.marca
+									figure
+										span.mdi-navigation-check.hide
+										img.circle.responsive-img.z-depth-1(src="images/marca-sample.png", alt="logo-sample", title="logo-sample")
+									p.user.
+										<span>@Nestle Colombia Nest</span>
+										<span class="num">9999</span>
+
+
+					div.card-reveal
+						form(action="#")
+							div.row
+								div.input-field.col.l10
+									input.validate.keyboard-input(type="text", placeholder="Ingresa la URL de la red social")
+
+								div.input-field.col.l2
+									button.btn.green.waves-effect.waves-light(type="submit", name="")
+										i.mdi-content-send
+				
+				button.waves-effect.waves-light.btn.green.mostrar-keyb.
+							No es ninguna
+							<i class="right mdi-hardware-keyboard"></i>
+
+			div.col.s3.m3.l3
+				div.valign-wrapper.side-botones
+
+					button.valign.waves-effect.waves-light.btn.orange.darken-4.continuar.
+						No tengo cuenta aquí
+						<i class="right mdi-navigation-close"></i>
+
+	| {#include file='keyboard.html'#}
+
+block Scripts
+	//- script(src='js/nemo.ini.js')
+	script(src='js/nemo.redes.js')

@@ -1,0 +1,83 @@
+//Posicion form//
+.card-reveal
+	.row
+		margin-top 7rem
+		
+	input
+		font-size 1.7rem
+		
+.marcas-sugerencias
+	li
+		cursor pointer
+		display inline-block
+		vertical-align middle
+		margin-bottom 1rem
+		width (97%/3)
+		
+			
+		figure, .user
+			display inline-block
+			vertical-align middle
+			pointer-events none
+		
+		figure
+			margin 0 0.3rem
+			max-width 6.6rem
+			position relative
+			overflow hidden
+			
+			.mdi-navigation-check
+				background-color rgba($Verde, .5)
+				border-radius 100%
+				bottom 0
+				color #fff
+				// display none
+				font-size 4.3rem
+				left 0
+				max-height 92.4%
+				position absolute
+				right 0
+				text-align center
+				top 0 
+			
+		.user
+			color $Gris
+			margin-left 0.2rem
+			max-width 17.7rem
+			
+			span
+				display block
+				
+			.num
+				color $Azul
+
+.netbox-indicator
+	margin 1rem auto
+	
+	.netbox
+		path("redes-icon.png")
+		background-repeat no-repeat
+		background-size 300%
+		display inline-block
+		height 6.9rem
+		margin-left 0.5rem
+		margin-right @margin-left
+		overflow hidden
+		vertical-align middle
+		width @height
+		
+		&-tw
+			background-position top center
+			
+		&-yt
+			background-position top right
+			
+
+		.marca-seleccionada
+			float left
+			height auto
+			display inline-block
+			max-width 3rem
+			margin 0.2rem
+	
+

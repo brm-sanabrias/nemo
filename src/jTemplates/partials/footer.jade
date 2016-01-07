@@ -1,0 +1,74 @@
+//Footer
+footer
+	div.row
+		if (titulo == "Redes")
+			div.col.l4
+				div.paso
+					span Redes Sociales
+					div.btn-floating.btn-large.waves-effect.waves-light.cyan
+						i.mdi-social-share
+						
+					div.progreso
+						canvas#inactiveProgress.progress-inactive(height="120px", width="120px")
+						canvas#progress.progress-active(height="120px", width="120px")
+						p.progress-helper
+						input#progressController(type="range", value="35", steps="1")
+
+
+				
+			div.col.l4
+				div.paso
+					//- span Sitio Web
+					div.btn-floating.disabled
+						//- i.mdi-social-public
+
+			div.col.l4
+				div.paso
+
+					//- span Marcas Relacionadas
+					div.btn-floating.disabled
+						//- i.mdi-image-style
+
+
+		if (titulo == "Pantallas")
+
+			div.col.l4
+				div.paso
+					span.oculto Redes Sociales
+					div.btn-floating.btn-large.waves-effect.waves-light.cyan
+						i.mdi-social-share
+						
+					
+				
+			div.col.l4
+				div.paso
+					span Sitio Web
+					div.btn-floating.btn-large.waves-effect.waves-light.deep-purple.darken-1
+						i.mdi-social-public
+
+					div.progreso
+						canvas#inactiveProgress.progress-inactive(height="120px", width="120px")
+						canvas#progress.progress-active(height="120px", width="120px")
+						p.progress-helper
+						input#progressController(type="range", value="45", steps="1")
+
+			div.col.l4
+				div.paso
+
+					//- span Marcas Relacionadas
+					div.btn-floating.disabled
+						//- i.mdi-image-style
+
+
+///-Footer
+
+//Scripts
+//-Estos son los scripts que van en todos los htmls del desarrollo
+if debug == true
+	script(src='js/libs/jquery.js')
+	script(src='js/libs/materialize.min.js')
+	script(src='js/nemo.js')
+
+else
+	script(src="js/libs.nemo.min.js")
+	script(src='js/nemo.js')
