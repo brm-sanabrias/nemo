@@ -1,11 +1,13 @@
 # Build and Release Folders
 
+*.mp4
+*.ogg
+*.map
 bin/
 bin-debug/
 bin-release/
 templates_c/
 node_modules/
-*/*.map
 #Ignore results
 publication/results/
 publication/db/DBO.php
