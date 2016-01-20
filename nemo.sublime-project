@@ -2,8 +2,14 @@
 	"folders":
 	[
 		{
-			"path": "/Users/Sebas/Documents/BRM/GitHub/nemo"
+			"path": "publication"
+		},
+		{
+			"path": "src"
 		}
 	],
-	"settings": { "build_on_save": 1 }
+	"settings":
+	{
+		"build_on_save": 1
+	}
 }

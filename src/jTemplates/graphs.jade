@@ -1,0 +1,89 @@
+
+extends partials/base.jade
+
+block title
+	-var titulo = "Graficas";
+	title brm - Nemo
+
+block content
+	div.container
+		//Stats propiedades digitales
+		div.row.row-numeros
+			div.col.s4.m4.l4
+				h2 Tus Números
+			div.col.s4.m4.l4
+				i.social.social-fb
+				p 99999999
+			div.col.s4.m4.l4
+				i.social.social-tw
+				p 99999999
+
+		///-Stats propiedades digitales
+		//Graphs
+		div.row
+			//Timeline
+			div.col.s4.md.l6
+				div.card
+					div.card-move-up
+						div.graph-demo
+					div.card-content.grey.lighten-5
+
+						div.graph-demo-2
+			///-Timeline
+			
+			//Word Cloud
+			div.col.s3.m3.l3
+				div#tagCloud.card
+					canvas#myCanvas()
+						p.
+							Su navegador no soporta canvas
+				div#tags(style="font-size: 50%;")
+					//- {#foreach from=$wordCloud item=word#}
+					//- a(href='#',style="font-size: {#$word.med#}ex").
+					//- 	{#$word.word#}
+					//- {#/foreach#}
+
+					- for (var x = 0; x < 30; x++)
+						a(href='#',style="font-size: {#$word.med#}ex").
+							#{x}
+
+			///-Word Cloud
+
+			//Donut pie
+			div.col.s3.m3.l3
+				div#pie.card
+					
+
+			///-Donut pie
+
+			//Maps
+			div.col.s3.m3.l3
+				div.card
+					//- <div id="regions_div" style="width: 900px; height: 500px;"></div>
+					#mapa
+
+			///-Maps
+
+			//Géneros
+			div.col.s3.m3.l3
+				div.card
+					h3 Géneros 
+			///-Géneros
+
+		///-Graphs
+		div.row
+			div.col.l4.offset-l4
+				button.valign.waves-effect.waves-light.btn.blue.descargar.
+					Descargar reporte <i class="right mdi-file-cloud-download"></i>
+
+
+
+
+
+block Scripts
+	script(src='js/libs/tagcanvas.js')
+	script(src='js/libs/d3.min.js')
+	script(src='js/libs/amcharts.js')
+	script(src='js/libs/pie.js')
+	script(src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1","packages":["geochart"]}]}')
+	script(src='js/nemo.graficas.js')
