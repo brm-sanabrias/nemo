@@ -46,7 +46,7 @@ function app_request($url="") {
     return objectToArray(json_decode($result));
 }
 $app_access_token=genToken();
-$resultFacebook=app_request("https://graph.facebook.com/v2.4/search?q=".$terminoBuscar."&type=page&limit=6&fields=id,name,picture{url}&".$app_access_token);
+$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=6&fields=id,name,picture.type(normal),likes&".$app_access_token);
 //print_r($resultFacebook);
 $fp = fopen('/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultFacebook.json', 'w');
 fwrite($fp, json_encode($resultFacebook));

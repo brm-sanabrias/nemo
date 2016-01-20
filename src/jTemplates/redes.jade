@@ -11,11 +11,13 @@ block content
 		div.row
 			div.col.m6.netbox-indicator
 				
-				div.circle.netbox.netbox-fb
-
-				div.circle.netbox.netbox-tw.u-inactivo
-
-				div.circle.netbox.netbox-yt.u-inactivo
+				div.circle.netbox
+					div.netbox-fb
+				div.circle.netbox
+					div.netbox-tw.u-inactivo
+				div.circle.netbox
+					div.netbox-yt.u-inactivo
+		
 
 		div.row
 			div.col.s9.m9.l9
@@ -23,14 +25,7 @@ block content
 				div.card.card-panel
 					div.card-content
 						ul.marcas-sugerencias
-							- for (var x = 0; x < 6; x++)
-								li.marca
-									figure
-										span.mdi-navigation-check.hide
-										img.circle.responsive-img.z-depth-1(src="images/marca-sample.png", alt="logo-sample", title="logo-sample")
-									p.user.
-										<span>@Nestle Colombia Nest</span>
-										<span class="num">9999</span>
+
 
 
 					div.card-reveal
