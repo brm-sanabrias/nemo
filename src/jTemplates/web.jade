@@ -11,18 +11,18 @@ block content
 
 		
 		//Screens de Casper
-		div.row.hide
+		div.row.casper
 			div.col.s12.m12.l12
 
 				div.mask
 					ul.content-pant
-						- for (var x = 0; x < 10; x++)
-							li.screen
-								figure.z-depth-1
+						{#foreach from=$images key=k item=v#}
+						li.screen
+							figure.z-depth-1
 									span.mdi-navigation-check.hide
-									img(src="images/sample-screen.jpg")
-
-								p www.oli.com
+									img(src="{#$v#}")
+								p {#$k#}
+						{#/foreach#}
 
 
 		///-Screens de Casper
@@ -48,7 +48,7 @@ block content
 		
 		///-Card de ingreso de sitio web
 		//Botones
-		div.row.hide
+		div.row
 			div.col.s6.m6.l6.push-l4
 				
 				button.waves-effect.waves-light.btn.green.mostrar-keyb.
@@ -61,7 +61,7 @@ block content
 
 		///-Botones
 		//Ingreso de cuenta de analytics
-		div.row.analytics
+		div.row.analytics.hide
 			img.responsive-img(src="images/g-analytics.svg", alt="Google Analytics", title="Google Analytics")
 
 			div.col.s9.m9.l9

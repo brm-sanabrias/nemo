@@ -1,6 +1,6 @@
 var marcas = "";
 jQuery(document).ready(function($) {
-	
+
     ///BUSQUEDA DE MARCAS
     $.ajax({
         url: 'buscar.php',
@@ -26,6 +26,13 @@ jQuery(document).ready(function($) {
 
     });
 
+    $('.keyboard-input').keypress(function(event) {
+        if ($(this).val().length >= 3) {
+            /* Act on the event */
+            searchBrand($(this).val());
+        }
+
+    });
 });
 
 
@@ -99,7 +106,10 @@ function animate(div, x) {
 
 function searchBrand(term) {
     var n = term.length;
-    var $resultCont=$('.resultados-marcas');
+    var $resultCont = $('.resultados-marcas');
+    var $crearMarca = $('#crear-marca');
+    var cons = 0;
+    console.log(n);
     if (n >= 3) {
         $resultCont.html('');
         $.each(marcas, function(i, v) {
@@ -108,35 +118,66 @@ function searchBrand(term) {
             var name = v.name.toLowerCase();
             if (name.search(re) != -1) {
                 // alert(v.picture);
-                $resultCont.append('<li><a href="javascript:;" onclick="selectBrand('+v.idBrand+');"><figure><img src="' + v.picture + '" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><span class="marca">' + v.name + '</span></a></li>');
+                $resultCont.append('<li><a href="javascript:;" onclick="selectBrand(' + v.idBrand + ');"><figure><img src="' + v.picture + '" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><span class="marca">' + v.name + '</span></a></li>');
+                cons++;
                 return;
             }
         });
-    }else{
+        if (cons >= 1) {
+            $crearMarca.html('No es ninguna <i class="right mdi-content-add"></i>');
+        }
+    } else {
         $resultCont.html('');
     }
+    $crearMarca.removeClass('hide');
+
 }
-function selectBrand(idBrand){
-    setLoader
-	setCookie("idBrand", idBrand, 1);
+
+function selectBrand(idBrand) {
+    setLoader();
+    setCookie("idBrand", idBrand, 1);
     $.ajax({
-      url: 'launcher.php',
-      data: {
-        idBrand: idBrand
-      },
-      success: function(data) {
-       window.location="redes.php";
-      }
+        url: 'launcher.php',
+        data: {
+            idBrand: idBrand
+        },
+        success: function(data) {
+            window.location = "redes.php";
+        }
     });
 }
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires="+d.toUTCString();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
-function setLoader(){
+function setLoader() {
 
 }
 
+function createBrand() {
+    var marca = $('input[name="buscador"]').val();
+    if (marca.length >= 3 && marca != "") {
+        $.ajax({
+                url: 'saveData.php',
+                type: 'POST',
+                data: {
+                    marca: marca
+                },
+            })
+            .done(function() {
+                $.ajax({
+                    url: 'launcher.php',
+                    success: function(data) {
+                        window.location = "redes.php";
+                    }
+                });
+            });
+    } else {
+        alert("Error marca");
+    }
+
+}

@@ -35,7 +35,7 @@ function objectToArray($d) {
 function app_request($url="") {
 	$proxy="172.16.224.4:8080";
     $curl = curl_init($url);
-   	curl_setopt($curl, CURLOPT_PROXY, $proxy);
+   curl_setopt($curl, CURLOPT_PROXY, $proxy);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
@@ -48,7 +48,7 @@ function app_request($url="") {
 $app_access_token=genToken();
 $resultFacebook=app_request("https://graph.facebook.com/v2.4/search?q=".$terminoBuscar."&type=page&limit=6&fields=id,name,picture{url}&".$app_access_token);
 //print_r($resultFacebook);
-$fp = fopen('/Users/Sebas/Documents/BRM/NEMO/publication/search/results/resultFacebook.json', 'w');
+$fp = fopen('/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultFacebook.json', 'w');
 fwrite($fp, json_encode($resultFacebook));
 fclose($fp);
 ?>

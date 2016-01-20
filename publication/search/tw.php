@@ -36,7 +36,7 @@ function queryTwitter($search)
                       CURLOPT_HEADER => false,
                       CURLOPT_URL => $url,
                       CURLOPT_RETURNTRANSFER => true,
-                      CURLOPT_SSL_VERIFYPEER => false,
+                      CURLOPT_SSL_VERIFYPEER => false);
                       CURLOPT_PROXY=>$proxy);
 
     $feed = curl_init();
@@ -68,7 +68,7 @@ function buildAuthorizationHeader($oauth)
 $terminoBuscar=$argv[1];
 
 $resultTwitter=queryTwitter($terminoBuscar);
-$fp = fopen('/Users/Sebas/Documents/BRM/NEMO/publication/search/results/resultTwitter.json', 'w');
+$fp = fopen('/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultTwitter.json', 'w');
 fwrite($fp, json_encode($resultTwitter));
 fclose($fp);
 ?>

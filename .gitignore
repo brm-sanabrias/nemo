@@ -10,7 +10,7 @@ node_modules/
 publication/results/
 publication/db/DBO.php
 
-#Ignore Smarty and PEAR
+#Ignore Smarty and PEAR	
 Smarty/
 PEAR/
 

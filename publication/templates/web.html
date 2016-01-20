@@ -30,7 +30,10 @@
             </li>
           </ul>
           <div class="header-search-wrapper nombre-marca">
-            <h1>cucu cantaba la marca</h1>
+            <h1>
+              {#$nombreMarca#}
+              
+            </h1>
           </div>
           <ul class="right">
             <li><a href="#"><i class="mdi-action-settings-power"></i></a></li>
@@ -41,50 +44,14 @@
   </header>
   <div class="container web">
     <!--Screens de Casper-->
-    <div class="row hide">
+    <div class="row casper">
       <div class="col s12 m12 l12">
         <div class="mask">
-          <ul class="content-pant">
+          <ul class="content-pant">{#foreach from=$images key=k item=v#}
             <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
-            <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="images/sample-screen.jpg"></figure>
-              <p>www.oli.com</p>
-            </li>
+              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="{#$v#}"></figure>
+              <p>{#$k#}</p>
+            </li>{#/foreach#}
           </ul>
         </div>
       </div>
@@ -119,7 +86,7 @@
     </div>
     <!--/-Card de ingreso de sitio web-->
     <!--Botones-->
-    <div class="row hide">
+    <div class="row">
       <div class="col s6 m6 l6 push-l4">
         <button class="waves-effect waves-light btn green mostrar-keyb">
           No es ninguna
@@ -135,7 +102,7 @@
     </div>
     <!--/-Botones-->
     <!--Ingreso de cuenta de analytics-->
-    <div class="row analytics"><img src="images/g-analytics.svg" alt="Google Analytics" title="Google Analytics" class="responsive-img">
+    <div class="row analytics hide"><img src="images/g-analytics.svg" alt="Google Analytics" title="Google Analytics" class="responsive-img">
       <div class="col s9 m9 l9">
         <div class="card card-panel">
           <div>
@@ -193,7 +160,7 @@
             <canvas id="inactiveProgress" height="120px" width="120px" class="progress-inactive"></canvas>
             <canvas id="progress" height="120px" width="120px" class="progress-active"></canvas>
             <p class="progress-helper"></p>
-            <input id="progressController" type="range" value="45" steps="1">
+            <input id="progressController" type="range" value="0" steps="1">
           </div>
         </div>
       </div>
@@ -210,7 +177,6 @@
   <!--Scripts-->
   <script src="js/libs/jquery.js"></script>
   <script src="js/libs/materialize.min.js"></script>
-  <script src="js/nemo.js"></script>
   <script src="js/nemo.ini.js"></script>
   <script src="js/nemo.web.js"></script>
 </body></html>

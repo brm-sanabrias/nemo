@@ -20,14 +20,19 @@ $(document).ready(function() {
 
 	barraSinProg(barraVaciaContext);
 
-	function barraSinProg (barraVaciaContext) {
-		barraVaciaContext.beginPath(),
-		barraVaciaContext.lineWidth = 5,
-		barraVaciaContext.strokeStyle = '#fff',
-		barraVaciaContext.arc(60, 60, 55, 0, 2*Math.PI),
-		barraVaciaContext.stroke();
-			
-	};
+	
+
+		pintarProg(barraProgreso, porcentaje, barraText);
+
+});
+
+function barraSinProg (barraVaciaContext) {
+	barraVaciaContext.beginPath(),
+	barraVaciaContext.lineWidth = 5,
+	barraVaciaContext.strokeStyle = '#fff',
+	barraVaciaContext.arc(60, 60, 55, 0, 2*Math.PI),
+	barraVaciaContext.stroke();
+};
 
 
 	function pintarProg(bar, porcentaje, barraText){
@@ -44,10 +49,6 @@ $(document).ready(function() {
 		barCTX.strokeStyle = '#448ccb';
 		barCTX.arc(60, 60, 55,startingAngle, endingAngle);
 		barCTX.stroke();
-
-		$(barraText).text( (parseInt(porcentaje * 100, 10)) + '%');
+		var valor=(parseInt(porcentaje * 100, 10));
+		$(barraText).text(valor+'%');
 	}
-
-		pintarProg(barraProgreso, porcentaje, barraText);
-
-});

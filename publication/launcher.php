@@ -7,6 +7,7 @@
 		$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 		$terminoBuscar=$marca[0]->name;
 	}
+	echo $terminoBuscar;
 	///LANZO FACEBOOK
 	exec('php search/fb.php '.$terminoBuscar);
 	//include 'php busqueda/fb.php';

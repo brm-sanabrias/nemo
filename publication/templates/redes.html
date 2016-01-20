@@ -30,7 +30,11 @@
             </li>
           </ul>
           <div class="header-search-wrapper nombre-marca">
-            <h1>cucu cantaba la marca</h1>
+            <h1>
+              {#$nombreMarca#}
+              
+              
+            </h1>
           </div>
           <ul class="right">
             <li><a href="#"><i class="mdi-action-settings-power"></i></a></li>
@@ -73,7 +77,7 @@
               <li class="marca">
                 <figure><span class="mdi-navigation-check hide"></span><img src="images/marca-sample.png" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure>
                 <p class="user">
-                  <span>@Nestle Colombia Neste</span>
+                  <span>@Nestle Colombia Nest</span>
                   <span class="num">9999</span>
                   
                   
@@ -148,7 +152,7 @@
             <canvas id="inactiveProgress" height="120px" width="120px" class="progress-inactive"></canvas>
             <canvas id="progress" height="120px" width="120px" class="progress-active"></canvas>
             <p class="progress-helper"></p>
-            <input id="progressController" type="range" value="35" steps="1">
+            <input id="progressController" type="range" value="0" steps="1">
           </div>
         </div>
       </div>

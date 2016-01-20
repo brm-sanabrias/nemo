@@ -17,7 +17,7 @@ block content
 									img.circle.responsive-img.z-depth-1(src="images/marca-sample.png", alt="logo-sample", title="logo-sample")
 								span.marca Logo Sample
 				
-				button.waves-effect.waves-light.btn.green.crear-marca.
+				button#crear-marca.waves-effect.waves-light.btn.green.crear-marca.hide(onclick='createBrand()').
 					Crear marca
 					<i class="right mdi-content-add"></i>
 
@@ -27,4 +27,5 @@ block content
 block Scripts
 	script(src='js/libs/jquery.js')
 	script(src='js/libs/materialize.min.js')
+	script(src='js/nemo.js')
 	script(src='js/nemo.ini.js')

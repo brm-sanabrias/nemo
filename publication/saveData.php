@@ -1,5 +1,7 @@
 <?php
 include("db/requires.php");
+
+///MARCAS EXISTENTES EN LA BASE DE DATOS
 if(isset($_POST['datos']) && isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	$datos=json_decode($_POST['datos']);
 	$General = new General();
@@ -46,5 +48,16 @@ if(isset($_POST['datos']) && isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['
 		}
 	}
 	echo $ret;
+}
+// MARCAS NO EXISTENTES EN LA BASE DE DATOS
+if(isset($_POST['marca']) && !empty($_POST['marca'])){
+	$nombreMarca=(string)$_POST['marca'];
+	$General = new General();
+	$General->idCategory=1;
+	$General->picture="N/A";
+	$General->name=$nombreMarca;
+	$General->date=date("Y-m-d H:i:s");
+	$idBrand=$General->setInstancia('MpBrand');
+	setcookie("idBrand", $idBrand);
 }
 ?>

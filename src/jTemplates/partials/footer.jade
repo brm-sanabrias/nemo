@@ -12,7 +12,7 @@ footer
 						canvas#inactiveProgress.progress-inactive(height="120px", width="120px")
 						canvas#progress.progress-active(height="120px", width="120px")
 						p.progress-helper
-						input#progressController(type="range", value="35", steps="1")
+						input#progressController(type="range", value="0", steps="1")
 
 
 				
@@ -50,7 +50,7 @@ footer
 						canvas#inactiveProgress.progress-inactive(height="120px", width="120px")
 						canvas#progress.progress-active(height="120px", width="120px")
 						p.progress-helper
-						input#progressController(type="range", value="45", steps="1")
+						input#progressController(type="range", value="0", steps="1")
 
 			div.col.l4
 				div.paso
@@ -67,8 +67,6 @@ footer
 if debug == true
 	script(src='js/libs/jquery.js')
 	script(src='js/libs/materialize.min.js')
-	script(src='js/nemo.js')
-
 else
 	script(src="js/libs.nemo.min.js")
 	script(src='js/nemo.js')

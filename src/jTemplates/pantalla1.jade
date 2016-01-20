@@ -1,0 +1,26 @@
+
+extends partials/base.jade
+
+block title
+	-var titulo = "Graficas";
+	title brm - Nemo
+
+block content
+	div.container
+		div.row
+			div.col.s12.m12.l12
+				div#tagCloud
+					canvas#myCanvas(width="700",height="700")
+						p.
+							Su navegador no soporta canvas
+				div#tags(style="font-size: 50%;")
+					{#foreach from=$wordCloud item=word#}
+					a(href='#',style="font-size: {#$word.med#}ex").
+						{#$word.word#}
+					{#/foreach#}
+
+
+
+block Scripts
+	script(src='js/libs/tagcanvas.js')
+	script(src='js/nemo.graficas.js')

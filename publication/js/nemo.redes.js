@@ -1,5 +1,6 @@
 var Selection = new Array();
 var flag=0; //(0: Facebook , 1: Twitter , 2: Youtube)
+var numMarcas=0;
 $marcasSuge=$('.marcas-sugerencias');
 $tituloRedes=$('.redes_sociales2');
 $noTengo=$('.no-tengo');
@@ -78,6 +79,9 @@ function selectFacebook(fbId){
 					Selection.push(val);
 					if($('.netbox-fb > img').length<=6){
 						$('.netbox-fb').append($('<img>',{class:'marca-seleccionada',src:val.picture.data.url,id:val.id}))
+						numMarcas=numMarcas+1;
+						var porc=parseFloat((1/3)*(numMarcas/6));
+						pintarProg(barraProgreso, porc, barraText);
 					}
 				}	 
 			});
@@ -96,6 +100,7 @@ function unselectFacebook(fbId){
     }
 }
 function finishFacebook(){
+	numMarcas=0;
 	flag=1;
 	$('.netbox-tw').removeClass('u-inactivo');
 	$.getJSON( "search/results/resultTwitter.json", function( data ) {
@@ -104,6 +109,8 @@ function finishFacebook(){
 		$.each(data, function(index, val) {
 			if(index<=5){
 				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">9999</span></p></li>');		
+						pintarProg(barraProgreso, parseFloat(1/3), barraText);
+				
 			}	
 		});
 	});
@@ -117,6 +124,9 @@ function selectTwitter(twId){
 				if(val.id==twId){
 					Selection.push(val);
 						$('.netbox-tw').append($('<img>',{class:'marca-seleccionada',src:val.profile_image_url,id:val.id}))
+										numMarcas=numMarcas+1;
+						var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
+						pintarProg(barraProgreso, porc, barraText);
 
 				}	 
 			});
@@ -136,6 +146,7 @@ function unselectTwitter(twId){
 }
 function finishTwitter(){
 	flag=2;
+	numMarcas=0;
 	$('.netbox-yt').removeClass('u-inactivo');
 
 	$.getJSON( "search/results/resultYoutube.json", function( data ) {
@@ -143,7 +154,8 @@ function finishTwitter(){
 		$.each(data.items, function(index, val) {
 			if(index<=5){
 				$marcasSuge.append('<li class="marca" id="'+ val.id.channelId +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.snippet.thumbnails.default.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.snippet.title  + '</span><span class="num">9999</span></p></li>');		
-			
+						pintarProg(barraProgreso, parseFloat(2/3), barraText);
+				
 			}
 		});
 	});
@@ -157,6 +169,9 @@ function selectYoutube(ytId){
 				if(val.id.channelId==ytId){
 					Selection.push(val);
 						$('.netbox-yt').append($('<img>',{class:'marca-seleccionada',src:val.snippet.thumbnails.default.url,id:val.id.channelId}))
+						numMarcas=numMarcas+1;
+						var porc=parseFloat((2/3)+((1/3)*(numMarcas/6)));
+						pintarProg(barraProgreso, porc, barraText);
 
 				}
 			});
@@ -176,6 +191,8 @@ function unselectYoutube(ytId){
     }
 }
 function endSteps(){
+						pintarProg(barraProgreso, parseFloat(3/3), barraText);
+
 	var SelectionSerialize = JSON.stringify( Selection );
 	$.ajax({
 		url: 'saveData.php',
