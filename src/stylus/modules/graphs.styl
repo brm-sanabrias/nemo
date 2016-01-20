@@ -1,0 +1,75 @@
+path
+	&.line
+		fill none
+		stroke-width 1px
+
+//map
+#mapa
+	height 21.7rem
+	width 100%
+
+//Pie
+#pie
+	height 20.6rem
+	max-width 100%
+	width 100%
+	
+	a
+		display none !important
+
+//WordCloud
+#tagCloud
+	#myCanvas
+		height 20.1rem
+		max-width 100%
+		width 100%
+
+//graficas timeline
+.axis
+	path, line
+		fill none
+		stroke #000
+		shape-rendering crispEdges
+.band
+	fill none
+	stroke-width 1px
+	stroke red
+		
+
+.row-numeros
+	text-align center
+	
+	h2
+		text-align left
+
+	.social
+		path("redes-icon.png")
+		background-repeat no-repeat
+		background-size 300%
+		display inline-block
+		height 3.9rem
+		margin 1rem 0.5rem
+		overflow hidden
+		vertical-align middle
+		width @height
+		
+		&-fb
+			background-position bottom left
+			
+		&-tw
+			background-position bottom center
+
+
+
+
+.zoomOut
+	fill $AzulM
+	cursor pointer
+
+	&Text
+		pointer-events none
+		fill #fff
+
+.zoomOverlay
+	pointer-events all
+	fill none
