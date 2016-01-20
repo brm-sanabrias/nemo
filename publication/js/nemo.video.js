@@ -1,4 +1,5 @@
 var video = $('#video');
+var count = 0;
 
 video.on('ended', function () {
   this.load();
@@ -7,7 +8,7 @@ video.on('ended', function () {
 
 $(document).on('mousemove', function () {
 
-	
+
 	$('.splash').addClass('animated zoomOut');
 	$('.splash').removeClass('zoomIn');
 
@@ -16,9 +17,12 @@ $(document).on('mousemove', function () {
 
 			$('.splash').hide();
 
+			video.stop();
+
 		}
 	}, 500);
 
+	count = 1;
 
 });
 
@@ -27,19 +31,24 @@ $(document).on('ready', function() {
 
 	
 
-		window.setTimeout(function() {
+		if (count == 1) {
 
-			if ( $('.splash').hasClass('zoomOut') ) {
+				window.setInterval(function() {
 
-				$('.splash').show();
+					if ( $('.splash').hasClass('zoomOut') ) {
 
-				$('.splash').addClass('zoomIn');
-				$('.splash').removeClass('zoomOut');
+						$('.splash').show();
+
+						$('.splash').addClass('zoomIn');
+						$('.splash').removeClass('zoomOut');
+						count = 0;
+						video.play();
+				};
+
+
+				}, 10000);
 
 		};
-
-
-		}, 5000);
 
 
 });
