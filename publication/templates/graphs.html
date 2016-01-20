@@ -104,7 +104,7 @@
             </h1>
           </div>
           <ul class="right">
-            <li class="apagar"><a href="#"><i class="mdi-action-settings-power"></i></a></li>
+            <li class="apagar"><a href="/"><i class="mdi-action-settings-power"></i></a></li>
           </ul>
         </div>
       </nav>
@@ -145,67 +145,7 @@
             <p>Su navegador no soporta canvas</p>
           </canvas>
         </div>
-        <div id="tags" style="font-size: 50%;"><a href="#" style="font-size: {#$word.med#}ex">
-            0
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            1
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            2
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            3
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            4
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            5
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            6
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            7
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            8
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            9
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            10
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            11
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            12
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            13
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            14
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            15
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            16
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            17
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            18
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            19
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            20
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            21
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            22
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            23
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            24
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            25
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            26
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            27
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            28
-            </a><a href="#" style="font-size: {#$word.med#}ex">
-            29
-            </a>
+        <div id="tags" style="font-size: 20%;">{#foreach from=$wordCloud item=word#}<a href="#" style="font-size: {#$word.med#}ex">{#$word.word#}</a>{#/foreach#}
         </div>
       </div>
       <!--/-Word Cloud-->
