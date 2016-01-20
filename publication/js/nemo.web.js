@@ -56,5 +56,5 @@ $(document).on('click', '.mostrar-keyb', function(e) {
 $(document).on('click', '.continuar', function(event) {
 	event.preventDefault();
 	/* Act on the event */
-	window.location="pantalla1.php";
+	window.location="graphs.php";
 });
