@@ -1,5 +1,5 @@
 var video = document.getElementById('video');
-var count = 0;
+var count = 1;
 
 $('video').on('ended', function () {
   this.load();
@@ -29,8 +29,6 @@ $(document).on('mousemove', function () {
 
 $(document).on('ready', function() {
 
-	console.log(count);
-
 	
 
 		if (count == 1) {
@@ -44,6 +42,7 @@ $(document).on('ready', function() {
 						$('.splash').addClass('zoomIn');
 						$('.splash').removeClass('zoomOut');
 						count = 0;
+						video.load();
 						video.play();
 				};
 

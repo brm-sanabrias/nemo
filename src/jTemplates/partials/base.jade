@@ -41,8 +41,12 @@ body
 	if titulo == "Home"
 		include ../modules/splash.jade
 	
-	div.loader
-		| 
+	div.loader.hide
+		div.nemo
+			include ../../../publication/images/nemo.svg
+			
+			p Nadaremos, Nadaremos,  ¡en el mar!, ¡en el mar!, ¡en el mar!
+
 	//-Layout del header (logo, menu, login, etc)
 
 	include header.jade
