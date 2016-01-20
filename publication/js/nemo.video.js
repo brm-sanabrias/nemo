@@ -1,7 +1,7 @@
-var video = $('#video');
+var video = document.getElementById('video');
 var count = 0;
 
-video.on('ended', function () {
+$('video').on('ended', function () {
   this.load();
   this.play();
 });
@@ -17,7 +17,7 @@ $(document).on('mousemove', function () {
 
 			$('.splash').hide();
 
-			video.stop();
+			video.pause();
 
 		}
 	}, 500);
@@ -28,6 +28,8 @@ $(document).on('mousemove', function () {
 
 
 $(document).on('ready', function() {
+
+	console.log(count);
 
 	
 
