@@ -26,30 +26,3 @@ $(document).on('mousemove', function () {
 
 });
 
-
-$(document).on('ready', function() {
-
-	
-
-		if (count == 1) {
-
-				window.setInterval(function() {
-
-					if ( $('.splash').hasClass('zoomOut') ) {
-
-						$('.splash').show();
-
-						$('.splash').addClass('zoomIn');
-						$('.splash').removeClass('zoomOut');
-						count = 0;
-						video.load();
-						video.play();
-				};
-
-
-				}, 10000);
-
-		};
-
-
-});

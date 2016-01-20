@@ -270,7 +270,7 @@ function unselectYoutube(ytId){
 }
 function endSteps(){
 						pintarProg(barraProgreso, parseFloat(3/3), barraText);
-
+setLoader()
 	var SelectionSerialize = JSON.stringify( Selection );
 	$.ajax({
 		url: 'saveData.php',
@@ -278,8 +278,10 @@ function endSteps(){
 		data: {datos:SelectionSerialize}
 	})
 	.done(function() {
+		window.setTimeout(function () {
 		window.location="web.php";
 		console.log("success");
+		},1000);
 	})
 	.fail(function() {
 		console.log("error");

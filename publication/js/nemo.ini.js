@@ -155,10 +155,11 @@ function setCookie(cname, cvalue, exdays) {
 }
 
 function setLoader() {
-
+    $('.loader').removeClass('hide');
 }
 
 function createBrand() {
+    setLoader()
     var marca = $('input[name="buscador"]').val();
     if (marca.length >= 3 && marca != "") {
         $.ajax({
@@ -172,7 +173,10 @@ function createBrand() {
                 $.ajax({
                     url: 'launcher.php',
                     success: function(data) {
+                   
+
                         window.location = "redes.php";
+               
                     }
                 });
             });

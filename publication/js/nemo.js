@@ -52,3 +52,6 @@ function barraSinProg (barraVaciaContext) {
 		var valor=(parseInt(porcentaje * 100, 10));
 		$(barraText).text(valor+'%');
 	}
+function setLoader() {
+    $('.loader').removeClass('hide');
+}
