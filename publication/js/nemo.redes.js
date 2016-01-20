@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 		$.each(data.data, function(index, val) {
 			 if(index<=5){
 			 		//$marcasSuge.append('<li class="marca" id="'+ val.id +'" ><figure><img src="'+val.picture.data.url+'" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1" width="200" height="200"></figure><span class="user">'+ val.name + '</span></li>')
-				$marcasSuge.append('<li class="marca"  id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.picture.data.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.name + '</span><span class="num">9999</span></p></li>');
+				$marcasSuge.append('<li class="marca"  id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.picture.data.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.name + '</span><span class="num">'+ val.likes +'</span></p></li>');
 			 }
 		});
 		$('.continuar').attr('onclick','finishFacebook()');
@@ -70,7 +70,61 @@ jQuery(document).ready(function($) {
 
    	});
 });
+function drawIcon(){
+		var sn="";
+		console.log(flag);
+		console.log(numMarcas);
 
+
+		switch(flag) {
+			case 0:
+				sn="fb";
+			break;
+			case 1:
+				sn="tw";
+			break;
+			case 2:
+				sn="yt";
+			break;
+		}
+
+		switch(numMarcas) {
+		case 1:
+			$('.netbox-'+sn+' > .marca-seleccionada').removeAttr("style");
+			if(flag==0){
+				$('.netbox-'+sn+' > .marca-seleccionada').css('max-width', '100%');
+			}
+			if(flag==1 || flag==2){
+				$('.netbox-'+sn+' > .marca-seleccionada').css('max-width', '50%');
+
+			}
+		break;
+		case 2:
+			$('.netbox-'+sn+' > .marca-seleccionada').removeAttr("style");
+			if(flag==0){
+				$('.netbox-'+sn+' > .marca-seleccionada').css('max-width', '100%');
+			}
+			if(flag==1 || flag==2){
+				$('.netbox-'+sn+' > .marca-seleccionada').css('max-width', '50%');
+
+			}
+			$('.netbox-'+sn+' > .marca-seleccionada:first-child').css({
+				marginLeft: '-3.6rem'
+			});
+
+		break;
+		case 3:
+			$('.netbox-'+sn+' > .marca-seleccionada').removeAttr("style");
+			$('.netbox-'+sn).css({
+				width: ' 10rem',
+			});
+			$('.netbox-'+sn+' > .marca-seleccionada:nth-child(3)').css('max-width', '8rem');
+		break;
+		case 4:
+			$('.netbox-'+sn+' > .marca-seleccionada').removeAttr("style");
+		break;
+		}
+}
 function selectFacebook(fbId){
 	if(fbId!=""){
 		$.getJSON( "search/results/resultFacebook.json", function( data ) {
@@ -78,13 +132,17 @@ function selectFacebook(fbId){
 				if(val.id==fbId){
 					Selection.push(val);
 					if($('.netbox-fb > img').length<=6){
-						$('.netbox-fb').append($('<img>',{class:'marca-seleccionada',src:val.picture.data.url,id:val.id}))
 						numMarcas=numMarcas+1;
 						var porc=parseFloat((1/3)*(numMarcas/6));
 						pintarProg(barraProgreso, porc, barraText);
+						$('.netbox-fb').append($('<img>',{class:'marca-seleccionada',src:val.picture.data.url,id:val.id}))
+
 					}
 				}	 
 			});
+			drawIcon();
+			///Pone el tamaño
+			
 		});
 	}else{
 		Selection.push('N/A');
@@ -93,8 +151,13 @@ function selectFacebook(fbId){
 function unselectFacebook(fbId){
 	for (i = 0; i < Selection.length; i++) {
         if (Selection[i].id == fbId) {
-			console.log(".netbox-fb >#"+Selection[i].id);
+			//console.log(".netbox-fb >#"+Selection[i].id);
 			$(".netbox-fb >#"+Selection[i].id).remove();
+			numMarcas=numMarcas-1;
+			var porc=parseFloat((1/3)*(numMarcas/6));
+			pintarProg(barraProgreso, porc, barraText);
+			drawIcon();
+
             Selection.splice(i,1);
         }
     }
@@ -107,8 +170,10 @@ function finishFacebook(){
 		$marcasSuge.html('');
 		var items = [];
 		$.each(data, function(index, val) {
+			val.profile_image_url=val.profile_image_url.replace("_normal","");
+		
 			if(index<=5){
-				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">9999</span></p></li>');		
+				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">'+val.followers_count+'</span></p></li>');		
 						pintarProg(barraProgreso, parseFloat(1/3), barraText);
 				
 			}	
@@ -123,6 +188,8 @@ function selectTwitter(twId){
 			$.each(data, function(index, val) {
 				if(val.id==twId){
 					Selection.push(val);
+			val.profile_image_url=val.profile_image_url.replace("_normal","");
+
 						$('.netbox-tw').append($('<img>',{class:'marca-seleccionada',src:val.profile_image_url,id:val.id}))
 										numMarcas=numMarcas+1;
 						var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
@@ -130,6 +197,8 @@ function selectTwitter(twId){
 
 				}	 
 			});
+		drawIcon();
+		
 		});
 	}else{
 		Selection.push('N/A');
@@ -140,6 +209,10 @@ function unselectTwitter(twId){
 	for (i = 0; i < Selection.length; i++) {
         if (Selection[i].id == twId) {
 			$(".netbox-tw >#"+Selection[i].id).remove();
+			numMarcas=numMarcas-1;
+			var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
+			pintarProg(barraProgreso, porc, barraText);
+			drawIcon();			
             Selection.splice(i,1);
         }
     }
@@ -175,6 +248,7 @@ function selectYoutube(ytId){
 
 				}
 			});
+			drawIcon()
 		});			
 	}else{
 		Selection.push('N/A');
@@ -186,6 +260,10 @@ function unselectYoutube(ytId){
 	for (i = 0; i < Selection.length; i++) {
         if (Selection[i].id.channelId== ytId) {
 			$(".netbox-yt >#"+Selection[i].id.channelId).remove();
+			numMarcas=numMarcas+1;
+			var porc=parseFloat((2/3)+((1/3)*(numMarcas/6)));
+			pintarProg(barraProgreso, porc, barraText);
+			drawIcon();
             Selection.splice(i,1);
         }
     }
