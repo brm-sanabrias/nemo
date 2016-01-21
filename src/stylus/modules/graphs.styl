@@ -5,12 +5,12 @@ path
 
 //map
 #mapa
-	height 20.4rem
+	height 14rem
 	width 100%
 
 //Pie
 #pie
-	height 20.6rem
+	height 14rem
 	max-width 100%
 	width 100%
 	
@@ -20,7 +20,7 @@ path
 //WordCloud
 #tagCloud
 	#myCanvas
-		height 20.1rem
+		height 13.5rem
 		max-width 100%
 		width 100%
 
@@ -35,6 +35,10 @@ path
 	stroke-width 1px
 	stroke red
 
+.card, .col
+	transition all cubic-bezier(.95,.09,.6,.95) 1s	
+	transform-origin 50% 0
+	
 .descargar
 	display block
 	margin 0 auto
@@ -49,9 +53,10 @@ path
 .row-numeros
 	text-align center
 	
+	
 	h2
 		text-align left
-
+		
 	.social
 		path("redes-icon.png")
 		background-repeat no-repeat
@@ -68,6 +73,9 @@ path
 			
 		&-tw
 			background-position bottom center
+			
+		&-yt
+			background-position bottom right
 
 
 

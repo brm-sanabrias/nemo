@@ -113,13 +113,16 @@
   <div class="container">
     <!--Stats propiedades digitales-->
     <div class="row row-numeros">
-      <div class="col s4 m4 l4">
+      <div class="col s3 m3 l3">
         <h2>Tus Números</h2>
       </div>
-      <div class="col s4 m4 l4"><i class="social social-fb"></i>
+      <div class="col s3 m3 l3"><i class="social social-fb"></i>
         <p>99999999</p>
       </div>
-      <div class="col s4 m4 l4"><i class="social social-tw"></i>
+      <div class="col s3 m3 l3"><i class="social social-tw"></i>
+        <p>99999999</p>
+      </div>
+      <div class="col s3 m3 l3"><i class="social social-yt"></i>
         <p>99999999</p>
       </div>
     </div>
@@ -129,7 +132,26 @@
       <!--Timeline-->
       <div class="col s4 md l6">
         <div class="card">
-          <div class="graph-demo"></div>
+          <div class="card-move-up waves-effect waves-block waves-light">
+            <div class="move-up cyan">
+              <div><span class="chart-title white-text">Línea de tiempo			</span></div>
+              <div class="trending-line-chart-wrapper">
+                <!--Grafica-->
+                <div class="graph-demo"></div>
+                <!--/-Grafica-->
+              </div>
+            </div>
+          </div>
+          <!--Bottom-->
+          <div class="card-content"><a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i class="mdi-content-add activator"></i></a>
+            <div class="col l12"></div>
+          </div>
+          <!--/-Bottom-->
+          <!--Filtros linea de tiempo-->
+          <div class="card-reveal"><span class="card-title grey-text text-darken-4">
+              Filtros para la gráfica de linea de tiempo <i class="mdi-navigation-close right"></i>
+              </span></div>
+          <!--/-Filtros linea de tiempo-->
         </div>
       </div>
       <!--/-Timeline-->
@@ -140,7 +162,67 @@
             <p>Su navegador no soporta canvas</p>
           </canvas>
         </div>
-        <div id="tags" style="font-size: 20%;">{#foreach from=$wordCloud item=word#}<a href="#" style="font-size: {#$word.med#}ex">{#$word.word#}</a>{#/foreach#}
+        <div id="tags" style="font-size: 20%;"><a href="#" style="font-size: {#$word.med#}ex">
+            0
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            1
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            2
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            3
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            4
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            5
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            6
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            7
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            8
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            9
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            10
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            11
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            12
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            13
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            14
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            15
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            16
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            17
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            18
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            19
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            20
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            21
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            22
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            23
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            24
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            25
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            26
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            27
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            28
+            </a><a href="#" style="font-size: {#$word.med#}ex">
+            29
+            </a>
         </div>
       </div>
       <!--/-Word Cloud-->
@@ -150,11 +232,6 @@
         </div>
       </div>
       <!--/-Donut pie-->
-      <div class="col s4 md l6">
-        <div class="card grey lighten-5">
-          <div class="graph-demo-2"></div>
-        </div>
-      </div>
       <!--Maps-->
       <div class="col s3 m3 l3">
         <div class="card">
@@ -171,6 +248,31 @@
       <!--/-Géneros-->
     </div>
     <!--/-Graphs-->
+    <!--Redes Sociales-->
+    <div class="row">
+      <div class="col l4">
+        <div class="card">
+          <div class="card-content blue darken-1">
+            <h3>red social</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col l4">
+        <div class="card">
+          <div class="card-content light-blue lighten-2">
+            <h3>red social</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col l4">
+        <div class="card">
+          <div class="card-content red darken-2">
+            <h3>red social</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/-Redes Sociales-->
     <div class="row">
       <div class="col l4 offset-l4">
         <button class="valign waves-effect waves-light btn blue descargar">
