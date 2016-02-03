@@ -6,16 +6,50 @@ $(document).ready(function () {
 
   card.on('click', function() {
 
-    card.removeClass('full-ancho');
+    $('.container').removeClass('graficas');
+    $('.container').addClass('graficas');
 
-    $(this).addClass('full-ancho');
-    $(this).parent().parent().addClass('u-absolute');
-    $(this).parent().parent().next().css('margin-left', '31rem');
+    // card.removeClass('full-ancho');
+
+    if( $(this).hasClass('dos') ){
+
+      $(this).addClass('card-active card-active-dos');
+      // $('.close', this).removeClass('hide');
+      
+    }
+    if( $(this).hasClass('uno') ){
+      $(this).addClass('card-active card-active-uno');
+
+    }if( $(this).hasClass('tres') ){
+      $(this).addClass('card-active card-active-tres');
+
+
+    }if( $(this).hasClass('cuatro') ){
+      $(this).addClass('card-active card-active-cuatro');
+
+    }
+    if( $(this).hasClass('cinco') ){
+          $(this).addClass('card-active card-active-cinco');
+
+    }
+    // $(this).parent().parent().addClass('u-absolute');
+    // $(this).parent().parent().next().css('margin-left', '31rem');
     
     console.log( $(this).parent().position() );
     // console.log( $('.card-action', this).position() );
     
 
+    console.log('hell2');
+    $(this).removeClass('expand');
+    
+  });
+
+  $('.close').on('click', function() {
+     
+     // console.log('hell');
+
+      $('.container').removeClass('graficas');
+      $('.expand').removeClass('card-active card-active-uno card-active-dos card-active-tres card-active-cuatro card-active-cinco');
 
   });
   
