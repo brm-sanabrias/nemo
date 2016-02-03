@@ -7,19 +7,19 @@ block title
 block content
 	div.container
 		//Stats propiedades digitales
-		div.row.row-numeros
-			div.col.s3.m3.l3
-				h2 Tus Números
-			div.col.s3.m3.l3
-				i.social.social-fb
-				p 99999999
-			div.col.s3.m3.l3
-				i.social.social-tw
-				p 99999999
+		//- div.row.row-numeros
+		//- 	div.col.s3.m3.l3
+		//- 		h2 Tus Números
+		//- 	div.col.s3.m3.l3
+		//- 		i.social.social-fb
+		//- 		p 99999999
+		//- 	div.col.s3.m3.l3
+		//- 		i.social.social-tw
+		//- 		p 99999999
 
-			div.col.s3.m3.l3
-				i.social.social-yt
-				p 99999999
+		//- 	div.col.s3.m3.l3
+		//- 		i.social.social-yt
+		//- 		p 99999999
 
 		///-Stats propiedades digitales
 		//Graphs
@@ -42,7 +42,8 @@ block content
 						a.btn-floating.btn-move-up.waves-effect.waves-light.darken-2.right
 							i.mdi-content-add.activator
 						
-						div.col.l12
+						div.
+							<br />
 
 					///-Bottom
 					//Filtros linea de tiempo
@@ -55,67 +56,84 @@ block content
 
 			///-Timeline
 			
-			//Word Cloud
-			div.col.s3.m3.l3
-				div#tagCloud.card
-					//- h3.blue.waves-effect.waves-light.btn-large.title Titular
-					canvas#myCanvas()
-						p.
-							Su navegador no soporta canvas
-				div#tags(style="font-size: 20%;")
-					//- {#foreach from=$wordCloud item=word#}
-					//- a(href='#',style="font-size: {#$word.med#}ex").
-					//- 	{#$word.word#}
-					//- {#/foreach#}
-
-					- for (var x = 0; x < 30; x++)
-						a(href='#',style="font-size: {#$word.med#}ex").
-							#{x}
-
-			///-Word Cloud
-
-			//Donut pie
-			div.col.s3.m3.l3
-				div#pie.card
-					//- h3.blue.waves-effect.waves-light.btn-large.title Titular
-					
-
-			///-Donut pie
-
-			//Maps
+			//row
 			div.col.s3.m3.l3
 				div.card
-					//- h3.blue.waves-effect.waves-light.btn-large.title Titular
-					//- <div id="regions_div" style="width: 900px; height: 500px;"></div>
-					#mapa
+					div.card-content.waves-effect.waves-block.waves-light.grey.lighten-3
+						div.move-up
+							p.margin WordCloud
 
-			///-Maps
+							div#tagCloud
+								//- h3.blue.waves-effect.waves-light.btn-large.title Titular
+								canvas#myCanvas()
+									p.
+										Su navegador no soporta canvas
+							div#tags(style="font-size: 20%;")
+								//- {#foreach from=$wordCloud item=word#}
+								//- a(href='#',style="font-size: {#$word.med#}ex").
+								//- 	{#$word.word#}
+								//- {#/foreach#}
 
-			//Géneros
+								- for (var x = 0; x < 30; x++)
+									a(href='#',style="font-size: {#$word.med#}ex").
+										#{x}
+
+					//Mapas
+					div.card-action
+							div#mapa
+					///-Mapas			
+
+			///-row
+			//row
 			div.col.s3.m3.l3
 				div.card
-					//- h3.blue.waves-effect.waves-light.btn-large.title Géneros
-					h3 Géneros
-			///-Géneros
+					div.card-content.waves-effect.waves-block.waves-light.deep-purple.darken-1
+						div.move-up
+							p.margin.white-text # Conversaciones por Propiedad
+
+							div#pie
+
+					//Géneros
+					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light
+							p.margin.white-text Géneros
+							
+							include ../../publication/images/guy.svg
+							include ../../publication/images/girl.svg
+							div.generos
+								div.gen.gen-man
+									div.fill
+
+							div.generos
+								div.gen.gen-girl
+									div.fill
+
+
+					///-Géneros			
+
+			///-row
+
+		
 
 		///-Graphs
 		//Redes Sociales
-		div.row
-
+		div.row.row-numeros.row-numeros-2
 			div.col.l4
 				div.card
 					div.card-content.blue.darken-1
-						h3 red social
+						i.fa.fa-facebook.blue-text
+						p 99999999
 
 			div.col.l4
 				div.card
 					div.card-content.light-blue.lighten-2
-						h3 red social
+						i.fa.fa-twitter.light-blue-text
+						p 99999999
 
 			div.col.l4
 				div.card
 					div.card-content.red.darken-2
-						h3 red social
+						i.fa.fa-youtube.red-text
+						p 99999999
 
 
 		///-Redes Sociales

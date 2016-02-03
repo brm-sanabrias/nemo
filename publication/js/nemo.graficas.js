@@ -316,10 +316,10 @@ var data = [];
 var chart = AmCharts.makeChart( "pie", {
   "type": "pie",
   "theme": "light",
-  "titles": [ {
-    "text": "# De conversaciones por propiedad",
-    "size": 16
-  } ],
+  // "titles": [ {
+  //   "text": "# De conversaciones por propiedad",
+  //   "size": 16
+  // } ],
   "dataProvider": [ {
     "country": "United States",
     "visits": 7252
@@ -336,7 +336,7 @@ var chart = AmCharts.makeChart( "pie", {
   "startDuration": 2,
   "labelRadius": 15,
   "innerRadius": "75%",
-  "depth3D": 10,
+  "depth3D": 5,
   "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
   "angle": 15,
   "export": {

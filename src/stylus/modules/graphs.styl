@@ -16,6 +16,10 @@ path
 	
 	a
 		display none !important
+		
+	tspan
+		color #fff !important
+		fill #fff !important
 
 //WordCloud
 #tagCloud
@@ -42,7 +46,41 @@ path
 .descargar
 	display block
 	margin 0 auto
+
+.generos
+	height 100%
+	// position relative
+	// width 50%
+	padding-bottom 36.3%
 	
+.gen
+	// top 0
+	// left 0
+	// bottom 0
+	// right 0
+	// display inline-block
+	// height 17rem
+	// position absolute
+	// vertical-align middle
+	// width @height
+	
+	&-man
+		clip-path url('#clipMan')
+		-webkit-clip-path url('#clipMan')
+		
+	&-girl
+		clip-path url('#clipGirl')
+		-webkit-clip-path url('#clipGirl')
+	
+	.fill
+		background-color $Azul
+		bottom 0
+		height 100%
+		left 0
+		position absolute
+		right 0
+		top 0
+		width @height
 
 .title
 	font-size 1.5rem
@@ -76,6 +114,27 @@ path
 			
 		&-yt
 			background-position bottom right
+			
+	&-2
+		
+		.fa
+			background-color #fff
+			box-shadow 0px 5px 5px 5px rgba(0, 0, 0, 0.2)
+			circ(3.9rem)
+			font-size 2.8rem
+			margin 0 auto 2rem
+			padding 0.5rem
+			
+			&-fb
+				background-position top left
+				
+			&-tw
+				background-position top center
+				
+			&-yt
+				background-position top right
+			
+
 
 .zoomOut
 	fill $AzulM
