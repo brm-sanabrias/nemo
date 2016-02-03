@@ -12,8 +12,8 @@ jQuery(document).ready(function($) {
 		$noTengo.attr('onclick','selectFacebook()');
 		$.each(data.data, function(index, val) {
 			 if(index<=5){
-			 		//$marcasSuge.append('<li class="marca" id="'+ val.id +'" ><figure><img src="'+val.picture.data.url+'" alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1" width="200" height="200"></figure><span class="user">'+ val.name + '</span></li>')
-				$marcasSuge.append('<li class="marca"  id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.picture.data.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.name + '</span><span class="num">'+ val.likes +'</span></p></li>');
+				var likes=numeral(val.likes).format('0.00a');
+				$marcasSuge.append('<li class="marca"  id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.picture.data.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.name + '</span><span class="num">'+likes+'</span></p></li>');
 			 }
 		});
 		$('.continuar').attr('onclick','finishFacebook()');
@@ -171,9 +171,10 @@ function finishFacebook(){
 		var items = [];
 		$.each(data, function(index, val) {
 			val.profile_image_url=val.profile_image_url.replace("_normal","");
-		
+			var followers=numeral(val.followers_count).format('0.00a');
+			
 			if(index<=5){
-				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">'+val.followers_count+'</span></p></li>');		
+				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">'+followers+'</span></p></li>');		
 						pintarProg(barraProgreso, parseFloat(1/3), barraText);
 				
 			}	
@@ -225,8 +226,9 @@ function finishTwitter(){
 	$.getJSON( "search/results/resultYoutube.json", function( data ) {
 		$marcasSuge.html('');
 		$.each(data.items, function(index, val) {
+
 			if(index<=5){
-				$marcasSuge.append('<li class="marca" id="'+ val.id.channelId +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.snippet.thumbnails.default.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.snippet.title  + '</span><span class="num">9999</span></p></li>');		
+				$marcasSuge.append('<li class="marca" id="'+ val.id.channelId +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.snippet.thumbnails.default.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.snippet.title  + '</span><span class="num hide">9999</span></p></li>');		
 						pintarProg(barraProgreso, parseFloat(2/3), barraText);
 				
 			}
