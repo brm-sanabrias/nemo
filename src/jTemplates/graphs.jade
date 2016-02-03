@@ -23,10 +23,10 @@ block content
 
 		///-Stats propiedades digitales
 		//Graphs
-		div.row
+		div.row.relative-cards
 			//Timeline
 			div.col.s4.md.l6
-				div.card
+				div.card.uno
 					//- h3.blue.waves-effect.waves-light.btn-large.title Titular
 					div.card-move-up.waves-effect.waves-block.waves-light
 						div.move-up.cyan
@@ -58,7 +58,7 @@ block content
 			
 			//row
 			div.col.s3.m3.l3
-				div.card
+				div.card.dos
 					div.card-content.waves-effect.waves-block.waves-light.grey.lighten-3
 						div.move-up
 							p.margin WordCloud
@@ -86,7 +86,7 @@ block content
 			///-row
 			//row
 			div.col.s3.m3.l3
-				div.card
+				div.card.tres
 					div.card-content.waves-effect.waves-block.waves-light.deep-purple.darken-1
 						div.move-up
 							p.margin.white-text # Conversaciones por Propiedad
@@ -97,15 +97,20 @@ block content
 					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light
 							p.margin.white-text Géneros
 							
-							include ../../publication/images/guy.svg
-							include ../../publication/images/girl.svg
-							div.generos
-								div.gen.gen-man
-									div.fill
+							//- div.generos
+							div.gen.gen-man
 
-							div.generos
-								div.gen.gen-girl
-									div.fill
+								p.white-text 48%
+								div.mascara
+									include ../../publication/images/guy.svg
+								//- div.fill
+
+							//- div.generos
+							div.gen.gen-girl
+								p.white-text 62%
+								div.mascara
+									include ../../publication/images/girl.svg
+								//- div.fill
 
 
 					///-Géneros			

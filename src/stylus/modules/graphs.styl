@@ -54,39 +54,59 @@ path
 	padding-bottom 36.3%
 	
 .gen
-	// top 0
-	// left 0
-	// bottom 0
-	// right 0
-	// display inline-block
-	// height 17rem
-	// position absolute
-	// vertical-align middle
-	// width @height
+	display inline-block
+	height 12.3rem
+	margin 1rem auto 0
+	position relative
+	vertical-align middle
+	width 13rem
 	
-	&-man
-		clip-path url('#clipMan')
-		-webkit-clip-path url('#clipMan')
-		
-	&-girl
-		clip-path url('#clipGirl')
-		-webkit-clip-path url('#clipGirl')
+	p
+		left 50%
+		margin 0
+		padding 0
+		position absolute
+		text-align center
+		top 50%
+		transform translate3d(-50%, -50%, 0)
+		z-index 2
 	
-	.fill
-		background-color $Azul
+	.mascara
 		bottom 0
 		height 100%
-		left 0
+		overflow hidden
 		position absolute
-		right 0
-		top 0
-		width @height
+		transform-origin bottom center
+		width 100%
+		z-index 1
+		
+		svg
+			bottom 0
+			fill $Azul
+			left 0
+			position absolute
+			right 0
+			top 0
+			
+	&-girl
+		.mascara
+			height 62%
+		
+			svg
+				fill $Naranja
+				top -62%
+			
+	&-man
+		
+		.mascara
+			height 48%
+		
+			svg
+				top -110%
+			
 
-.title
-	font-size 1.5rem
-	left 0
-	position absolute
 
+.relative-cards
 
 .row-numeros
 	text-align center
@@ -134,6 +154,13 @@ path
 			&-yt
 				background-position top right
 			
+
+
+.title
+	font-size 1.5rem
+	left 0
+	position absolute
+
 
 
 .zoomOut
