@@ -2,23 +2,18 @@
 
 $(document).ready(function () {
 
-  var card = $('.card');
+  var card = $('.expand');
 
   card.on('click', function() {
 
-    // if(card.length>0){
+    card.removeClass('full-ancho');
 
-    //   card.addClass('hide-card');
-    //   $(this).removeClass('hide-card');
-    //   // $('.hide-card').hide('fade');
-    //   $(this).addClass('full-ancho');
-
-    //   $(this).addClass('large');
-    //   $(this).parent().addClass('l12');
-    //   $(this).parent().removeClass('l1 l2 l3 l4 l5 l6 l7 l8 l9 l10');
-    // }
+    $(this).addClass('full-ancho');
+    $(this).parent().parent().addClass('u-absolute');
+    $(this).parent().parent().next().css('margin-left', '31rem');
     
     console.log( $(this).parent().position() );
+    // console.log( $('.card-action', this).position() );
     
 
 

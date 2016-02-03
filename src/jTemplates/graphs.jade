@@ -23,10 +23,10 @@ block content
 
 		///-Stats propiedades digitales
 		//Graphs
-		div.row.relative-cards
+		div.row
 			//Timeline
 			div.col.s4.md.l6
-				div.card.uno
+				div.card.uno.expand
 					//- h3.blue.waves-effect.waves-light.btn-large.title Titular
 					div.card-move-up.waves-effect.waves-block.waves-light
 						div.move-up.cyan
@@ -58,8 +58,8 @@ block content
 			
 			//row
 			div.col.s3.m3.l3
-				div.card.dos
-					div.card-content.waves-effect.waves-block.waves-light.grey.lighten-3
+				div.card
+					div.card-content.waves-effect.waves-block.waves-light.grey.lighten-3.dos.expand
 						div.move-up
 							p.margin WordCloud
 
@@ -79,22 +79,22 @@ block content
 										#{x}
 
 					//Mapas
-					div.card-action
+					div.card-action.waves-effect.waves-block.waves-light.white.tres.expand
 							div#mapa
 					///-Mapas			
 
 			///-row
 			//row
 			div.col.s3.m3.l3
-				div.card.tres
-					div.card-content.waves-effect.waves-block.waves-light.deep-purple.darken-1
+				div.card
+					div.card-content.waves-effect.waves-block.waves-light.deep-purple.darken-1.cuatro.expand
 						div.move-up
 							p.margin.white-text # Conversaciones por Propiedad
 
 							div#pie
 
 					//Géneros
-					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light
+					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light.cinco.expand
 							p.margin.white-text Géneros
 							
 							//- div.generos
@@ -126,19 +126,19 @@ block content
 				div.card
 					div.card-content.blue.darken-1
 						i.fa.fa-facebook.blue-text
-						p 99999999
+						p#total-fb 99999999
 
 			div.col.l4
 				div.card
 					div.card-content.light-blue.lighten-2
 						i.fa.fa-twitter.light-blue-text
-						p 99999999
+						p#total-tw 99999999
 
 			div.col.l4
 				div.card
 					div.card-content.red.darken-2
 						i.fa.fa-youtube.red-text
-						p 99999999
+						p#tota-yt 99999999
 
 
 		///-Redes Sociales
