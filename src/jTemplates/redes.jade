@@ -11,7 +11,7 @@ block content
 		div.row
 			div.col.m6.netbox-indicator
 				
-				div.circle.netbox
+				div.circle.netbox.u-activo
 					div.netbox-fb
 				div.circle.netbox.u-inactivo
 					div.netbox-tw
@@ -52,5 +52,6 @@ block content
 	| {#include file='keyboard.html'#}
 
 block Scripts
+	script(src='js/libs/numeral.min.js')
 	script(src='js/nemo.js')
 	script(src='js/nemo.redes.js')

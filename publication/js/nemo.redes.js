@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
 });
 function drawIcon(){
 		var sn="";
-		console.log(flag);
+		//console.log(flag);
 		console.log(numMarcas);
 
 
