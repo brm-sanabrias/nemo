@@ -1,6 +1,8 @@
 var Selection = new Array();
 var flag=0; //(0: Facebook , 1: Twitter , 2: Youtube)
 var numMarcas=0;
+var totalLikes=0;
+var totalFollowers=0;
 $marcasSuge=$('.marcas-sugerencias');
 $tituloRedes=$('.redes_sociales2');
 $noTengo=$('.no-tengo');
@@ -130,6 +132,7 @@ function selectFacebook(fbId){
 		$.getJSON( "search/results/resultFacebook.json", function( data ) {
 			$.each(data.data, function(index, val) {
 				if(val.id==fbId){
+					totalLikes=totalLikes+val.likes;
 					Selection.push(val);
 					if($('.netbox-fb > img').length<=6){
 						numMarcas=numMarcas+1;
@@ -152,6 +155,7 @@ function unselectFacebook(fbId){
 	for (i = 0; i < Selection.length; i++) {
         if (Selection[i].id == fbId) {
 			//console.log(".netbox-fb >#"+Selection[i].id);
+			totalLikes=totalLikes-Selection[i].likes;
 			$(".netbox-fb >#"+Selection[i].id).remove();
 			numMarcas=numMarcas-1;
 			var porc=parseFloat((1/3)*(numMarcas/6));
@@ -165,7 +169,7 @@ function unselectFacebook(fbId){
 function finishFacebook(){
 	numMarcas=0;
 	flag=1;
-	$('.netbox-tw').removeClass('u-inactivo');
+	$('.netbox-tw').parent().removeClass('u-inactivo').addClass('u-activo');
 	$.getJSON( "search/results/resultTwitter.json", function( data ) {
 		$marcasSuge.html('');
 		var items = [];
@@ -175,12 +179,12 @@ function finishFacebook(){
 			
 			if(index<=5){
 				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">'+followers+'</span></p></li>');		
-						pintarProg(barraProgreso, parseFloat(1/3), barraText);
-				
+				pintarProg(barraProgreso, parseFloat(1/3), barraText);
 			}	
 		});
 	});
 	$('.continuar').attr('onclick','finishTwitter()');
+	setCookie('totalLikes',totalLikes);
 
 }
 function selectTwitter(twId){
@@ -189,12 +193,12 @@ function selectTwitter(twId){
 			$.each(data, function(index, val) {
 				if(val.id==twId){
 					Selection.push(val);
-			val.profile_image_url=val.profile_image_url.replace("_normal","");
-
-						$('.netbox-tw').append($('<img>',{class:'marca-seleccionada',src:val.profile_image_url,id:val.id}))
-										numMarcas=numMarcas+1;
-						var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
-						pintarProg(barraProgreso, porc, barraText);
+					totalFollowers=totalFollowers+val.followers_count;
+					val.profile_image_url=val.profile_image_url.replace("_normal","");
+					$('.netbox-tw').append($('<img>',{class:'marca-seleccionada',src:val.profile_image_url,id:val.id}))
+					numMarcas=numMarcas+1;
+					var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
+					pintarProg(barraProgreso, porc, barraText);
 
 				}	 
 			});
@@ -211,6 +215,7 @@ function unselectTwitter(twId){
         if (Selection[i].id == twId) {
 			$(".netbox-tw >#"+Selection[i].id).remove();
 			numMarcas=numMarcas-1;
+			totalFollowers=totalFollowers+Selection[i].followers_count;
 			var porc=parseFloat((1/3)+((1/3)*(numMarcas/6)));
 			pintarProg(barraProgreso, porc, barraText);
 			drawIcon();			
@@ -221,7 +226,7 @@ function unselectTwitter(twId){
 function finishTwitter(){
 	flag=2;
 	numMarcas=0;
-	$('.netbox-yt').removeClass('u-inactivo');
+	$('.netbox-yt').parent().removeClass('u-inactivo').addClass('u-activo');
 
 	$.getJSON( "search/results/resultYoutube.json", function( data ) {
 		$marcasSuge.html('');
@@ -235,6 +240,7 @@ function finishTwitter(){
 		});
 	});
 	$('.continuar').attr('onclick','endSteps()');
+	setCookie('totalFollowers',totalFollowers);
 
 }
 function selectYoutube(ytId){
