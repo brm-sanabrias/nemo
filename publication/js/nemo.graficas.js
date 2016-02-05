@@ -3,56 +3,38 @@
 $(document).ready(function () {
 
   var card = $('.expand');
+   card.on('click', function() {
 
-  card.on('click', function() {
-
-    $('.container').removeClass('graficas');
-    $('.container').addClass('graficas');
-
-    // card.removeClass('full-ancho');
-
-    if( $(this).hasClass('dos') ){
-
-      $(this).addClass('card-active card-active-dos');
-      // $('.close', this).removeClass('hide');
-      
-    }
-    if( $(this).hasClass('uno') ){
-      $(this).addClass('card-active card-active-uno');
-
-    }if( $(this).hasClass('tres') ){
-      $(this).addClass('card-active card-active-tres');
+     $('.container').toggleClass('graficas');
 
 
-    }if( $(this).hasClass('cuatro') ){
-      $(this).addClass('card-active card-active-cuatro');
+     if( $(this).hasClass('dos') ){
 
-    }
-    if( $(this).hasClass('cinco') ){
-          $(this).addClass('card-active card-active-cinco');
+       $(this).toggleClass('card-active card-active-dos');
+       
+     }
+     if( $(this).hasClass('uno') ){
+       $(this).toggleClass('card-active card-active-uno');
 
-    }
-    // $(this).parent().parent().addClass('u-absolute');
-    // $(this).parent().parent().next().css('margin-left', '31rem');
-    
-    console.log( $(this).parent().position() );
-    // console.log( $('.card-action', this).position() );
-    
+     }if( $(this).hasClass('tres') ){
+       $(this).toggleClass('card-active card-active-tres');
 
-    console.log('hell2');
-    $(this).removeClass('expand');
-    
-  });
 
-  $('.close').on('click', function() {
+     }if( $(this).hasClass('cuatro') ){
+       $(this).toggleClass('card-active card-active-cuatro');
+
+     }
+     if( $(this).hasClass('cinco') ){
+           $(this).toggleClass('card-active card-active-cinco');
+
+     }
+
      
-     // console.log('hell');
+     // console.log( $(this).parent().position() );
 
-      $('.container').removeClass('graficas');
-      $('.expand').removeClass('card-active card-active-uno card-active-dos card-active-tres card-active-cuatro card-active-cinco');
+     
+   });
 
-  });
-  
 
 
 });
