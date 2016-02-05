@@ -8,17 +8,18 @@ $i=1;
 if (is_dir($dir)){
   if ($dh = opendir($dir)){
     while (($file = readdir($dh)) !== false){
-    	$file=$dir.$file;
-		if(is_file($file)){
-		//   echo "filename:" . $file . "<br>";
-			$images[$i]=$file;
-      		$i++;
-
-		}
+      $archivo=$dir.$file;
+      
+      if(is_file($archivo) && $archivo!="search/pantallazo/.DS_Store"){
+       // echo "filename:" . $file . "<br>";
+        $images[$i]=$file;
+        $i++;
+      }
     }
     closedir($dh);
   }
 }
+//printVar($images);
 if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 //  //BUSCO LA MARCA EN LA BASE DE DATOS
  $General= new General();
