@@ -35,10 +35,6 @@ $(document).ready(function () {
    });
 
 
-
-});
-
-
 //relleno de icono de genero
 var offset;
 
@@ -57,6 +53,11 @@ function rellenarF(offset){
 
 rellenarF(77.7);
 rellenarM(22.3);
+
+
+});
+
+
 
 
 $(document).ready(function() {

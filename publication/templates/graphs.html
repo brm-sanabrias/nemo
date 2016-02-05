@@ -341,6 +341,33 @@
       </div>
     </div>
     <!--/-Redes Sociales-->
+    <div class="row filtros">
+      <div class="card">
+        <!--fecha inicial-->
+        <div class="col l3 date">
+          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Desde</span>
+          <input type="date" class="datepicker">
+        </div>
+        <!--/-fecha inicial-->
+        <!--fecha final-->
+        <div class="col l3 date">
+          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Hasta</span>
+          <input type="date" class="datepicker">
+        </div>
+        <!--/-fecha final-->
+        <!--dma-->
+        <div class="col l3"><a class="btn waves-effect waves-light light-blue darken-4">Día</a><a class="btn waves-effect waves-light light-blue darken-3">Mes</a><a class="btn waves-effect waves-light light-blue darken-2">Año</a></div>
+        <!--/-dma-->
+        <!--rango-->
+        <div class="col l3 range">
+          <p class="range-field">
+            <input type="range" min="1" max="30" class="active">
+          </p>
+        </div>
+        <!--/-rango-->
+        
+      </div>
+    </div>
     <div class="row">
       <div class="col l4 offset-l4">
         <button class="valign waves-effect waves-light btn blue descargar">
@@ -367,6 +394,7 @@
   <script src="js/libs/d3.min.js"></script>
   <script src="js/libs/amcharts.js"></script>
   <script src="js/libs/pie.js"></script>
+  <script src="js/libs/datepicker.js"></script>
   <script src="https://www.google.com/jsapi?autoload={&quot;modules&quot;:[{&quot;name&quot;:&quot;visualization&quot;,&quot;version&quot;:&quot;1.1&quot;,&quot;packages&quot;:[&quot;geochart&quot;]}]}"></script>
   <script src="js/nemo.graficas.js"></script>
 </body></html>
