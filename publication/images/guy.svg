@@ -3,7 +3,15 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="180px" height="180px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M14.861,180c-0.198-0.105-0.386-0.255-0.597-0.311
+	
+	<defs>
+		<linearGradient id="grad" x1="0%" y1="100%" x2="0%" y2="0%">
+		            <stop offset="0%"  stop-color="#2196f3"/>
+		            <stop offset="0%" stop-color="transparent"/>
+		</linearGradient>
+	</defs>
+
+<path fill="url(#grad)" fill-rule="evenodd" clip-rule="evenodd" d="M14.861,180c-0.198-0.105-0.386-0.255-0.597-0.311
 	c-3.586-0.944-5.326-2.841-5.688-6.439c-1.59-15.77,3.661-28.616,16.455-38.188c7.61-5.694,16.249-9.427,24.963-13.026
 	c3.776-1.56,7.539-3.181,11.198-4.996c6.6-3.274,9.736-8.667,9.335-16.071c-0.091-1.694-0.055-3.396-0.164-5.088
 	c-0.147-2.292-0.917-4.407-2.573-6.001c-3.887-3.737-6.463-8.268-8.371-13.233c-0.917-2.387-2.267-4.384-4.258-6.088

@@ -28,7 +28,6 @@ $(document).ready(function () {
            $(this).toggleClass('card-active card-active-cinco');
 
      }
-
      
      // console.log( $(this).parent().position() );
 
@@ -38,6 +37,26 @@ $(document).ready(function () {
 
 
 });
+
+
+//relleno de icono de genero
+var offset;
+
+function rellenarM(offset){
+
+    $('#grad stop').attr('offset',offset+'%');
+    $('.gen-man .white-text').html(offset+'%');
+};
+
+function rellenarF(offset){
+
+    $('#grad2 stop').attr('offset',offset+'%');
+
+    $('.gen-girl .white-text').html(offset+'%');
+};
+
+rellenarF(77.7);
+rellenarM(22.3);
 
 
 $(document).ready(function() {

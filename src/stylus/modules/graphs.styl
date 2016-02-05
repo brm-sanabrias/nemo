@@ -5,7 +5,7 @@ path
 
 //map
 #mapa
-	height 14rem
+	height 13.3rem
 	width 100%
 
 //Pie
@@ -61,6 +61,7 @@ path
 	
 	.close
 		opacity 1
+		z-index 10
 	
 	&-cinco
 		transform translate3d(-200%,-14%,0) scale(2.2)
@@ -84,6 +85,7 @@ path
 		transform translate3d(0, 25%, 0) scale(1.5)
 		z-index 6
 		
+	
 
 .container
 	&:before
@@ -139,27 +141,21 @@ path
 		
 		svg
 			bottom 0
-			fill $Azul
+			// fill $Azul
 			left 0
 			position absolute
 			right 0
+			stroke #fff
 			top 0
 			
 	&-girl
 		.mascara
-			height 62%
 		
 			svg
-				fill $Naranja
-				top -62%
+				// fill $Naranja
+				stroke #fff
+				// top 12%
 			
-	&-man
-		
-		.mascara
-			height 48%
-		
-			svg
-				top -110%
 			
 
 .graficas
@@ -243,6 +239,39 @@ path
 			&-yt
 				background-position top right
 			
+	.switch
+		position absolute
+		
+		label
+			.lever
+				background-color rgba(255, 255, 255, 0.5)
+				
+
+		.blue-text
+				
+			input[type=checkbox]:checked + .lever
+				background-color darken(#0d47a1,20%)
+				
+				&:after
+					background-color darken(#0d47a1,20%)
+					
+		
+		.light-blue-text
+			input[type=checkbox]:checked + .lever
+				background-color darken(#0091ea ,20%)
+				
+				&:after
+					background-color darken(#0091ea ,20%)
+				
+
+		.red-text
+				
+			input[type=checkbox]:checked + .lever
+				background-color darken(#b71c1c,20%)
+				
+				&:after
+					background-color darken(#b71c1c,20%)
+
 
 
 .title
@@ -251,6 +280,9 @@ path
 	position absolute
 
 
+.uno
+	.card-action
+		height 11.5rem
 
 .zoomOut
 	fill $AzulM

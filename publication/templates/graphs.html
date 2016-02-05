@@ -112,36 +112,23 @@
     </div>
   </header>
   <div class="container">
-    <!--Stats propiedades digitales-->
-    <!--/-Stats propiedades digitales-->
     <!--Graphs-->
     <div class="row">
       <!--Timeline-->
       <div class="col s4 md l6">
         <div class="card uno expand">
-          <div class="card-move-up waves-effect waves-block waves-light">
-            <div class="move-up cyan">
-              <div><span class="chart-title white-text">Línea de tiempo			</span></div>
-              <div class="trending-line-chart-wrapper">
-                <!--Grafica-->
-                <div class="graph-demo"></div>
-                <!--/-Grafica-->
-              </div>
+          <div class="card-content waves-effect waves-block waves-light cyan">
+            <div class="close"><i class="fa fa-times-circle"></i></div>
+            <div class="move-up">
+              <p class="margin">Línea de tiempo</p>
+            </div>
+            <div class="trending-line-chart-wrapper">
+              <!--Grafica-->
+              <div class="graph-demo"></div>
+              <!--/-Grafica-->
             </div>
           </div>
-          <!--Bottom-->
-          <div class="card-content"><a class="btn-floating btn-move-up waves-effect waves-light darken-2 right"><i class="mdi-content-add activator"></i></a>
-            <div>
-              <br />
-              
-            </div>
-          </div>
-          <!--/-Bottom-->
-          <!--Filtros linea de tiempo-->
-          <div class="card-reveal"><span class="card-title grey-text text-darken-4">
-              Filtros para la gráfica de linea de tiempo <i class="mdi-navigation-close right"></i>
-              </span></div>
-          <!--/-Filtros linea de tiempo-->
+          <div class="card-action waves-effect waves-block waves-light white"></div>
         </div>
       </div>
       <!--/-Timeline-->
@@ -223,6 +210,7 @@
           </div>
           <!--Mapas-->
           <div class="card-action waves-effect waves-block waves-light white tres expand">
+            <p class="margin">Usuarios por zona</p>
             <div class="close"><i class="fa fa-times-circle"></i></div>
             <div id="mapa"></div>
           </div>
@@ -245,13 +233,21 @@
             <div class="close"><i class="fa fa-times-circle"></i></div>
             <p class="margin white-text">Géneros</p>
             <div class="gen gen-man">
-              <p class="white-text">48%</p>
+              <p class="white-text">0%</p>
               <div class="mascara"><?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="180px" height="180px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M14.861,180c-0.198-0.105-0.386-0.255-0.597-0.311
+	
+	<defs>
+		<linearGradient id="grad" x1="0%" y1="100%" x2="0%" y2="0%">
+		            <stop offset="0%"  stop-color="#2196f3"/>
+		            <stop offset="0%" stop-color="transparent"/>
+		</linearGradient>
+	</defs>
+
+<path fill="url(#grad)" fill-rule="evenodd" clip-rule="evenodd" d="M14.861,180c-0.198-0.105-0.386-0.255-0.597-0.311
 	c-3.586-0.944-5.326-2.841-5.688-6.439c-1.59-15.77,3.661-28.616,16.455-38.188c7.61-5.694,16.249-9.427,24.963-13.026
 	c3.776-1.56,7.539-3.181,11.198-4.996c6.6-3.274,9.736-8.667,9.335-16.071c-0.091-1.694-0.055-3.396-0.164-5.088
 	c-0.147-2.292-0.917-4.407-2.573-6.001c-3.887-3.737-6.463-8.268-8.371-13.233c-0.917-2.387-2.267-4.384-4.258-6.088
@@ -269,31 +265,34 @@
               </div>
             </div>
             <div class="gen gen-girl">
-              <p class="white-text">62%</p>
+              <p class="white-text">0%</p>
               <div class="mascara"><?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="180px" height="180px" viewBox="128.526 146.837 180 180" enable-background="new 128.526 146.837 180 180"
-	 xml:space="preserve">
-<path d="M269.321,229.801c-2.662,1.122-5.18,2.519-7.878,3.254c-6.21,1.691-12.513,3.045-18.764,4.586
-	c-0.681,0.167-1.397,0.542-1.895,1.027c-1.263,1.24-2.307,2.716-3.634,3.874c-1.286,1.12-1.427,2.401-1.25,3.912
-	c0.586,4.991,3.429,8.529,7.747,10.552c4.841,2.267,9.902,4.139,15,5.77c7.76,2.481,15.689,4.427,23.437,6.945
-	c5.233,1.701,9.784,4.679,13.352,9.033c2.623,3.203,4.448,6.703,5.132,10.829c0.957,5.776,1.31,11.549,0.69,17.391
-	c-0.227,2.121-1.212,3.464-3.007,4.475c-6.664,3.755-13.836,6.206-21.156,8.245c-13.274,3.698-26.83,5.685-40.569,6.582
-	c-15.08,0.986-30.132,0.665-45.145-0.896c-16.146-1.677-32.062-4.512-47.238-10.569c-1.699-0.679-3.305-1.582-4.975-2.338
-	c-2.488-1.125-3.507-3.154-3.627-5.754c-0.366-7.903,1.038-15.505,4.05-22.794c1.91-4.624,5.321-7.955,9.586-10.448
-	c6.639-3.879,13.955-5.892,21.361-7.597c6.715-1.545,13.551-2.71,19.799-5.762c2.647-1.293,5.169-2.93,7.523-4.708
-	c2.259-1.707,3.765-4.1,4.367-6.936c0.525-2.475,0.247-4.479-1.576-6.741c-2.675-3.317-5.794-4.819-9.805-5.89
-	c-5.141-1.371-10.017-3.755-14.965-5.807c-1.136-0.471-2.098-1.367-3.226-2.125c4.25-5.664,4.613-12.167,4.67-18.701
-	c0.095-10.72,0.695-21.399,3.128-31.865c0.937-4.029,2.106-8.144,4.019-11.773c3.34-6.341,8.689-10.424,16.002-11.552
-	c0.652-0.101,1.276-0.514,1.868-0.858c12.931-7.557,26.348-8.253,40.076-2.568c8.514,3.526,13.774,10.058,16.185,18.903
-	c3.104,11.392,4.232,22.982,3.565,34.774c-0.257,4.532-0.725,9.142,1.21,13.483c1.361,3.057,2.824,6.07,4.277,9.087
-	C268.092,227.75,268.643,228.605,269.321,229.801z"/>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="180px" height="180px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
+	 <defs>
+	 	<linearGradient id="grad2" x1="0%" y1="100%" x2="0%" y2="0%">
+	 	            <stop offset="0%"  stop-color="#e65100"/>
+	 	            <stop offset="0%" stop-color="transparent"/>
+	 	</linearGradient>
+	 </defs>
+	 
+<path fill="url(#grad2)" d="M0.472,180h178.161c0.414-0.715,0.682-1.54,0.787-2.528c0.673-6.328,0.29-12.581-0.746-18.84
+	c-0.742-4.469-2.719-8.26-5.561-11.729c-3.864-4.716-8.795-7.942-14.463-9.785c-8.393-2.728-16.98-4.836-25.389-7.523
+	c-5.521-1.767-11.003-3.793-16.248-6.25c-4.676-2.191-7.756-6.023-8.391-11.43c-0.192-1.637-0.039-3.024,1.354-4.238
+	c1.437-1.255,2.569-2.853,3.937-4.196c0.539-0.524,1.315-0.931,2.054-1.113c6.771-1.668,13.598-3.135,20.325-4.968
+	c2.922-0.795,5.65-2.309,8.532-3.523c-0.733-1.296-1.33-2.222-1.805-3.207c-1.572-3.268-3.158-6.532-4.632-9.843
+	c-2.096-4.702-1.589-9.696-1.311-14.604c0.723-12.774-0.499-25.329-3.86-37.669c-2.613-9.581-8.312-16.657-17.533-20.477
+	c-14.872-6.158-29.405-5.403-43.413,2.782c-0.641,0.372-1.317,0.82-2.022,0.929C62.326,13.008,56.532,17.43,52.915,24.3
+	c-2.074,3.931-3.338,8.389-4.354,12.752c-2.637,11.337-3.286,22.905-3.389,34.518c-0.062,7.078-0.456,14.122-5.06,20.258
+	c1.223,0.82,2.265,1.79,3.495,2.302c5.36,2.222,10.642,4.805,16.21,6.29c4.345,1.159,7.725,2.786,10.621,6.38
+	c1.976,2.45,2.277,4.621,1.708,7.303c-0.651,3.072-2.283,5.663-4.73,7.513c-2.55,1.925-5.281,3.699-8.149,5.101
+	c-6.768,3.305-14.173,4.567-21.447,6.24c-8.022,1.848-15.947,4.027-23.139,8.229c-4.619,2.701-8.314,6.31-10.384,11.317
+	c-3.262,7.896-4.784,16.132-4.387,24.691C-0.043,178.219,0.138,179.157,0.472,180z"/>
 </svg>
 
               </div>
-              
             </div>
           </div>
           <!--/-Géneros			-->
@@ -306,21 +305,36 @@
     <div class="row row-numeros row-numeros-2">
       <div class="col l4">
         <div class="card">
-          <div class="card-content blue darken-1"><i class="fa fa-facebook blue-text"></i>
+          <div class="card-content blue darken-1">
+            <div class="switch">
+              <label class="blue-text text-lighten-5">Ocultar
+                <input type="checkbox" checked><span class="lever"></span>Mostrar
+              </label>
+            </div><i class="fa fa-facebook blue-text"></i>
             <p id="total-fb">99999999</p>
           </div>
         </div>
       </div>
       <div class="col l4">
         <div class="card">
-          <div class="card-content light-blue lighten-2"><i class="fa fa-twitter light-blue-text"></i>
+          <div class="card-content light-blue lighten-2">
+            <div class="switch">
+              <label class="light-blue-text text-lighten-5">Ocultar
+                <input type="checkbox" checked><span class="lever"></span>Mostrar
+              </label>
+            </div><i class="fa fa-twitter light-blue-text"></i>
             <p id="total-tw">99999999</p>
           </div>
         </div>
       </div>
       <div class="col l4">
         <div class="card">
-          <div class="card-content red darken-2"><i class="fa fa-youtube red-text"></i>
+          <div class="card-content red darken-2">
+            <div class="switch">
+              <label class="red-text text-lighten-5">Ocultar
+                <input type="checkbox" checked><span class="lever"></span>Mostrar
+              </label>
+            </div><i class="fa fa-youtube red-text"></i>
             <p id="tota-yt">99999999</p>
           </div>
         </div>
