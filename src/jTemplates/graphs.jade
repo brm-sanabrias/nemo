@@ -42,14 +42,14 @@ block content
 									p.
 										Su navegador no soporta canvas
 							div#tags(style="font-size: 20%;")
-								//- {#foreach from=$wordCloud item=word#}
-								//- a(href='#',style="font-size: {#$word.med#}ex").
-								//- 	{#$word.word#}
-								//- {#/foreach#}
+								{#foreach from=$wordCloud item=word#}
+								a(href='#',style="font-size: {#$word.med#}ex").
+									{#$word.word#}
+								{#/foreach#}
 
-								- for (var x = 0; x < 30; x++)
-									a(href='#',style="font-size: {#$word.med#}ex").
-										#{x}
+								//-- for (var x = 0; x < 30; x++)
+								//-	a(href='#',style="font-size: {#$word.med#}ex").
+								//-		#{x}
 
 					//Mapas
 					div.card-action.waves-effect.waves-block.waves-light.white.tres.expand

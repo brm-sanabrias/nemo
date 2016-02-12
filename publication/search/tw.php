@@ -32,7 +32,7 @@ function queryTwitter($search)
     $header = array(buildAuthorizationHeader($oauth), 'Expect:');
         $proxy="172.16.224.4:8080";
 
-    $options = array( CURLOPT_HTTPHEADER => $header,
+    $options = array( //CURLOPT_HTTPHEADER => $header,
                       CURLOPT_HEADER => false,
                       CURLOPT_URL => $url,
                       CURLOPT_RETURNTRANSFER => true,

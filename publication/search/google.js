@@ -15,9 +15,10 @@ var casper = require("casper").create({
 var url = casper.cli.get("url");
 var vector = url.split("/");
 var name = vector[2].replace(".", "_").replace(".", "_");
+console.log(name);
 casper.start(url, function() {
   casper.thenOpen(url, function() {
-    this.capture("search/pantallazo/"+name+".png",{
+    this.capture("pantallazo/"+name+".png",{
       top: 0,
       left: 0,
       width: 1000,
