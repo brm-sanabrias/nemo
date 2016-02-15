@@ -11,16 +11,26 @@ $words = array();
 foreach ($twConversations as $key => $value) {
 	# code...
 	$words=array_merge($words,explode(" ",$value['text']));
-	printVar($value['createdAt']);
-	if($arrayFechas[$value['createdAt']]!="" || $arrayFechas[$value['createdAt']]==0){
-		$arrayFechas[$value['createdAt']]=1;
-	}else{
-		$arrayFechas[$value['createdAt']]=(int)$arrayFechas[$value['createdAt']]+1;
-	}
-	//$arrayFechas[$value['createdAt']]=$arrayFechas[$createdAt]+1;
+	$fechaArray=$value['createdAt'];
+	$fechaExp=explode("-", $fechaArray);
+	$fechaNum=(int)$fechaExp[0].$fechaExp[1].$fechaExp[2];
+
+	$fechaString=(int)$fechaExp[2].'-'.date('M',(int)$fechaExp[1]).'-'.substr($fechaExp[0], -2);
+	$arrayFechas[$fechaNum]['count']=$arrayFechas[$fechaNum]['count']+1;
+	$arrayFechas[$fechaNum]['date']=$fechaString;
 	$n++;
 }
-printVar($arrayFechas);
+//printVar($arrayFechas);
+$fp = fopen('search/results/dataLineChart.csv', 'w');
+fwrite($fp, 'date,close'.PHP_EOL);
+
+foreach ($arrayFechas as $key => $value) {
+	# code...
+	$stringData=$value['date'].",".$value['count'].PHP_EOL;
+	fwrite($fp, $stringData);
+
+}
+fclose($fp);
 //Cuento las palabras en el array
 $orderWords=array_count_values($words);
 ///Ordeno de mayor a menos
@@ -56,5 +66,5 @@ if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 }
 $smarty->assign('nombreMarca',$nombreMarca);
 $smarty->assign('wordCloud', $wordCloud);
-//$smarty->display("graphs.html");
+$smarty->display("graphs.html");
 ?>

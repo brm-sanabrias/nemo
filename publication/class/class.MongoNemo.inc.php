@@ -50,7 +50,7 @@
     public function getWordsTw(){
     	//$tweetSearch=$this->barredoraTw->tweetSearch;
     	$db = $this->database;
-    	$tags = iterator_to_array($db->selectCollection('tweetTimeLine')->find()->sort(array('_id' => -1)));
+    	$tags = iterator_to_array($db->selectCollection('tweetTimeLine')->find()->sort(array('UScreatedAt' => -1))->limit(200));
         return $tags;
     }
  }

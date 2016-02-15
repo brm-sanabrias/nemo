@@ -141,7 +141,7 @@ d3.csv("search/results/dataLineChart.csv", function(error, data) {
     lineSvg.append("path")
         .attr("class", "line")
         .style("stroke", "#827717")
-
+        
         .attr("d", valueline(data));
 
     // Add the X Axis
@@ -279,13 +279,13 @@ var chart = AmCharts.makeChart( "pie", {
   //   "size": 16
   // } ],
   "dataProvider": [ {
-    "country": "United States",
+    "country": "Facebook",
     "visits": 7252
   }, {
-    "country": "China",
+    "country": "Twitter",
     "visits": 3882
   }, {
-    "country": "Japan",
+    "country": "Youtube",
     "visits": 1809
   }],
   "valueField": "visits",
