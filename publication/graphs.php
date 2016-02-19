@@ -8,7 +8,6 @@ function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-echo random_color();
 
 $MongoNemo=new MongoNemo();
 $twConversations=$MongoNemo->getWordsTw();
