@@ -412,3 +412,37 @@ google.setOnLoadCallback(drawRegionsMap);
 
         chart.draw(data, options);
       }
+
+
+/*datepicker*/
+
+$('.date button').click(function() {
+  /*para el evento para que se ejecute el evento del datepicker*/
+
+  event.stopPropagation();
+  event.preventDefault();
+
+  // Pikadate datepicker
+
+var $input =  $(this).parent().find('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    today: 'Hoy',
+    clear: 'Limpiar',
+    close: 'Cerrar',
+    closeOnSelect: true,
+    closeOnClear: true
+    // container: '#root-picker-outlet' elemento en el que se pinta el div
+  });
+
+var picker = $input.pickadate('picker');
+
+  $('.container .row').hide('fade');
+  $('.container .filtros').show('fade');
+  
+  //abrimos la modal 
+  picker.open();
+
+
+});
+
