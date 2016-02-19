@@ -12,7 +12,7 @@
 	//echo $terminoBuscar;
 	//$terminoBuscar="Miller Lite";
 	exec("rm /Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/*");
-	exec("rm /Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/pantallazo/*");
+	//exec("rm /Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/pantallazo/*");
 	///LANZO FACEBOOK
 	exec('php search/fb.php '.$terminoBuscar);
 	//include 'php busqueda/fb.php';
@@ -28,8 +28,8 @@
 	$json = json_decode($string, true);
 	foreach ($json as $key => $value) {
     	///LANZO CASPER
-		exec('casperjs --ignore-ssl-errors=true search/google.js --url="'.$value.'" &', $output, $return);
-		print($output);
+		//exec('casperjs --ignore-ssl-errors=true search/google.js --url="'.$value.'" &', $output, $return);
+		//print($output);
 		//sleep(1);
 	}
 ?>

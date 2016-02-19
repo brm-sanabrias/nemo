@@ -84,17 +84,8 @@ $(document).ready(function() {
 });
 
 
-/*Pinta lineas de tiempo*/
-
-
-var data = [];
-   var bandPos = [-1, -1];
-   var pos;
-   var xdomain = 31;
-   var ydomain = 50;
-   var colors = ["#827717", "#e0f7fa"];
-
-   var margin = {
+// Set the dimensions of the canvas / graph
+var margin = {
      top: 40,
      right: 40,
      bottom: 50,
@@ -102,245 +93,181 @@ var data = [];
    }
    var width = 900 - margin.left - margin.right;
    var height = 300 - margin.top - margin.bottom;
-   var zoomArea = {
-     x1: 0,
-     y1: 0,
-     x2: xdomain,
-     y2: ydomain
-   };
-   var drag = d3.behavior.drag();
 
-   //data for testing
-   var d1 = [];
-   var d2 = [];
+// Parse the date / time
+var parseDate = d3.time.format("%d-%b-%y").parse;
 
-   for (var i = 0; i < xdomain; i++) {
-     d1.push([i, Math.random() * 40 + 10]);
-     d2.push([i, Math.random() * 10 + 10]);
-   }
+// Set the ranges
+var x = d3.time.scale().range([0, width]);
+var y = d3.scale.linear().range([height, 0]);
 
-   data.push(d1);
-   data.push(d2);
+// Define the axes
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(5);
 
-   var svg = d3.select(".graph-demo").append("svg")
-     .attr("width", width + margin.left + margin.right)
-     .attr("height", height + margin.top + margin.bottom)
-     .append("g")
-     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(5);
+
+// Define the line
+var valueline = d3.svg.line()
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.close); });
+    
+// Adds the svg canvas
+var svg = d3.select(".graph-demo").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+var lineSvg = svg.append("g"); 
+
+var focus = svg.append("g") 
+    .style("display", "none");
+
+// Get the data
+d3.csv("search/results/dataLineChart.csv", function(error, data) {
+
+    data.forEach(function(d) {
+        d.date = parseDate(d.date);
+        d.close = +d.close;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+    // Add the valueline path.
+    lineSvg.append("path")
+        .attr("class", "line")
+        .style("stroke", "#827717")
+        
+        .attr("d", valueline(data));
+
+    // Add the X Axis
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    // Add the Y Axis
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+   // append the x line
+    focus.append("line")
+        .attr("class", "x")
+        .style("stroke", "blue")
+        .style("stroke-dasharray", "3,3")
+        .style("opacity", 0.5)
+        .attr("y1", 0)
+        .attr("y2", height);
+
+    // append the y line
+    focus.append("line")
+        .attr("class", "y")
+        .style("stroke", "blue")
+        .style("stroke-dasharray", "3,3")
+        .style("opacity", 0.5)
+        .attr("x1", width)
+        .attr("x2", width);
+
+    // append the circle at the intersection
+    focus.append("circle")
+        .attr("class", "y")
+        .style("fill", "none")
+        .style("stroke", "blue")
+        .attr("r", 4);
+
+    // place the value at the intersection
+    focus.append("text")
+        .attr("class", "y1")
+        .style("stroke", "white")
+        .style("stroke-width", "3.5px")
+        .style("opacity", 0.8)
+        .attr("dx", 8)
+        .attr("dy", "-.3em");
+    focus.append("text")
+        .attr("class", "y2")
+        .attr("dx", 8)
+        .attr("dy", "-.3em");
+
+    // place the date at the intersection
+    focus.append("text")
+        .attr("class", "y3")
+        .style("stroke", "white")
+        .style("stroke-width", "3.5px")
+        .style("opacity", 0.8)
+        .attr("dx", 8)
+        .attr("dy", "1em");
+    focus.append("text")
+        .attr("class", "y4")
+        .attr("dx", 8)
+        .attr("dy", "1em");
+    
+    // append the rectangle to capture mouse
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height)
+        .style("fill", "none")
+        .style("pointer-events", "all")
+        .on("mouseover", function() { focus.style("display", null); })
+        .on("mouseout", function() { focus.style("display", "none"); })
+        .on("mousemove", mousemove);
+
+    function mousemove() {
+    var x0 = x.invert(d3.mouse(this)[0]),
+        i = bisectDate(data, x0, 1),
+        d0 = data[i - 1],
+        d1 = data[i],
+        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
+
+    focus.select("circle.y")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")");
+
+    focus.select("text.y1")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")")
+        .text(d.close);
+
+    focus.select("text.y2")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")")
+        .text(d.close);
+
+    focus.select("text.y3")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")")
+        .text(formatDate(d.date));
+
+    focus.select("text.y4")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")")
+        .text(formatDate(d.date));
+
+    focus.select(".x")
+        .attr("transform",
+              "translate(" + x(d.date) + "," +
+                             y(d.close) + ")")
+                   .attr("y2", height - y(d.close));
+
+    focus.select(".y")
+        .attr("transform",
+              "translate(" + width * -1 + "," +
+                             y(d.close) + ")")
+                   .attr("x2", width + width);
+  }
+
+});
 
 
-   var x = d3.scale.linear()
-     .range([0, width]).domain([0, xdomain]);
-
-   var y = d3.scale.linear()
-     .range([height, 0]).domain([0, ydomain]);
-
-   var xAxis = d3.svg.axis()
-     .scale(x)
-     .orient("bottom");
-
-   var yAxis = d3.svg.axis()
-     .scale(y)
-     .orient("left");
-
-   var line = d3.svg.line()
-     .interpolate("basis")
-     .x(function(d) {
-       return x(d[0]);
-     })
-     .y(function(d) {
-       return y(d[1]);
-     });
-
-   var band = svg.append("rect")
-     .attr("width", 0)
-     .attr("height", 0)
-     .attr("x", 0)
-     .attr("y", 0)
-     .attr("class", "band");
-
-   svg.append("g")
-     .attr("class", "x axis")
-     .call(xAxis)
-     .attr("transform", "translate(0," + height + ")");
-
-   svg.append("g")
-     .attr("class", "y axis")
-     .call(yAxis)
-
-   svg.append("clipPath")
-     .attr("id", "clip")
-     .append("rect")
-     .attr("width", width)
-     .attr("height", height);
-
-   for (idx in data) {
-     svg.append("path")
-       .datum(data[idx])
-       .attr("class", "line line" + idx)
-       .attr("clip-path", "url(#clip)")
-       .style("stroke", colors[idx])
-       .attr("d", line);
-   }
-
-   var zoomOverlay = svg.append("rect")
-     .attr("width", width - 10)
-     .attr("height", height)
-     .attr("class", "zoomOverlay")
-     .call(drag);
-
-   var zoomout = svg.append("g");
-
-   zoomout.append("rect")
-     .attr("class", "zoomOut")
-     .attr("width", 110)
-     .attr("height", 40)
-     .attr("x", -12)
-     .attr("y", height + (margin.bottom - 20))
-     .on("click", function() {
-       zoomOut();
-     });
-
-   zoomout.append("text")
-     .attr("class", "zoomOutText")
-     .attr("width", 75)
-     .attr("height", 30)
-     .attr("x", -10)
-     .attr("y", height + (margin.bottom - 5))
-     .text("Zoom Out");
-
-   zoom();
-
-   drag.on("dragend", function() {
-     var pos = d3.mouse(this);
-     var x1 = x.invert(bandPos[0]);
-     var x2 = x.invert(pos[0]);
-
-     if (x1 < x2) {
-       zoomArea.x1 = x1;
-       zoomArea.x2 = x2;
-     } else {
-       zoomArea.x1 = x2;
-       zoomArea.x2 = x1;
-     }
-
-     var y1 = y.invert(pos[1]);
-     var y2 = y.invert(bandPos[1]);
-
-     if (x1 < x2) {
-       zoomArea.y1 = y1;
-       zoomArea.y2 = y2;
-     } else {
-       zoomArea.y1 = y2;
-       zoomArea.y2 = y1;
-     }
-
-     bandPos = [-1, -1];
-
-     d3.select(".band").transition()
-       .attr("width", 0)
-       .attr("height", 0)
-       .attr("x", bandPos[0])
-       .attr("y", bandPos[1]);
-
-     zoom();
-   });
-
-   drag.on("drag", function() {
-
-     var pos = d3.mouse(this);
-
-     if (pos[0] < bandPos[0]) {
-       d3.select(".band").
-       attr("transform", "translate(" + (pos[0]) + "," + bandPos[1] + ")");
-     }
-     if (pos[1] < bandPos[1]) {
-       d3.select(".band").
-       attr("transform", "translate(" + (pos[0]) + "," + pos[1] + ")");
-     }
-     if (pos[1] < bandPos[1] && pos[0] > bandPos[0]) {
-       d3.select(".band").
-       attr("transform", "translate(" + (bandPos[0]) + "," + pos[1] + ")");
-     }
-
-     //set new position of band when user initializes drag
-     if (bandPos[0] == -1) {
-       bandPos = pos;
-       d3.select(".band").attr("transform", "translate(" + bandPos[0] + "," + bandPos[1] + ")");
-     }
-
-     d3.select(".band").transition().duration(1)
-       .attr("width", Math.abs(bandPos[0] - pos[0]))
-       .attr("height", Math.abs(bandPos[1] - pos[1]));
-   });
-
-   function zoom() {
-     //recalculate domains
-     if (zoomArea.x1 > zoomArea.x2) {
-       x.domain([zoomArea.x2, zoomArea.x1]);
-     } else {
-       x.domain([zoomArea.x1, zoomArea.x2]);
-     }
-
-     if (zoomArea.y1 > zoomArea.y2) {
-       y.domain([zoomArea.y2, zoomArea.y1]);
-     } else {
-       y.domain([zoomArea.y1, zoomArea.y2]);
-     }
-
-     //update axis and redraw lines
-     var t = svg.transition().duration(750);
-     t.select(".x.axis").call(xAxis);
-     t.select(".y.axis").call(yAxis);
-
-     t.selectAll(".line").attr("d", line); 
-   }
-
-   var zoomOut = function() {
-     x.domain([0, xdomain]);
-     y.domain([0, ydomain]);
-
-     var t = svg.transition().duration(750);
-     t.select(".x.axis").call(xAxis);
-     t.select(".y.axis").call(yAxis);
-
-     t.selectAll(".line").attr("d", line);     
-   }
-
-var data = [];
-   var bandPos = [-1, -1];
-   var pos;
-   var xdomain = 31;
-   var ydomain = 50;
-   var colors = ["steelblue", "green"];
-
-   var margin = {
-     top: 40,
-     right: 40,
-     bottom: 50,
-     left: 60
-   }
-   var width = 900 - margin.left - margin.right;
-   var height = 300 - margin.top - margin.bottom;
-   var zoomArea = {
-     x1: 0,
-     y1: 0,
-     x2: xdomain,
-     y2: ydomain
-   };
-   var drag = d3.behavior.drag();
-
-   //data for testing
-   var d1 = [];
-   var d2 = [];
-
-   for (var i = 0; i < xdomain; i++) {
-     d1.push([i, Math.random() * 40 + 10]);
-     d2.push([i, Math.random() * 10 + 10]);
-   }
-
-   data.push(d1);
-   data.push(d2);
 
 
 /*PIE */
@@ -352,13 +279,13 @@ var chart = AmCharts.makeChart( "pie", {
   //   "size": 16
   // } ],
   "dataProvider": [ {
-    "country": "United States",
+    "country": "Facebook",
     "visits": 7252
   }, {
-    "country": "China",
+    "country": "Twitter",
     "visits": 3882
   }, {
-    "country": "Japan",
+    "country": "Youtube",
     "visits": 1809
   }],
   "valueField": "visits",
