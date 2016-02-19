@@ -342,6 +342,7 @@ google.setOnLoadCallback(drawRegionsMap);
 
 
 /*datepicker*/
+var picker;
 
 $('.date button').click(function() {
   /*para el evento para que se ejecute el evento del datepicker*/
@@ -358,17 +359,35 @@ var $input =  $(this).parent().find('.datepicker').pickadate({
     clear: 'Limpiar',
     close: 'Cerrar',
     closeOnSelect: true,
-    closeOnClear: true
+    closeOnClear: true,
+    container: '#contenedor-picker'
     // container: '#root-picker-outlet' elemento en el que se pinta el div
   });
 
-var picker = $input.pickadate('picker');
+picker = $input.pickadate('picker');
 
-  $('.container .row').hide('fade');
-  $('.container .filtros').show('fade');
+  $('.container').addClass('offset-x-container');
   
   //abrimos la modal 
-  picker.open();
+  window.setTimeout(function() {
+    $('#contenedor-picker').addClass('inset-x-date');
+    picker.open();
+    $('body').addClass('offset-hidden');
+  }, 1001);
+
+});
+
+$('body').on('click', function () {
+   
+   if ( $('#contenedor-picker').hasClass('inset-x-date')  ) {
+
+     picker.close();
+     $('#contenedor-picker').removeClass('inset-x-date');
+     $('.container').removeClass('offset-x-container');
+     $('body').removeClass('offset-hidden');
+     console.log('hola');
+
+   };
 
 
 });

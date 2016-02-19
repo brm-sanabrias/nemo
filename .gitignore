@@ -11,6 +11,7 @@ node_modules/
 #Ignore results
 publication/results/
 publication/db/DBO.php
+publication/graphs.php
 
 #Ignore Smarty and PEAR	
 Smarty/
