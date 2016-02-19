@@ -266,22 +266,23 @@ d3.csv("search/results/dataLineChart.csv", function(error, data) {
 var chart = AmCharts.makeChart( "pie", {
   "type": "pie",
   "theme": "light",
+  'colors': ['#4d6ab0','#5ba8df','#e2492a' ],
   // "titles": [ {
   //   "text": "# De conversaciones por propiedad",
   //   "size": 16
   // } ],
   "dataProvider": [ {
-    "country": "Facebook",
+    "platform": "Facebook",
     "visits": 7252
   }, {
-    "country": "Twitter",
+    "platform": "Twitter",
     "visits": 3882
   }, {
-    "country": "Youtube",
+    "platform": "Youtube",
     "visits": 1809
   }],
   "valueField": "visits",
-  "titleField": "country",
+  "titleField": "platform",
   "startEffect": "elastic",
   "startDuration": 2,
   "labelRadius": 15,
