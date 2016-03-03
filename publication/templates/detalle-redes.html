@@ -89,28 +89,6 @@
       <p>Nadaremos, Nadaremos,  ¡en el mar!, ¡el mar!, ¡el mar!</p>
     </div>
   </div>
-  <header class="page-topbar">
-    <div class="navbar-fixed">
-      <nav class="blue graphs">
-        <div class="nav-wrapper">
-          <ul class="left">
-            <li>
-              <h2 class="logo"><img src="images/logo-nemo.svg" alt="brm - nemo" title="brm - nemo" class="responsive-img"></h2>
-            </li>
-          </ul>
-          <div class="header-search-wrapper nombre-marca">
-            <h1>
-              {#$nombreMarca#}
-              
-            </h1>
-          </div>
-          <ul class="right">
-            <li class="apagar"><a href="/"><i class="mdi-action-settings-power"></i></a></li>
-          </ul>
-        </div>
-      </nav>
-    </div>
-  </header>
   <div id="contenedor-picker"></div>
   <div class="container">
     <!--Graphs-->
@@ -125,7 +103,7 @@
             </div>
             <div class="trending-line-chart-wrapper">
               <!--Grafica-->
-              <canvas id="timeline" height="70"></canvas>
+              <canvas id="timeline-facebook" height="70"></canvas>
               <!--/-Grafica-->
             </div>
           </div>
@@ -242,68 +220,29 @@
       <!--/-row-->
     </div>
     <!--/-Graphs-->
-    <!--Redes Sociales-->
-    <div class="row row-numeros row-numeros-2">
+    <!--Top Posts-->
+    <div class="row row-posts">
       <div class="col l4">
         <div class="card">
-          <div class="card-content blue darken-1"><i class="fa fa-facebook blue-text"></i>
-            <p id="total-fb">99999999</p>
-          </div>
-        </div>
-      </div>
-      <div class="col l4">
-        <div class="card">
-          <div class="card-content light-blue lighten-2"><i class="fa fa-twitter light-blue-text"></i>
-            <p id="total-tw">99999999</p>
-          </div>
+          <h3>Soy otro un post</h3>
         </div>
       </div>
       <div class="col l4">
         <div class="card">
-          <div class="card-content red darken-2"><i class="fa fa-youtube red-text"></i>
-            <p id="tota-yt">99999999</p>
-          </div>
+          <h3>Soy otro un post</h3>
+        </div>
+      </div>
+      <div class="col l4">
+        <div class="card">
+          <h3>Soy otro un post</h3>
         </div>
       </div>
     </div>
-    <!--/-Redes Sociales-->
-    <div class="row filtros">
-      <div class="card">
-        <!--fecha inicial-->
-        <div class="col l3 date">
-          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Desde</span>
-          <input type="date" class="datepicker">
-        </div>
-        <!--/-fecha inicial-->
-        <!--fecha final-->
-        <div class="col l3 date">
-          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Hasta</span>
-          <input type="date" class="datepicker">
-        </div>
-        <!--/-fecha final-->
-        <!--dma-->
-        <div class="col l3"><a class="btn waves-effect waves-light light-blue darken-4">Día</a><a class="btn waves-effect waves-light light-blue darken-3">Mes</a><a class="btn waves-effect waves-light light-blue darken-2">Año</a></div>
-        <!--/-dma-->
-        <!--rango-->
-        <div class="col l3 range">
-          <p class="range-field">
-            <input type="range" min="1" max="30" class="active">
-          </p>
-        </div>
-        <!--/-rango-->
-        
-      </div>
-    </div>
-    <div class="row">
-      <div class="col l4 offset-l4">
-        <button class="valign waves-effect waves-light btn blue descargar">
-          Descargar reporte <i class="right mdi-file-cloud-download"></i>
-          
-          
-          
-        </button>
-      </div>
-    </div>
+    <!--/-Top Posts
+    
+    
+    
+    -->
   </div>
   <!--Footer-->
   <footer>
@@ -321,5 +260,5 @@
   <script src="js/libs/pie.js"></script>
   <script src="js/libs/datepicker.js"></script>
   <script src="https://www.google.com/jsapi?autoload={&quot;modules&quot;:[{&quot;name&quot;:&quot;visualization&quot;,&quot;version&quot;:&quot;1.1&quot;,&quot;packages&quot;:[&quot;geochart&quot;]}]}"></script>
-  <script src="js/nemo.graficas.js"></script>
+  <script src="js/nemo.grafica-redes.js"></script>
 </body></html>

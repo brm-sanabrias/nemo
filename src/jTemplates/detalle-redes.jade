@@ -1,7 +1,7 @@
 extends partials/base.jade
 
 block title
-	-var titulo = "Graficas";
+	-var titulo = "Graficas - Redes";
 	title brm - Nemo
 
 block content
@@ -23,7 +23,7 @@ block content
 						div.trending-line-chart-wrapper
 							//Grafica
 							//- div.graph-demo
-							canvas#timeline(height="70")
+							canvas#timeline-facebook(height="70")
 							///-Grafica
 					div.card-action.waves-effect.waves-block.waves-light.white
 
@@ -98,82 +98,25 @@ block content
 
 			///-row
 		///-Graphs
-		//Redes Sociales
-		div.row.row-numeros.row-numeros-2
+		//Top Posts
+		div.row.row-posts
 			div.col.l4
 				div.card
-					div.card-content.blue.darken-1
-
-						//- div.switch
-						//- 	label.blue-text.text-lighten-5 Ocultar
-						//- 		input(type="checkbox", checked)
-						//- 		span.lever
-						//- 		| Mostrar
-
-						i.fa.fa-facebook.blue-text
-						p#total-fb 99999999
+					h3 Soy otro un post
 
 			div.col.l4
 				div.card
-					div.card-content.light-blue.lighten-2
-						
-						//- div.switch
-						//- 	label.light-blue-text.text-lighten-5 Ocultar
-						//- 		input(type="checkbox", checked)
-						//- 		span.lever
-						//- 		| Mostrar
-
-						i.fa.fa-twitter.light-blue-text
-						p#total-tw 99999999
+					h3 Soy otro un post
+					
 
 			div.col.l4
 				div.card
-					div.card-content.red.darken-2
-						
-						//- div.switch
-						//- 	label.red-text.text-lighten-5 Ocultar
-						//- 		input(type="checkbox", checked)
-						//- 		span.lever
-						//- 		| Mostrar
-
-						i.fa.fa-youtube.red-text
-						p#tota-yt 99999999
+					h3 Soy otro un post
 
 
-		///-Redes Sociales
 
-		div.row.filtros
-			div.card
-				//fecha inicial
-				div.col.l3.date
-					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
-					span Desde
-					input.datepicker(type="date")
-				///-fecha inicial
-				//fecha final
-				div.col.l3.date
-					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
-					span Hasta
-					input.datepicker(type="date")
-				///-fecha final
-				//dma
-				div.col.l3
-					a.btn.waves-effect.waves-light.light-blue.darken-4 Día
-					a.btn.waves-effect.waves-light.light-blue.darken-3 Mes
-					a.btn.waves-effect.waves-light.light-blue.darken-2 Año
-				///-dma
-				//rango
-				div.col.l3.range
-					p.range-field
-						input.active(type="range", min="1", max="30")
-				///-rango
-
-
-		div.row
-			div.col.l4.offset-l4
-				button.valign.waves-effect.waves-light.btn.blue.descargar.
-					Descargar reporte <i class="right mdi-file-cloud-download"></i>
-
+		///-Top Posts
+				
 
 
 block Scripts
@@ -184,4 +127,4 @@ block Scripts
 	script(src='js/libs/pie.js')
 	script(src='js/libs/datepicker.js')
 	script(src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1","packages":["geochart"]}]}')
-	script(src='js/nemo.graficas.js')
+	script(src='js/nemo.grafica-redes.js')
