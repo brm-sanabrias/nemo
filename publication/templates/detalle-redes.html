@@ -89,152 +89,82 @@
       <p>Nadaremos, Nadaremos,  ¡en el mar!, ¡el mar!, ¡el mar!</p>
     </div>
   </div>
+  <header class="page-topbar">
+    <div class="navbar-fixed">
+      <nav class="blue graphs">
+        <div class="nav-wrapper">
+          <ul class="left">
+            <li>
+              <h2 class="logo"><img src="images/logo-nemo.svg" alt="brm - nemo" title="brm - nemo" class="responsive-img"></h2>
+            </li>
+          </ul>
+          <div class="header-search-wrapper nombre-marca">
+            <h1>
+              {#$nombreMarca#}
+              
+            </h1>
+          </div>
+          <ul class="right">
+            <li class="apagar"><a href="/"><i class="mdi-action-settings-power"></i></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
   <div id="contenedor-picker"></div>
   <div class="container">
     <!--Graphs-->
     <div class="row">
-      <!--Timeline-->
+      <!--Timeline Graphs-->
       <div class="col s4 md l6">
         <div class="card uno expand">
           <div class="card-content waves-effect waves-block waves-light cyan">
             <div class="close"><i class="fa fa-times-circle"></i></div>
             <div class="move-up">
-              <p class="margin">Línea de tiempo</p>
+              <p class="margin">Crecimiento de seguidores</p>
             </div>
             <div class="trending-line-chart-wrapper">
               <!--Grafica-->
-              <canvas id="timeline-facebook" height="70"></canvas>
+              <canvas id="timeline-growth-facebook" height="70"></canvas>
               <!--/-Grafica-->
             </div>
           </div>
-          <div class="card-action waves-effect waves-block waves-light white"></div>
         </div>
       </div>
-      <!--/-Timeline-->
-      <!--row-->
-      <div class="col s3 m3 l3">
-        <div class="card">
-          <div class="card-content waves-effect waves-block waves-light grey lighten-3 dos expand">
+      <div class="col s4 md l6">
+        <div class="card uno expand">
+          <div class="card-content waves-effect waves-block waves-light cyan">
             <div class="close"><i class="fa fa-times-circle"></i></div>
             <div class="move-up">
-              <p class="margin">WordCloud</p>
-              <div id="tagCloud">
-                <canvas id="myCanvas">
-                  <p>Su navegador no soporta canvas</p>
-                </canvas>
-              </div>
-              <div id="tags" style="font-size: 20%;">{#foreach from=$wordCloud item=word#}<a href="#" style="font-size: {#$word.med#}ex;color:{#$word.color#};">{#$word.word#}</a>{#/foreach#}
-              </div>
+              <p class="margin">Interacciones</p>
+            </div>
+            <div class="trending-line-chart-wrapper">
+              <!--Grafica-->
+              <canvas id="timeline-interact-facebook" height="70"></canvas>
+              <!--/-Grafica-->
             </div>
           </div>
-          <!--Mapas-->
-          <div class="card-action waves-effect waves-block waves-light white tres expand hide">
-            <p class="margin">Usuarios por zona</p>
-            <div class="close"><i class="fa fa-times-circle"></i></div>
-            <div id="mapa"></div>
-          </div>
-          <!--/-Mapas			-->
         </div>
       </div>
-      <!--/-row-->
-      <!--row-->
-      <div class="col s3 m3 l3">
-        <div class="card">
-          <div class="card-content waves-effect waves-block waves-light deep-purple darken-1 cuatro expand">
-            <div class="close"><i class="fa fa-times-circle"></i></div>
-            <div class="move-up">
-              <p class="margin white-text"># Conversaciones por Propiedad</p>
-              <div id="pie"></div>
-            </div>
-          </div>
-          <!--Géneros-->
-          <div class="card-action deep-purple lighten-2 waves-effect waves-block waves-light cinco expand hide">
-            <div class="close"><i class="fa fa-times-circle"></i></div>
-            <p class="margin white-text">Géneros</p>
-            <div class="gen gen-man">
-              <p class="white-text">0%</p>
-              <div class="mascara"><?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="180px" height="180px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
-	
-	<defs>
-		<linearGradient id="grad" x1="0%" y1="100%" x2="0%" y2="0%">
-		            <stop offset="0%"  stop-color="#2196f3"/>
-		            <stop offset="0%" stop-color="transparent"/>
-		</linearGradient>
-	</defs>
-
-<path fill="url(#grad)" fill-rule="evenodd" clip-rule="evenodd" d="M14.861,180c-0.198-0.105-0.386-0.255-0.597-0.311
-	c-3.586-0.944-5.326-2.841-5.688-6.439c-1.59-15.77,3.661-28.616,16.455-38.188c7.61-5.694,16.249-9.427,24.963-13.026
-	c3.776-1.56,7.539-3.181,11.198-4.996c6.6-3.274,9.736-8.667,9.335-16.071c-0.091-1.694-0.055-3.396-0.164-5.088
-	c-0.147-2.292-0.917-4.407-2.573-6.001c-3.887-3.737-6.463-8.268-8.371-13.233c-0.917-2.387-2.267-4.384-4.258-6.088
-	c-3.332-2.852-5.188-6.53-5.372-11.024c-0.155-3.793,1.144-6.821,4.431-8.734c2.008-1.168,2.827-2.727,2.472-4.918
-	c-0.738-4.55-1.277-9.155-2.375-13.621c-2.754-11.21,0.92-19.015,9.827-24.826c13.215-8.62,27.405-9.741,41.968-3.384
-	c4.202,1.834,7.567,4.822,10.238,8.587c0.334,0.471,1.082,0.882,1.658,0.91c5.644,0.275,8.605,2.949,8.424,8.756
-	c-0.16,5.109-1.154,10.194-1.825,15.283c-0.397,3.01-0.923,6.003-1.312,9.015c-0.204,1.574,0.36,2.877,1.799,3.706
-	c5.553,3.197,6.067,8.401,4.3,13.713c-0.948,2.852-2.869,5.023-4.975,7.115c-1.251,1.242-2.462,2.706-3.146,4.304
-	c-2.321,5.413-4.935,10.556-9.206,14.787c-1.193,1.182-2.115,3.153-2.217,4.819c-0.234,3.886-0.165,7.838,0.293,11.703
-	c0.425,3.59,2.622,6.471,5.691,8.282c3.757,2.219,7.672,4.232,11.688,5.936c8.399,3.562,16.853,6.973,24.529,12.006
-	c8.377,5.492,14.71,12.611,17.84,22.285c1.906,5.896,2.065,11.977,1.568,18.07c-0.322,3.948-2.975,5.873-6.62,6.672
-	C114.847,180,64.854,180,14.861,180z"/>
-</svg>
-
-              </div>
-            </div>
-            <div class="gen gen-girl">
-              <p class="white-text">0%</p>
-              <div class="mascara"><?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="180px" height="180px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
-	 <defs>
-	 	<linearGradient id="grad2" x1="0%" y1="100%" x2="0%" y2="0%">
-	 	            <stop offset="0%"  stop-color="#e65100"/>
-	 	            <stop offset="0%" stop-color="transparent"/>
-	 	</linearGradient>
-	 </defs>
-	 
-<path fill="url(#grad2)" d="M0.472,180h178.161c0.414-0.715,0.682-1.54,0.787-2.528c0.673-6.328,0.29-12.581-0.746-18.84
-	c-0.742-4.469-2.719-8.26-5.561-11.729c-3.864-4.716-8.795-7.942-14.463-9.785c-8.393-2.728-16.98-4.836-25.389-7.523
-	c-5.521-1.767-11.003-3.793-16.248-6.25c-4.676-2.191-7.756-6.023-8.391-11.43c-0.192-1.637-0.039-3.024,1.354-4.238
-	c1.437-1.255,2.569-2.853,3.937-4.196c0.539-0.524,1.315-0.931,2.054-1.113c6.771-1.668,13.598-3.135,20.325-4.968
-	c2.922-0.795,5.65-2.309,8.532-3.523c-0.733-1.296-1.33-2.222-1.805-3.207c-1.572-3.268-3.158-6.532-4.632-9.843
-	c-2.096-4.702-1.589-9.696-1.311-14.604c0.723-12.774-0.499-25.329-3.86-37.669c-2.613-9.581-8.312-16.657-17.533-20.477
-	c-14.872-6.158-29.405-5.403-43.413,2.782c-0.641,0.372-1.317,0.82-2.022,0.929C62.326,13.008,56.532,17.43,52.915,24.3
-	c-2.074,3.931-3.338,8.389-4.354,12.752c-2.637,11.337-3.286,22.905-3.389,34.518c-0.062,7.078-0.456,14.122-5.06,20.258
-	c1.223,0.82,2.265,1.79,3.495,2.302c5.36,2.222,10.642,4.805,16.21,6.29c4.345,1.159,7.725,2.786,10.621,6.38
-	c1.976,2.45,2.277,4.621,1.708,7.303c-0.651,3.072-2.283,5.663-4.73,7.513c-2.55,1.925-5.281,3.699-8.149,5.101
-	c-6.768,3.305-14.173,4.567-21.447,6.24c-8.022,1.848-15.947,4.027-23.139,8.229c-4.619,2.701-8.314,6.31-10.384,11.317
-	c-3.262,7.896-4.784,16.132-4.387,24.691C-0.043,178.219,0.138,179.157,0.472,180z"/>
-</svg>
-
-              </div>
-            </div>
-          </div>
-          <!--/-Géneros			-->
-        </div>
-      </div>
-      <!--/-row-->
+      <!--/-Timeline Graphs-->
     </div>
     <!--/-Graphs-->
     <!--Top Posts-->
     <div class="row row-posts">
+      <h3 class="center-align">Posts Destacados</h3>
       <div class="col l4">
         <div class="card">
-          <h3>Soy otro un post</h3>
+          <figure class="post"><img src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg"></figure>
         </div>
       </div>
       <div class="col l4">
         <div class="card">
-          <h3>Soy otro un post</h3>
+          <figure class="post"><img src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg"></figure>
         </div>
       </div>
       <div class="col l4">
         <div class="card">
-          <h3>Soy otro un post</h3>
+          <figure class="post"><img src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg"></figure>
         </div>
       </div>
     </div>

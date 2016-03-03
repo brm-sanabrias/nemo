@@ -1,7 +1,7 @@
 extends partials/base.jade
 
 block title
-	-var titulo = "Graficas - Redes";
+	-var titulo = "Graficas";
 	title brm - Nemo
 
 block content
@@ -9,7 +9,7 @@ block content
 	div.container
 		//Graphs
 		div.row
-			//Timeline
+			//Timeline Graphs
 			div.col.s4.md.l6
 
 				div.card.uno.expand
@@ -18,100 +18,57 @@ block content
 							i.fa.fa-times-circle
 
 						div.move-up
-							p.margin Línea de tiempo
+							p.margin Crecimiento de seguidores
 
 						div.trending-line-chart-wrapper
 							//Grafica
 							//- div.graph-demo
-							canvas#timeline-facebook(height="70")
+							canvas#timeline-growth-facebook(height="70")
 							///-Grafica
-					div.card-action.waves-effect.waves-block.waves-light.white
-
-			///-Timeline
 			
-			//row
-			div.col.s3.m3.l3
-				div.card
-					div.card-content.waves-effect.waves-block.waves-light.grey.lighten-3.dos.expand
+			div.col.s4.md.l6
+
+				div.card.uno.expand
+					div.card-content.waves-effect.waves-block.waves-light.cyan
 						div.close
 							i.fa.fa-times-circle
+
 						div.move-up
-							p.margin WordCloud
+							p.margin Interacciones
 
-							div#tagCloud
-								//- h3.blue.waves-effect.waves-light.btn-large.title Titular
-								canvas#myCanvas()
-									p.
-										Su navegador no soporta canvas
-							div#tags(style="font-size: 20%;")
-								{#foreach from=$wordCloud item=word#}
-								a(href='#',style="font-size: {#$word.med#}ex;color:{#$word.color#};").
-									{#$word.word#}
-								{#/foreach#}
+						div.trending-line-chart-wrapper
+							//Grafica
+							//- div.graph-demo
+							canvas#timeline-interact-facebook(height="70")
+							///-Grafica
 
-								//-- for (var x = 0; x < 30; x++)
-								//-	a(href='#',style="font-size: {#$word.med#}ex").
-								//-		#{x}
-
-					//Mapas
-					div.card-action.waves-effect.waves-block.waves-light.white.tres.expand.hide
-						p.margin Usuarios por zona
-						div.close
-							i.fa.fa-times-circle
-						div#mapa
-					///-Mapas			
-
-			///-row
-			//row
-			div.col.s3.m3.l3
-				div.card
-					div.card-content.waves-effect.waves-block.waves-light.deep-purple.darken-1.cuatro.expand
-						div.close
-							i.fa.fa-times-circle
-						div.move-up
-							p.margin.white-text # Conversaciones por Propiedad
-
-							div#pie
-
-					//Géneros
-					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light.cinco.expand.hide
-						div.close
-							i.fa.fa-times-circle
-						p.margin.white-text Géneros
-						
-						//- div.generos
-						div.gen.gen-man
-
-							p.white-text 0%
-							div.mascara
-								include ../../publication/images/guy.svg
-							//- div.fill
-
-						//- div.generos
-						div.gen.gen-girl
-							p.white-text 0%
-							div.mascara
-								include ../../publication/images/girl.svg
-
-
-					///-Géneros			
-
-			///-row
+			
+			///-Timeline Graphs
+			
+										
 		///-Graphs
 		//Top Posts
 		div.row.row-posts
+			h3.center-align Posts Destacados
 			div.col.l4
 				div.card
-					h3 Soy otro un post
+					figure.post
+						img(src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg")
 
 			div.col.l4
 				div.card
-					h3 Soy otro un post
+					figure.post
+
+						img(src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg")
+					
 					
 
 			div.col.l4
 				div.card
-					h3 Soy otro un post
+					figure.post
+
+						img(src="https://scontent-mia1-1.xx.fbcdn.net/hphotos-xpa1/t31.0-8/12465856_769855646479811_3289013922941623977_o.jpg")
+					
 
 
 
