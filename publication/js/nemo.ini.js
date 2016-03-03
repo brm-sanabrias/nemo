@@ -172,14 +172,13 @@ function createBrand() {
             .done(function() {
                 $.ajax({
                     url: 'launcher.php',
-                    success: function(data) {
-                   
-
-                        window.location = "redes.php";
-               
-                    }
+                    done: function(data) {
+             
+                        
+                                   }
                 });
             });
+            setTimeout(function(){ window.location = "redes.php"; }, 3000);
     } else {
         alert("Error marca");
     }
