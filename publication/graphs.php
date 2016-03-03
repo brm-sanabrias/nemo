@@ -1,6 +1,6 @@
 <?php
 require("db/requires.php");
-function random_color_part() {
+/*function random_color_part() {
     return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
 }
 
@@ -72,7 +72,7 @@ if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	$General= new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 	$nombreMarca=$marca[0]->name;
-}
+}*/
 $smarty->assign('nombreMarca',$nombreMarca);
 $smarty->assign('wordCloud', $wordCloud);
 $smarty->display("graphs.html");
