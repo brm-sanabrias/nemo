@@ -1,69 +1,133 @@
 <?php
 require "search/thread.php";
 require("db/requires.php"); 
-
-
+//@error_reporting(E_ALL);
 function launchFacebook($terminoBuscar){
-	exec('php search/fb.php '.$terminoBuscar);
-	exit("End FACEBOOK ".PHP_EOL);
+   
+	$app_access_token=genToken();
+	$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=6&fields=id,name,picture.type(normal),likes&".$app_access_token);
+	$fp = fopen(/*$path.*/'/home/ubuntu/workspace/publication/search/results/resultFacebook.json', 'w');
+	fwrite($fp, json_encode($resultFacebook));
+	fclose($fp);
+	$obj = DB_DataObject::Factory('MpBrand');
+	//	DB_DataObject::debugLevel(1);
+		//printVar($obj);
+		$obj->name=$terminoBuscar;
+		$find=$obj->find();
+	//	printVar($find,'find');
+		if($find >0) {
+		   // echo 'entra al if';
+			while($obj->fetch()){
+			    if ($obj->picture=='N/A') {
+			       printVar($resultFacebook['data'][0]['picture']['data']['url']);
+			     $obj->picture= $resultFacebook['data'][0]['picture']['data']['url'];
+			    $obj->update();
+			        
+			    }	
+			}
+		}else{
+		    
+		}
+		$obj->free();
+//	$obj = new General();
+//	$obj->picture($terminoBuscar);
+  //exit("End FACEBOOK ".PHP_EOL);
+	echo json_encode('');
 }
 function launchTwitter($terminoBuscar){
-	exec('php search/tw.php '.$terminoBuscar);
-	exit("End TWITTER ".PHP_EOL);
+	/*from tw.php*/
+	$url = "https://api.twitter.com/1.1/users/search.json";
+    $query = array( 'count' => 100, 'q' => urlencode($terminoBuscar), "result_type" => "recent");
+    $oauth_access_token = "336107062-3FRWmW9u2WqAD8K2BYkkhRyYPiuElAls5xGSPxHO"; // original 336107062-3FRWmW9u2WqAD8K2BYkkhRyYPiuElAls5xGSPxHO
+    $oauth_access_token_secret = "EYOobKPmD0Ym4f30AEOM0xGjlfnaan1Vt17fkUYuJKOnY";// original EYOobKPmD0Ym4f30AEOM0xGjlfnaan1Vt17fkUYuJKOnY
+    $consumer_key = "zCYb1EGbavxyFI26TSCYpDVHT";//original zCYb1EGbavxyFI26TSCYpDVHT
+    $consumer_secret = "limIRUXH0FiFRVcdDpOi6SwAxt3ZZpNvj58P2WVXr5mspF0J7t"; // original limIRUXH0FiFRVcdDpOi6SwAxt3ZZpNvj58P2WVXr5mspF0J7t
+    $oauth = array(
+                    'oauth_consumer_key' => $consumer_key,
+                    'oauth_nonce' => time(),
+                    'oauth_signature_method' => 'HMAC-SHA1',
+                    'oauth_token' => $oauth_access_token,
+                    'oauth_timestamp' => time(),
+                    'oauth_version' => '1.0');
+
+    $base_params = empty($query) ? $oauth : array_merge($query,$oauth);
+    $base_info = buildBaseString($url, 'GET', $base_params);
+    $url = empty($query) ? $url : $url . "?" . http_build_query($query);
+
+    $composite_key = rawurlencode($consumer_secret) . '&' . rawurlencode($oauth_access_token_secret);
+    $oauth_signature = base64_encode(hash_hmac('sha1', $base_info, $composite_key, true));
+    $oauth['oauth_signature'] = $oauth_signature;
+
+    $header = array(buildAuthorizationHeader($oauth), 'Expect:');
+    $options = array( CURLOPT_HTTPHEADER => $header,
+                      CURLOPT_HEADER => false,
+                      CURLOPT_URL => $url,
+                      CURLOPT_RETURNTRANSFER => true,
+                      CURLOPT_SSL_VERIFYPEER => false);
+
+    $feed = curl_init();
+    curl_setopt_array($feed, $options);
+    $json = curl_exec($feed);
+    curl_close($feed);
+    $resultTwitter=json_decode($json);
+    
+	$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultTwitter.json', 'w');
+	fwrite($fp, json_encode($resultTwitter));
+	fclose($fp);
+	/*fin from tw.php */
+	
+//	exec('php search/tw.php '.$terminoBuscar);
+//	exit("End TWITTER ".PHP_EOL);
 
 }
 function launchYoutube($terminoBuscar){
-	exec('php search/yt.php '.$terminoBuscar);
-	exit("End YOUTUBE ".PHP_EOL);
+    $key_api="AIzaSyC1PB5ml8U32_sqIknk33VJZb5CmtQ1v0Q";
+    $limit=6;
+    $search=$terminoBuscar;
+    
+    // Order Fields = date, rating, relevance, title, videoCount, viewCount
+    $order="relevance";
+    $url = "https://www.googleapis.com/youtube/v3/search?key=".$key_api."&part=snippet&type=channel&maxResults=".$limit."&order=".$order."&q=".$search;
+    $curl = curl_init($url);
+    //$proxy="172.16.224.4:8080";
+    curl_setopt($curl, CURLOPT_PROXY, $proxy);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    $return = curl_exec($curl);
+    curl_close($curl);
+    $resultYoutube = json_decode($return, true);
+    
+    $fp = fopen('/home/ubuntu/workspace/publication/search/results/resultYoutube.json', 'w');
+    fwrite($fp, json_encode($resultYoutube));
+    fclose($fp);
+	//exec('php search/yt.php '.$terminoBuscar);
+	//exit("End YOUTUBE ".PHP_EOL);
 
 }
 function launchGoogle($terminoBuscar){
-	exec('php search/google.php '.$terminoBuscar);
-	$thread5 = new Thread('lauchCasper');
-	$thread5->start($terminoBuscar);
-
-	exit("End Google ".PHP_EOL);
-
+    header("Access-Control-Allow-Origin: *");
+    header('Content-Type: application/json');
+    $query=$terminoBuscar;
+    $num=5;
+    $curl=curl_init('http://www.google.com./search?output=search&q="'.$query.'"&num='.$num."&gl=CO");    // Please study the url and params.   q=php or q={your keyword here}
+    //$proxy="172.16.224.4:8080";
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $data=curl_exec($curl);
+    curl_close($curl);
+    $mathces=array();
+    preg_match_all('|<h3 class="r">.*?href="/url\?q=(.*?)&amp;.*?".*?</h3>|', $data, $mathces);
+	$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultGoogle.json', 'w');
+    fwrite($fp, json_encode($mathces[1]));
+    fclose($fp);
 }
-function lauchCasper() {
-	$sites = array();
-    $string = file_get_contents("/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultGoogle.json");
-	$json = json_decode($string, true);
-	foreach ($json as $key => $value) {
-	 	///LANZO CASPER
-	 	//echo "Desde php".$value.PHP_EOL;
-	 	$sites['url']=$value;
-	 	$sites['imagen']=$key;
-	 	echo 'casperjs --ignore-ssl-errors=true search/google.js --url="'.$value.'" --name="'.$key.'"';
-	 	exec('casperjs --ignore-ssl-errors=true search/google.js --url="'.$value.'" --name="'.$key.'"', $output, $return);
-		print_r($output);
-		sleep(1);
-	}
-	exit("End CASPER");
 
-}
 if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	//BUSCO LA MARCA EN LA BASE DE DATOS
 	$General= new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 	$terminoBuscar=$marca[0]->name;
+	launchFacebook($terminoBuscar);
+	launchTwitter($terminoBuscar);
+	launchYoutube($terminoBuscar);
+	launchGoogle($terminoBuscar);
 }
-//$terminoBuscar="CLARO";
-///Defino los hilos
-$thread1 = new Thread('launchFacebook');
-$thread2 = new Thread('launchTwitter');
-$thread3 = new Thread('launchYoutube');
-$thread4 = new Thread('launchGoogle');
-//Lanzo los proceso
- 
-$thread1->start($terminoBuscar);
-$thread2->start($terminoBuscar);
-$thread3->start($terminoBuscar);
-$thread4->start($terminoBuscar);
-
-//$thread2->start(2, 40);
-//$thread3->start(1, 30);
- 
-//while ($thread1->isAlive() || $thread2->isAlive() || $thread3->isAlive() || $thread4->isAlive() || $thread5->isAlive()){
-
 ?>

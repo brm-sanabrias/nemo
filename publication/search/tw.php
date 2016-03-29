@@ -30,14 +30,11 @@ function queryTwitter($search)
     $oauth['oauth_signature'] = $oauth_signature;
 
     $header = array(buildAuthorizationHeader($oauth), 'Expect:');
-        $proxy="172.16.224.4:8080";
-
-    $options = array( //CURLOPT_HTTPHEADER => $header,
+    $options = array( CURLOPT_HTTPHEADER => $header,
                       CURLOPT_HEADER => false,
                       CURLOPT_URL => $url,
                       CURLOPT_RETURNTRANSFER => true,
-                      CURLOPT_SSL_VERIFYPEER => false,
-                      CURLOPT_PROXY=>$proxy);
+                      CURLOPT_SSL_VERIFYPEER => false);
 
     $feed = curl_init();
     curl_setopt_array($feed, $options);
@@ -67,7 +64,7 @@ function buildAuthorizationHeader($oauth)
 }
 $terminoBuscar=$argv[1];
 $resultTwitter=queryTwitter($terminoBuscar);
-$fp = fopen('/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultTwitter.json', 'w');
+$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultTwitter.json', 'w');
 fwrite($fp, json_encode($resultTwitter));
 fclose($fp);
 ?>

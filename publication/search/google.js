@@ -15,14 +15,14 @@ var casper = require("casper").create({
 var url = casper.cli.get("url");
 var vector = url.split("/");
 var name = vector[2].replace(".", "_").replace(".", "_");
-console.log(name);
+//console.log(name);
 casper.start(url, function() {
   casper.thenOpen(url, function() {
-    this.capture("pantallazo/"+name+".png",{
+    this.capture("/home/ubuntu/workspace/publication/search/pantallazo/"+name+".png",{
       top: 0,
       left: 0,
-      width: 1000,
-      height: 1000
+      width: 250,
+      height: 250
     });
   });
 

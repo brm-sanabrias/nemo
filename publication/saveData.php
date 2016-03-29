@@ -3,16 +3,21 @@ include("db/requires.php");
 
 ///MARCAS EXISTENTES EN LA BASE DE DATOS
 if(isset($_POST['datos']) && isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
+	printVar($_POST['datos']);
 	$datos=json_decode($_POST['datos']);
 	$General = new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
+	DB_DataObject::debugLevel(1);
 	$nombreMarca=$marca[0]->name;
-	//Inserción de la marca
-	$General->idCategory=1;
-	$General->picture="N/A";
-	$General->name=$nombreMarca;
-	$General->date=date("Y-m-d H:i:s");
-	$idBrand=$General->setInstancia('MpBrand');
+	$idBrand=$marca[0]->idBrand;
+	if($idBrand==0){
+		//Inserción de la marca
+		$General->idCategory=1;
+		$General->picture="N/A";
+		$General->name=$nombreMarca;
+		$General->date=date("Y-m-d H:i:s");
+		$idBrand=$General->setInstancia('MpBrand');
+	}
 	foreach ($datos as $key => $value) {
 		switch ($key) {
 			case 0:

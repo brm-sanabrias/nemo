@@ -7,23 +7,14 @@ jQuery(document).ready(function($) {
         dataType: 'json',
         success: function(data) {
             marcas = data;
-
             $('.resultados-marcas').html('');
-
-
         },
         type: 'GET'
     });
 
-
-
-
     $('.keyboard-input').focusin(function() {
-
         animate("keyboard_parent", "bounceIn");
     }).focusout(function() {
-
-
     });
 
     $('.keyboard-input').keypress(function(event) {
@@ -31,11 +22,8 @@ jQuery(document).ready(function($) {
             /* Act on the event */
             searchBrand($(this).val());
         }
-
     });
 });
-
-
 
 $(function() {
 
@@ -173,12 +161,10 @@ function createBrand() {
                 $.ajax({
                     url: 'launcher.php',
                     done: function(data) {
-             
-                        
-                                   }
+                    }
                 });
             });
-            setTimeout(function(){ window.location = "redes.php"; }, 3000);
+           setTimeout(function(){ window.location = "redes.php"; }, 3000);
     } else {
         alert("Error marca");
     }

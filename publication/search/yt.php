@@ -15,7 +15,7 @@ $return = curl_exec($curl);
 curl_close($curl);
 $resultYoutube = json_decode($return, true);
 
-$fp = fopen('/Users/Sebas/Documents/BRM/GitHub/nemo/publication/search/results/resultYoutube.json', 'w');
+$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultYoutube.json', 'w');
 fwrite($fp, json_encode($resultYoutube));
 fclose($fp);
 ?>

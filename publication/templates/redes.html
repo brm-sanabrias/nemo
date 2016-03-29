@@ -115,13 +115,13 @@
   <div class="container">
     <div class="row">
       <div class="col m6 netbox-indicator">
-        <div class="circle netbox u-activo">
+        <div data-red="fb" class="circle netbox u-activo">
           <div class="netbox-fb"></div>
         </div>
-        <div class="circle netbox u-inactivo">
-          <div class="netbox-tw"></div>
+        <div data-red="tw" class="circle netbox u-inactivo">
+          <div class="netbox-tw mdi-content-send"></div>
         </div>
-        <div class="circle netbox u-inactivo">
+        <div data-red="yt" class="circle netbox u-inactivo">
           <div class="netbox-yt"></div>
         </div>
       </div>
@@ -136,10 +136,10 @@
             <form action="#">
               <div class="row">
                 <div class="input-field col l10">
-                  <input type="text" placeholder="Ingresa la URL de la red social" class="validate keyboard-input">
+                  <input id="urlRed" type="text" placeholder="Ingresa la URL de la red social" class="validate keyboard-input">
                 </div>
                 <div class="input-field col l2">
-                  <button type="submit" name="" class="btn green waves-effect waves-light"><i class="mdi-content-send"></i></button>
+                  <button id="buscarUrl" type="submit" name="" class="btn green waves-effect waves-light"><i class="mdi-content-send"></i></button>
                 </div>
               </div>
             </form>

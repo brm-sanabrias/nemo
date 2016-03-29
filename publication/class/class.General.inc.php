@@ -712,5 +712,23 @@ class General
 	   $tableDB->query("insert into nestum_rankingcron (idUsuario,idFacebook,nombreCompleto,nombres,apellidos,total) select  idUsuario,idFacebook,concat(nombres,' ',apellidos),nombres,apellidos,total from vista_nestum_ranking ORDER BY total DESC");
 	   return $tableDB;
    }
+   
+   public function picture($marca){
+   		
+   		$obj = DB_DataObject::Factory('MpBrand');
+		DB_DataObject::debugLevel(1);
+		printVar($obj);
+		$obj->name=$marca;
+		$find=$obj->find();
+		if($find <0) {
+			while($obj->fetch()){
+				echo $obj->picture;	
+			}
+		    
+		}else{
+		    echo 'ni mir..';
+		}
+		$obj->free();
+   }
 }
 ?>
