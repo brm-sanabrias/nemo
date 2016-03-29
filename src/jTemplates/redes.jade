@@ -11,11 +11,11 @@ block content
 		div.row
 			div.col.m6.netbox-indicator
 				
-				div.circle.netbox.u-activo
+				div.circle.netbox.u-activo(data-red="fb")
 					div.netbox-fb
-				div.circle.netbox.u-inactivo
-					div.netbox-tw
-				div.circle.netbox.u-inactivo
+				div.circle.netbox.u-inactivo(data-red="tw")
+					div.netbox-tw.mdi-content-send
+				div.circle.netbox.u-inactivo(data-red="yt")
 					div.netbox-yt
 		
 
@@ -25,17 +25,17 @@ block content
 				div.card.card-panel
 					div.card-content
 						ul.marcas-sugerencias
-
+	
 
 
 					div.card-reveal
 						form(action="#")
 							div.row
 								div.input-field.col.l10
-									input.validate.keyboard-input(type="text", placeholder="Ingresa la URL de la red social")
+									input#urlRed.validate.keyboard-input(type="text", placeholder="Ingresa la URL de la red social")
 
 								div.input-field.col.l2
-									button.btn.green.waves-effect.waves-light(type="submit", name="")
+									button#buscarUrl.btn.green.waves-effect.waves-light(type="submit", name="")
 										i.mdi-content-send
 				
 				button.waves-effect.waves-light.btn.green.mostrar-keyb.

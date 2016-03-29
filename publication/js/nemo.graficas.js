@@ -2,6 +2,16 @@
 
 $(document).ready(function () {
 
+  /* activar/desactivar redes*/
+
+  $('.row-numeros .card').click(function(event) {
+    /* Act on the event */
+    event.stopPropagation();
+
+    $(this).find('.card-content').toggleClass('grey darken-1');
+
+  });
+
   var card = $('.expand');
    card.on('click', function() {
 
@@ -29,11 +39,11 @@ $(document).ready(function () {
 
      }
      
-     // console.log( $(this).parent().position() );
 
      
    });
 
+  
 
 //relleno de icono de genero
 var offset;
@@ -480,6 +490,8 @@ window.onload = function(){
     responsive: true
     });
 };
+
+
 
 
 
