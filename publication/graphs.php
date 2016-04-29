@@ -1,6 +1,6 @@
 <?php
 require("db/requires.php");
-/*function random_color_part() {
+function random_color_part() {
     return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
 }
 
@@ -9,7 +9,7 @@ function random_color() {
 }
 
 
-$MongoNemo=new MongoNemo();
+/*$MongoNemo=new MongoNemo();
 $twConversations=$MongoNemo->getWordsTw();
 $numTwitter=count($twConversations);
 $arrayFechas=array();
@@ -64,15 +64,15 @@ foreach ($orderWords as $key => $value) {
 		$wordCloud[$i]['perc']=($value*100)/$total;
 		$wordCloud[$i]['med']=($wordCloud[$i]['perc']*30)/100;
 		$wordCloud[$i]['color']='#'.random_color();
-		$i++;
-
-}
+		$i++;}
+*/
+		
 if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	//BUSCO LA MARCA EN LA BASE DE DATOS
 	$General= new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 	$nombreMarca=$marca[0]->name;
-}*/
+}
 $smarty->assign('nombreMarca',$nombreMarca);
 $smarty->assign('wordCloud', $wordCloud);
 $smarty->display("graphs.html");

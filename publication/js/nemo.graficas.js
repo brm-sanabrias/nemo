@@ -1,14 +1,55 @@
 //cambio de tamaño de card seleccionada
 
+//variable de control que guarda el numero de puntos en la ultima grafica, es usada para borrar esos puntos a la hora de actualizar la grafica 
+var puntosLinea=0;
+
 $(document).ready(function () {
-
+  
+  /*botones de dia/mes/año para seleccionar rango  */
+   $('.filtros .btn').click(function(event) {
+     /*Para cambiar los rangos en el filtro*/
+        event.preventDefault();
+        event.stopPropagation();
+        
+        var tipo = $(this).attr('id');
+        var rango  = $('#rango');
+         
+        switch(tipo){
+          case 'dia':
+            var arreglo=ultimos15Dias();
+            var min=arreglo[14];
+            var max=arreglo[0];
+            rango.attr('max', max);
+            rango.attr('min', min);
+            $('.filtros .btn').removeClass('active');
+            $(this).addClass('active');
+          break;
+            
+          case 'mes':
+            rango.attr('max', '12');
+            rango.attr('min', '01');
+            $('.filtros .btn').removeClass('active');
+            $(this).addClass('active');
+          break;
+            
+          case 'year':
+            var actual = new Date();
+            var ano=actual.getFullYear();
+            var min=parseInt(ano)-2;
+            rango.attr('max', ano);
+            rango.attr('min', min);
+            $('.filtros .btn').removeClass('active');
+            $(this).addClass('active');
+          break;
+        };
+    });
   /* activar/desactivar redes*/
-
   $('.row-numeros .card').click(function(event) {
     /* Act on the event */
     event.stopPropagation();
 
-    $(this).find('.card-content').toggleClass('grey darken-1');
+    $(this).find('.card-content').toggleClass('grey');
+    $(this).find('.card-content').removeClass('darken-4');
 
   });
 
@@ -16,59 +57,36 @@ $(document).ready(function () {
    card.on('click', function() {
 
      $('.container').toggleClass('graficas');
-
-
      if( $(this).hasClass('dos') ){
-
        $(this).toggleClass('card-active card-active-dos');
-       
      }
      if( $(this).hasClass('uno') ){
        $(this).toggleClass('card-active card-active-uno');
-
      }if( $(this).hasClass('tres') ){
        $(this).toggleClass('card-active card-active-tres');
-
-
      }if( $(this).hasClass('cuatro') ){
        $(this).toggleClass('card-active card-active-cuatro');
-
      }
      if( $(this).hasClass('cinco') ){
            $(this).toggleClass('card-active card-active-cinco');
-
-     }
-     
-
-     
+     };
    });
-
-  
 
 //relleno de icono de genero
 var offset;
 
 function rellenarM(offset){
-
     $('#grad stop').attr('offset',offset+'%');
     $('.gen-man .white-text').html(offset+'%');
 };
 
 function rellenarF(offset){
-
     $('#grad2 stop').attr('offset',offset+'%');
-
     $('.gen-girl .white-text').html(offset+'%');
 };
-
 rellenarF(77.7);
 rellenarM(22.3);
-
-
 });
-
-
-
 
 $(document).ready(function() {
   if(!$('#myCanvas').tagcanvas({
@@ -95,182 +113,6 @@ var margin = {
    }
    var width = 900 - margin.left - margin.right;
    var height = 300 - margin.top - margin.bottom;
-
-// Parse the date / time
-var parseDate = d3.time.format("%d-%b-%y").parse;
-
-// Set the ranges
-var x = d3.time.scale().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
-
-// Define the axes
-var xAxis = d3.svg.axis().scale(x)
-    .orient("bottom").ticks(5);
-
-var yAxis = d3.svg.axis().scale(y)
-    .orient("left").ticks(5);
-
-// Define the line
-var valueline = d3.svg.line()
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.close); });
-    
-// Adds the svg canvas
-var svg = d3.select(".graph-demo").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-        .attr("transform", 
-              "translate(" + margin.left + "," + margin.top + ")");
-var lineSvg = svg.append("g"); 
-
-var focus = svg.append("g") 
-    .style("display", "none");
-
-// Get the data
-d3.csv("search/results/dataLineChart.csv", function(error, data) {
-
-    data.forEach(function(d) {
-        d.date = parseDate(d.date);
-        d.close = +d.close;
-    });
-
-    // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain([0, d3.max(data, function(d) { return d.close; })]);
-
-    // Add the valueline path.
-    lineSvg.append("path")
-        .attr("class", "line")
-        .style("stroke", "#827717")
-        
-        .attr("d", valueline(data));
-
-    // Add the X Axis
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-
-    // Add the Y Axis
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis);
-
-   // append the x line
-    focus.append("line")
-        .attr("class", "x")
-        .style("stroke", "blue")
-        .style("stroke-dasharray", "3,3")
-        .style("opacity", 0.5)
-        .attr("y1", 0)
-        .attr("y2", height);
-
-    // append the y line
-    focus.append("line")
-        .attr("class", "y")
-        .style("stroke", "blue")
-        .style("stroke-dasharray", "3,3")
-        .style("opacity", 0.5)
-        .attr("x1", width)
-        .attr("x2", width);
-
-    // append the circle at the intersection
-    focus.append("circle")
-        .attr("class", "y")
-        .style("fill", "none")
-        .style("stroke", "blue")
-        .attr("r", 4);
-
-    // place the value at the intersection
-    focus.append("text")
-        .attr("class", "y1")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 0.8)
-        .attr("dx", 8)
-        .attr("dy", "-.3em");
-    focus.append("text")
-        .attr("class", "y2")
-        .attr("dx", 8)
-        .attr("dy", "-.3em");
-
-    // place the date at the intersection
-    focus.append("text")
-        .attr("class", "y3")
-        .style("stroke", "white")
-        .style("stroke-width", "3.5px")
-        .style("opacity", 0.8)
-        .attr("dx", 8)
-        .attr("dy", "1em");
-    focus.append("text")
-        .attr("class", "y4")
-        .attr("dx", 8)
-        .attr("dy", "1em");
-    
-    // append the rectangle to capture mouse
-    svg.append("rect")
-        .attr("width", width)
-        .attr("height", height)
-        .style("fill", "none")
-        .style("pointer-events", "all")
-        .on("mouseover", function() { focus.style("display", null); })
-        .on("mouseout", function() { focus.style("display", "none"); })
-        .on("mousemove", mousemove);
-
-    function mousemove() {
-    var x0 = x.invert(d3.mouse(this)[0]),
-        i = bisectDate(data, x0, 1),
-        d0 = data[i - 1],
-        d1 = data[i],
-        d = x0 - d0.date > d1.date - x0 ? d1 : d0;
-
-    focus.select("circle.y")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")");
-
-    focus.select("text.y1")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")")
-        .text(d.close);
-
-    focus.select("text.y2")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")")
-        .text(d.close);
-
-    focus.select("text.y3")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")")
-        .text(formatDate(d.date));
-
-    focus.select("text.y4")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")")
-        .text(formatDate(d.date));
-
-    focus.select(".x")
-        .attr("transform",
-              "translate(" + x(d.date) + "," +
-                             y(d.close) + ")")
-                   .attr("y2", height - y(d.close));
-
-    focus.select(".y")
-        .attr("transform",
-              "translate(" + width * -1 + "," +
-                             y(d.close) + ")")
-                   .attr("x2", width + width);
-  }
-
-});
-
-
-
 
 /*PIE */
 var chart = AmCharts.makeChart( "pie", {
@@ -347,7 +189,7 @@ google.setOnLoadCallback(drawRegionsMap);
 /*datepicker*/
 var picker;
 
-$('.date button').click(function() {
+$('.date button, .date .datepicker').click(function() {
   /*para el evento para que se ejecute el evento del datepicker*/
 
   event.stopPropagation();
@@ -381,33 +223,162 @@ picker = $input.pickadate('picker');
 });
 
 $('body').on('click', function () {
-   
    if ( $('#contenedor-picker').hasClass('inset-x-date')  ) {
-
      picker.close();
      $('#contenedor-picker').removeClass('inset-x-date');
      $('.container').removeClass('offset-x-container');
      $('body').removeClass('offset-hidden');
-     console.log('hola');
-
    };
-
 });
 
-
 /*Linea de tiempo 'bonita'*/
-var data = {
-  labels : ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"],
+
+/*var nReloads = 0;
+var min = 1;
+var max = 10;
+var l =0;
+var trendingLineChart;
+function update() {
+  nReloads++;
+  var x = Math.floor(Math.random() * (max - min + 1)) + min;
+  var y = Math.floor(Math.random() * (max - min + 1)) + min;
+  trendingLineChart.addData([x, y], data.labels[l]);
+  trendingLineChart.removeData();
+  l++;
+  if( l == data.labels.length)
+    { l = 0;}
+}*/
+
+/*Redes sociales inicializadas en 10 5 y 3*/
+facebook=[5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,5, 5, 5, 5, 5, 5,5, 5, 5, 5, 5, 5, 5, 5, 5,5];
+twitter =[10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10, 10,10, 10];
+youtube =[3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,3, 3, 3, 3, 3, 3,3, 3, 3, 3, 3];
+
+/*Funcion para obtener los ultimos 30 dias calendario apartir de la fecha actual*/
+function ultimos30Dias(){
+  var actual = new Date();
+  var dia=actual.getDate();
+  var mes=actual.getMonth();
+  var ano=actual.getFullYear();
+  var fechaPasada= new Date(ano, mes, 0);//para obtener el ultimo dia del mes anterior al actual
+  var ultDiaMesPasado=fechaPasada.getDate();
+  var arr=[];
+  var temp='';
+  temp=dia;
+  for (var i = 1; i <= 30; i++) {
+      if (temp==1) {
+        arr.push(temp);
+        temp=ultDiaMesPasado;
+      }else{
+        arr.push(temp);
+        temp--;
+      }
+  }
+  return arr;
+}
+
+/*Funcion que devuelve el dia (en numero ) actual */
+function diaActual(){
+  var dias=ultimos15Dias();
+  return dias[0]; //valor maximo (fecha)
+}
+
+function mesActual(){
+  var actual = new Date();
+  var mes=actual.getMonth();
+  return mes;
+}
+
+function anoActual(){
+  var actual = new Date();
+  var ano=actual.getFullYear();
+  return ano;
+}
+/*Funcion que devuelve un arreglo con los ultimos 15 dias apartir de la fecha actual*/
+function ultimos15Dias(){
+  var actual = new Date();
+  var dia=actual.getDate();
+  var mes=actual.getMonth();
+  var ano=actual.getFullYear();
+  var fechaPasada= new Date(ano, mes, 0);//para obtener el ultimo dia del mes anterior al actual
+  var ultDiaMesPasado=fechaPasada.getDate();
+  var arr=[];
+  var temp='';
+  temp=dia;
+  for (var i = 1; i <= 15; i++) {
+      if (temp==1) {
+        arr.push(temp);
+        temp=ultDiaMesPasado;
+      }else{
+        arr.push(temp);
+        temp--;
+      }
+  }
+  return arr;
+}
+
+//Funcion que devuelve los ultimos seis meses a partir del mes actual en un arreglo eje mes actual = abril a[nov,dic,ene,feb,marz,abril]
+function ultimos6Meses(){
+  var mes=mesActual();
+  mes=parseInt(mes);
+  var ret=[];
+  var arr=['01','02','03','04','05','06','07','08','09','10','11','12'];
+  var temp=mes;
+  for (var i = 1; i <= 6; i++) {
+    if (temp==0) {
+      ret.push(arr[temp]);
+      temp = 12;
+    }else{
+      ret.push(arr[temp]);
+    }//if-else
+    temp--;
+  }//for
+  return ret;
+}
+/*funcion que devuelve un arreglo con los dias entre un rango de de fechas */
+function getArrDias(min, max){
+  var arr=[];
+  for ( min; min <= max; min++) {
+    arr.push(min);
+  }
+  return arr;
+}
+//esta funcion cambia el num del mes por su equivalente en letras ej 4 => Abr
+function cambioLabel(mes){
+  var letras='';
+  switch(mes){
+    case 1:letras ='Ene';break;
+    case 2:letras ='Feb' ;break;
+    case 3:letras ='Mar' ;break;
+    case 4:letras ='Abr' ;break;
+    case 5:letras ='May' ;break;
+    case 6:letras ='Jun' ;break;
+    case 7:letras ='Jul' ;break;
+    case 8:letras ='Ago' ;break;
+    case 9:letras ='Sep' ;break;
+    case 10:letras ='Oct' ;break;
+    case 11:letras ='Nov' ;break;
+    case 12:letras ='Dic' ;break;
+  }
+  return letras;
+}
+/*funcion que pinta la linea de tiempo @facebook arreglo con datos @twitter arreglo con datos @youtube arreglo con datos @rango arr con los dias*/
+function dibujaLineaTiempo(facebook,twitter,youtube,rango){
+  arr=rango;
+  puntosLinea=arr.length;
+  var data='';
+   data = {
+  labels : arr,
   datasets : [
     {
-      label: "Facebook",
+      label: "Json",
       fillColor : "rgba(255, 255, 255, 0.6)",
       strokeColor : "#4d6ab0",
       pointColor : "#4d6ab0",
       pointStrokeColor : "#ffffff",
       pointHighlightFill : "#ffffff",
       pointHighlightStroke : "#ffffff",
-      data: [1, 5, 2, 4, 8, 5, 8, 8, 4, 2, 1, 7, 3, 6]
+      data:facebook 
     },
     {
       label: "Twitter",
@@ -417,7 +388,7 @@ var data = {
       pointStrokeColor : "#ffffff",
       pointHighlightFill : "#80deea",
       pointHighlightStroke : "#80deea",
-      data: [6, 2, 9, 2, 5, 10, 4, 2, 5, 10,8, 5, 8 ]
+      data: twitter
     },
     {
       label: "YouTube",
@@ -427,31 +398,12 @@ var data = {
       pointStrokeColor : "#ffffff",
       pointHighlightFill : "#80deea",
       pointHighlightStroke : "#80deea",
-      data: [8, 4, 2, 1, 7, 3, 6, 5, 2, 9, 2, 5, 10, 4]
+      data: youtube
     }
   ]
 };
 
-var nReloads = 0;
-var min = 1;
-var max = 10;
-var l =0;
-var trendingLineChart;
-function update() {
-  nReloads++;
-
-  var x = Math.floor(Math.random() * (max - min + 1)) + min;
-  var y = Math.floor(Math.random() * (max - min + 1)) + min;
-  trendingLineChart.addData([x, y], data.labels[l]);
-  trendingLineChart.removeData();
-  l++;
-  if( l == data.labels.length)
-    { l = 0;}
-}
-// setInterval(update, 3000);
-
-window.onload = function(){
-  var trendingLineChart = document.getElementById("timeline").getContext("2d");
+ var trendingLineChart = document.getElementById("timeline").getContext("2d");
   window.trendingLineChart = new Chart(trendingLineChart).Line(data, {    
     scaleShowGridLines : true,///Boolean - Whether grid lines are shown across the chart    
     scaleGridLineColor : "rgba(255,255,255,0.4)",//String - Colour of the grid lines    
@@ -489,9 +441,260 @@ window.onload = function(){
     tooltipXOffset: 10,// Number - Pixel offset from point x to tooltip edge
     responsive: true
     });
-};
+}
+  
+  /*Script para pintar linea con 30 dias calendario con datos de mongo*/
 
+dibujaLineaTiempo(facebook,twitter,youtube,ultimos30Dias());
+/*funcion para obtener un arr con los dias entre un rango de dias */
 
+/*pinta los ultimos treinta dias */
+setTimeout(function(){
+  $.ajax({
+  url:'lineaTiempo.php',
+  dataType:'json',
+  type:'POST',
+  data:{
+    asd:'asd'
+  },success:function(data){
+     for (var i = 0; i < puntosLinea; i++) {
+                trendingLineChart.removeData();
+              }
+              var dias=ultimos30Dias();
+              puntosLinea=dias.length;
+              for (var i = 0; i < dias.length; i++) {
+                trendingLineChart.addData([data[0][i], data[1][i],data[2][i]], dias[i]);
+              }
+  }
+});
+},5000);
 
+$(document).on('change','#rango',function(){
+  var rango=$('#rango').val();
+  var filtro = $('.botones-fecha').find('a.active').attr('id');
+  switch(filtro){
+          case 'dia':
+            var min = rango;
+            var max = diaActual();
+           $.ajax({
+             url:'lineaTiempo.php',
+             dataType:'json',
+             type:'POST',
+             data:{
+               dia:'dia',
+               min:min,
+               max:max
+             },success:function(data){
+             
+              /*For Para remover los datos de la anterior grafica*/
+             for (var i = 0; i < puntosLinea; i++) {
+                trendingLineChart.removeData();
+              }
+              /*obtiene un array con los dias que comprenden el periodo de tiempo entre min y max, y crear la nueva grafica
+              *addData primer parametro el valor para c/u de los puntos y cada uno de los elementos a medir en este caso 
+              *[data[0]->facebook,data[1]->twitter,data[2]->youtube]
+              *addData segundo parametro unidades de medida sobre el eje x en este caso los ultimo quince dias (como maximo) 
+              */
+              var dias=getArrDias(min,max);
+              puntosLinea=dias.length;
+              for (var i = 0; i < data[0].length; i++) {
+                trendingLineChart.addData([data[0][i], data[1][i],data[2][i] ], dias[i]);
+              }
+             }
+           });
+          break;
+            
+          case 'mes':
+            var band=0;
+            var min = rango;
+            var max = mesActual();
+            //indaga si el mes actual es mayor al mes seleccionado para asignar el año a dicho mes
+            if (max>min) {
+              max='01-'+mesActual()+'-'+anoActual();
+              min='01-'+min+'-'+parseInt(anoActual());
+            }else{
+              max='01-'+mesActual()+'-'+anoActual();
+              min='01-'+min+'-'+(parseInt(anoActual())-1);
+            }
+           $.ajax({
+             url:'lineaTiempo.php',
+             dataType:'json',
+             type:'POST',
+             data:{
+               mes:'mes',
+               min:min,
+               max:max
+             },success:function(data){
+                //For Para remover los datos de la anterior grafica
+               for (var i = 0; i < puntosLinea; i++) {
+                  trendingLineChart.removeData();
+                }
+            
+              //*obtiene un array con los dias que comprenden el periodo de tiempo entre min y max, y crear la nueva grafica
+              //*addData primer parametro el valor para c/u de los puntos y cada uno de los elementos a medir en este caso 
+              //*[data[0]->facebook,data[1]->twitter,data[2]->youtube]
+              //*addData segundo parametro unidades de medida sobre el eje x en este caso los ultimo 6 meses (como maximo) 
+              //*
+              var label='';
+              puntosLinea=data[3].length;
+              for (var i = 0; i < data[3].length; i++) {
+                label=cambioLabel( data[3][i]);//cambio los numeros de los meses por su equivalente en letras y lo paso como label en la grafica
+                trendingLineChart.addData([data[0][i], data[1][i],data[2][i]],label);
+              }
+             }
+           });
+          break;
+            
+          case 'year':
+            var min = rango;
+            var max = anoActual()+'-'+mesActual()+'-'+diaActual();
+           $.ajax({
+              url:'lineaTiempo.php',
+             dataType:'json',
+             type:'POST',
+             data:{
+               year:'year',
+               min:min,
+               max:max
+             },success:function(data){
+                //For Para remover los datos de la anterior grafica
+               for (var i = 0; i < puntosLinea; i++) {
+                  trendingLineChart.removeData();
+                }
+            
+              //*obtiene un array con los dias que comprenden el periodo de tiempo entre min y max, y crear la nueva grafica
+              //*addData primer parametro el valor para c/u de los puntos y cada uno de los elementos a medir en este caso 
+              //*[data[0]->facebook,data[1]->twitter,data[2]->youtube]
+              //*addData segundo parametro unidades de medida sobre el eje x en este caso los ultimos 36 meses (como maximo) 
+              //*
+              var label='';
+              puntosLinea=data[3].length;
+              for (var i = 0; i < data[3].length; i++) {
+                label=cambioLabel( data[3][i]);
+                trendingLineChart.addData([data[0][i], data[1][i],data[2][i]],label);
+             }
+             }
+           });
+          break;
+        };
+});
+var inputDos=''; //valor del segundo picker
+var inputUno=''; //valor del primer picker
+var spans=$('span'); //objetos span mediante los cuales accedemos a los inputs de de los pickers
+var desde=''; //objeto input del date picker desde
+var hasta=''; // objeto input del date picker hasta 
+//var inUno=false; // vandera que indica si ya contamos con un valor nuevo de input uno 
+//var inDos=false; // vandera que indica si ya contamos con un valor nuevo de input dos 
 
+/*recorrer los span para obtener los inputs*/
+for (var i = 0; i < spans.length; i++) {
+  if ($(spans[i]).html()=='Desde') {
+    desde=$(spans[i]).next();
+  }
+  if ($(spans[i]).html()=='Hasta') {
+    hasta=$(spans[i]).next();
+  }
+}
+/*funcion que cambia el formato de la fecha obtenido de los pickers ej 23 April, 2016 => 2016-04-23*/
+function cambiaFormatoFecha(input){
+  var split = input.split(',');
+  var splitDos = split[0].split(' ');
+  var dia=splitDos[0];
+  var mes=splitDos[1];
+  var ano=split[1];
+  switch(mes){
+    case 'January':mes='01' ;break;
+    case 'February':mes='02' ;break;
+    case 'March':mes='03' ;break;
+    case 'April':mes='04' ;break;
+    case 'May':mes='05' ;break;
+    case 'June':mes='06' ;break;
+    case 'July':mes='07' ;break;
+    case 'August':mes='08' ;break;
+    case 'September':mes='09' ;break;
+    case 'October':mes='10' ;break;
+    case 'November':mes='11' ;break;
+    case 'December':mes='12' ;break;
+  }
+  var re=ano+'-'+mes +'-'+dia;
+  return re; 
+}
+/*Pendiente al cambio en el input de picker uno (desde)*/
+$(document).on('change',desde,function(){
+  inputUno=$(desde).val();
+  //inUno=true;
+  if (inputDos!='' && inputUno!='') {
+   var fechaUno=cambiaFormatoFecha(inputUno);
+   var fechaDos=cambiaFormatoFecha(inputDos);
+   
+   $.ajax({
+     url:'lineaTiempo.php',
+     dataType:'json',
+     type:'POST',
+     data:{
+       picker:'picker',
+       min:fechaUno,
+       max:fechaDos
+     },success:function(data){
+        //For Para remover los datos de la anterior grafica
+       for (var i = 0; i < puntosLinea; i++) {
+          trendingLineChart.removeData();
+        }
+      inputDos='';
+      inputUno='';
+      //*obtiene un array con los dias que comprenden el periodo de tiempo entre min y max, y crear la nueva grafica
+      //*addData primer parametro el valor para c/u de los puntos y cada uno de los elementos a medir en este caso 
+      //*[data[0]->facebook,data[1]->twitter,data[2]->youtube]
+      //*addData segundo parametro unidades de medida sobre el eje x en este caso los ultimos 36 meses (como maximo) 
+      //*
+      var label='';
+      puntosLinea=data[3].length;
+      for (var i = 0; i < data[3].length; i++) {
+        //label=cambioLabel( data[3][i]);
+        trendingLineChart.addData([data[0][i], data[1][i],data[2][i]],data[3][i]);
+     }//fin for
+     }//fn success
+   });
+   
+  }//fin if 
+});
 
+/*Pendiente al cambio en el input de picker dos (hasta)*/
+$(document).on('change',hasta,function(){
+  inputDos=$(hasta).val();
+ // inDos=true;
+  if (inputDos!='' && inputUno!='') {
+   var fechaUno=cambiaFormatoFecha(inputUno);
+   var fechaDos=cambiaFormatoFecha(inputDos);
+   $.ajax({
+     url:'lineaTiempo.php',
+     dataType:'json',
+     type:'POST',
+     data:{
+       picker:'picker',
+       min:fechaUno,
+       max:fechaDos
+     },success:function(data){
+        //For Para remover los datos de la anterior grafica
+       for (var i = 0; i < puntosLinea; i++) {
+          trendingLineChart.removeData();
+        }
+      inputDos='';
+      inputUno='';/*]]]]]]]]]]]]]]]]]]]]]]]]]]]]Qude aqui[[[[[[[[[[[[[[[[[[[[[[[[[[*/
+      //*obtiene un array con los dias que comprenden el periodo de tiempo entre min y max, y crear la nueva grafica
+      //*addData primer parametro el valor para c/u de los puntos y cada uno de los elementos a medir en este caso 
+      //*[data[0]->facebook,data[1]->twitter,data[2]->youtube]
+      //*addData segundo parametro unidades de medida sobre el eje x en este caso los ultimos 36 meses (como maximo) 
+      //*
+      var label='';
+      puntosLinea=data[3].length;
+      for (var i = 0; i < data[3].length; i++) {
+        //label=cambioLabel( data[3][i]);
+        trendingLineChart.addData([data[0][i], data[1][i],data[2][i]],data[3][i]);
+     }//fin for
+     }//fn success
+   });
+  }
+});
+//console.log(desde);
+//console.log(hasta);

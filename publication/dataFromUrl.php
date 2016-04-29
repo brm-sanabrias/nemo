@@ -90,7 +90,7 @@ if (isset($_POST['red']) &&
             $search = $dividir['1'];  
             $key_api="AIzaSyC1PB5ml8U32_sqIknk33VJZb5CmtQ1v0Q";
             $limit=25;
-          //  printVar($search,'search');
+           //printVar($search,'search');
             $order="relevance";
             $url = "https://www.googleapis.com/youtube/v3/search?key=".$key_api."&part=snippet&type=channel&maxResults=".$limit."&order=".$order."&q=".$search;
             $curl = curl_init($url);

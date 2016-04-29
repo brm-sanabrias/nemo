@@ -6,6 +6,27 @@ var totalFollowers=0;
 $marcasSuge=$('.marcas-sugerencias');
 $tituloRedes=$('.redes_sociales2');
 $noTengo=$('.no-tengo');
+var fantasma=false;
+$.ajax({
+	dataType:'json',
+	url:'json.php',
+	type:'POST',
+	success:function(){
+		console.log('aviso de success de ajax que dispara casper');
+		cambiarFantasma();
+		
+	}
+}).done(function(){
+	console.log('aviso del done del ajax de llamado a casaper');
+	cambiarFantasma();
+}).always(function() {
+		console.log("always de ajax cambia fantasma");
+		cambiarFantasma();
+	});
+
+function cambiarFantasma(){
+	fantasma=true;
+}
 jQuery(document).ready(function($) {
 	
 	$.getJSON( "search/results/resultFacebook.json?"+new Date().getTime(), function( data ) {
@@ -285,10 +306,17 @@ setLoader();
 		data: {datos:SelectionSerialize}
 	})
 	.done(function() {
-		window.setTimeout(function () {
-		window.location="web.php";
-		console.log("success");
-		},1000);
+	var inter=setInterval(function(){
+			console.log('aviso de intervalo');
+			if (fantasma==true) {
+				clearInterval(inter);
+				window.setTimeout(function () {
+				window.location="web.php";
+				console.log("success");
+				},1000);
+			}
+		},5000);
+		
 	})
 	.fail(function() {
 		console.log("error");

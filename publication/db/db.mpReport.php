@@ -2,18 +2,17 @@
 /**
  * Table Definition for mp_report
  */
-require_once 'DB/DataObject.php';
 
 class DataObject_MpReport extends DB_DataObject 
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
-    public $__table = 'mp_report';           // table name
-    public $idReport;                        // int(4)  primary_key not_null
-    public $idBrand;                         // int(4)   not_null
-    public $date;                            // datetime   not_null default_0000-00-00%2000%3A00%3A00
-    public $recurrence;                      // varchar(45)   not_null
+    public $__table = 'mp_report';                       // table name
+    public $idReport;                        // int(11)  not_null primary_key auto_increment
+    public $idBrand;                         // int(11)  not_null multiple_key
+    public $date;                            // datetime(19)  not_null binary
+    public $recurrence;                      // string(45)  not_null
 
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObject_MpReport',$k,$v); }
@@ -35,16 +34,13 @@ class DataObject_MpReport extends DB_DataObject
 
     function sequenceKey() // keyname, use native, native name
     {
-         return array('idReport', false, false);
+         return array('idBrand', true, false);
     }
 
     function defaults() // column default values 
     {
          return array(
-             'idReport' => null,
-             'idBrand' => null,
-             'date' => null,
-             'recurrence' => null,
+             'recurrence' => '',
          );
     }
 

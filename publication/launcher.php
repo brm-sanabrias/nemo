@@ -125,6 +125,12 @@ if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	$General= new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 	$terminoBuscar=$marca[0]->name;
+	//cambia estado para que mrplow haga lo suyo 
+	$mrplow =new Mrplow();
+	$id =$_COOKIE['idBrand'];
+
+	$mrplow->lunchReport($id,1,1); //lunchReport($idBrand,$idSocialNetwork,$idInteraction){
+	$mrplow->lunchReport($id,2,1);
 	launchFacebook($terminoBuscar);
 	launchTwitter($terminoBuscar);
 	launchYoutube($terminoBuscar);

@@ -1,6 +1,6 @@
 <?php
+//error_reporting(E_ALL);
 require("db/requires.php"); 
-
 // Open a directory, and read its contents
 $dir = "search/pantallazo/";
 $images=array();

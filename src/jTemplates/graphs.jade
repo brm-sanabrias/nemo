@@ -6,7 +6,7 @@ block title
 
 block content
 	#contenedor-picker
-	div.container
+	div.container.container-graficas
 		//Graphs
 		div.row
 			//Timeline
@@ -33,7 +33,7 @@ block content
 							//- div.graph-demo
 							canvas#timeline(height="70")
 							///-Grafica
-					div.card-action.waves-effect.waves-block.waves-light.white
+					// div.card-action.waves-effect.waves-block.waves-light.white
 
 			///-Timeline
 			
@@ -62,7 +62,7 @@ block content
 								//-		#{x}
 
 					//Mapas
-					div.card-action.waves-effect.waves-block.waves-light.white.tres.expand
+					//div.card-action.waves-effect.waves-block.waves-light.white.tres.expand
 						p.margin Usuarios por zona
 						div.close
 							i.fa.fa-times-circle
@@ -82,7 +82,7 @@ block content
 							div#pie
 
 					//Géneros
-					div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light.cinco.expand
+					//div.card-action.deep-purple.lighten-2.waves-effect.waves-block.waves-light.cinco.expand
 						div.close
 							i.fa.fa-times-circle
 						p.margin.white-text Géneros
@@ -136,7 +136,7 @@ block content
 
 			div.col.l4
 				div.card
-					div.card-content.red.darken-2.waves-effect.waves-block.waves-light
+					div.card-content.blue.darken-4.waves-effect.waves-block.waves-light
 						
 						//- div.switch
 						//- 	label.red-text.text-lighten-5 Ocultar
@@ -144,8 +144,8 @@ block content
 						//- 		span.lever
 						//- 		| Mostrar
 
-						i.fa.fa-youtube.red-text
-						p#tota-yt 99999999
+						i.fa.fa-instagram.indigo-text.darken-4
+						p#tota-insta.blue-text.darken-4 99999999
 
 
 		///-Redes Sociales
@@ -153,27 +153,27 @@ block content
 		div.row.filtros
 			div.card
 				//fecha inicial
-				div.col.l3.date
+				div#desde.col.l3.date
 					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
 					span Desde
 					input.datepicker(type="date")
 				///-fecha inicial
 				//fecha final
-				div.col.l3.date
+				div#hasta.col.l3.date
 					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
 					span Hasta
 					input.datepicker(type="date")
 				///-fecha final
 				//dma
-				div.col.l3
-					a.btn.waves-effect.waves-light.light-blue.darken-4 Día
-					a.btn.waves-effect.waves-light.light-blue.darken-3 Mes
-					a.btn.waves-effect.waves-light.light-blue.darken-2 Año
+				div.col.l3.botones-fecha
+					a#dia.btn.waves-effect.waves-light.light-blue.darken-4 Día
+					a#mes.btn.waves-effect.waves-light.light-blue.darken-3 Mes
+					a#year.btn.waves-effect.waves-light.light-blue.darken-2 Año
 				///-dma
 				//rango
 				div.col.l3.range
 					p.range-field
-						input.active(type="range", min="1", max="30")
+						input#rango.active(type="range")
 				///-rango
 
 

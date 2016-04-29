@@ -5,6 +5,7 @@
     $string = file_get_contents("/home/ubuntu/workspace/publication/search/results/resultGoogle.json");
 	$json = json_decode($string, true);
    shell_exec('rm -R /home/ubuntu/workspace/publication/search/pantallazo/*');
+   
 	foreach ($json as $key => $value) {
 	 	///LANZO CASPER
 	 	//echo "Desde php".$value.PHP_EOL;

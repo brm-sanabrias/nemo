@@ -2,20 +2,19 @@
 /**
  * Table Definition for mp_report_log
  */
-require_once 'DB/DataObject.php';
 
 class DataObject_MpReportLog extends DB_DataObject 
 {
     ###START_AUTOCODE
     /* the code below is auto generated do not remove the above tag */
 
-    public $__table = 'mp_report_log';       // table name
-    public $idReportLog;                     // int(4)  primary_key not_null
-    public $idReport;                        // int(4)   not_null
-    public $startDate;                       // datetime   not_null default_0000-00-00%2000%3A00%3A00
-    public $endDate;                         // datetime   not_null default_0000-00-00%2000%3A00%3A00
-    public $date;                            // datetime   not_null default_0000-00-00%2000%3A00%3A00
-    public $URL;                             // text  
+    public $__table = 'mp_report_log';                   // table name
+    public $idReportLog;                     // int(11)  not_null primary_key auto_increment
+    public $idReport;                        // int(11)  not_null multiple_key
+    public $startDate;                       // datetime(19)  not_null binary
+    public $endDate;                         // datetime(19)  not_null binary
+    public $date;                            // datetime(19)  not_null binary
+    public $URL;                             // blob(65535)  blob
 
     /* Static get */
     function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObject_MpReportLog',$k,$v); }
@@ -28,7 +27,7 @@ class DataObject_MpReportLog extends DB_DataObject
              'startDate' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME + DB_DATAOBJECT_NOTNULL,
              'endDate' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME + DB_DATAOBJECT_NOTNULL,
              'date' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME + DB_DATAOBJECT_NOTNULL,
-             'URL' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_TXT,
+             'URL' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_BLOB,
          );
     }
 
@@ -39,18 +38,13 @@ class DataObject_MpReportLog extends DB_DataObject
 
     function sequenceKey() // keyname, use native, native name
     {
-         return array('idReportLog', false, false);
+         return array('idBrand', true, false);
     }
 
     function defaults() // column default values 
     {
          return array(
-             'idReportLog' => null,
-             'idReport' => null,
-             'startDate' => null,
-             'endDate' => null,
-             'date' => null,
-             'URL' => null,
+             'URL' => '',
          );
     }
 
