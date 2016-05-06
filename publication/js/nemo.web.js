@@ -2,8 +2,7 @@ var numPag=0;
 //Pintamos check sobre web seleccionadas
 $(document).on('click',  '.screen' , function () {
 	 if ( $('.mdi-navigation-check', this).hasClass('hide') ) {
-	 	console.log("entre");
-		$('.mdi-navigation-check', this).addClass('animated bounceIn');
+	 	$('.mdi-navigation-check', this).addClass('animated bounceIn');
 		$('.mdi-navigation-check', this).removeClass('hide');
 		$('.mostrar-keyb').addClass('disabled');
 		numPag++;
@@ -20,7 +19,7 @@ $(document).on('click',  '.screen' , function () {
 		$('.mdi-navigation-check', this).addClass('hide');
 	};
 	if ($('.screen .hide').length == $('.mdi-navigation-check').length ) {
-		$('.continuar-bottom').removeClass('blue').addClass('orange darken-4').html('No tengo sitio web <i class="right mdi-navigation-close"></i>');
+		$('.continuar-bottom').removeClass('blue').addClass('orange darken-4').html('No tengo sitio web <i class="right mdi-content-block"></i>');
 		$('.mostrar-keyb').removeClass('disabled');
 	};
 });
@@ -41,14 +40,13 @@ $(document).on('click', '.continuaruno', function(event) {
 	/* Act on the event */
 	var selector = $('.mdi-navigation-check');
 	var webs = new Array();
-	for (var i = 0; i < selector.length; i++) {
-		if ($(selector[i]).hasClass('hide')){
+	$.each( $('.mdi-navigation-check'), function( index, value ) {
+	if ($(this).hasClass('hide')){
 		}else{
-			var web=$(selector[i]).parent().siblings('p').text();
-			var split = web.split("'");
-			webs.push(split[1]);
+			var web=$(this).parent().siblings('p').text();
+			webs.push(web);
 		}
-	} 
+	});
 	if (webs.length >0) {
 		webss=JSON.stringify(webs);
 		$.ajax({
@@ -75,7 +73,7 @@ $(document).on('click', '.continuaruno', function(event) {
 			if ( webs.length == 1 ) {
 				
 				
-				$(formulario).append('<div class="col l12"><div class="card card-panel"><div class="row"><div class="input-field "><i class="mdi-action-account-circle prefix"></i><input type="hidden" value="'+webs[i]+'"><input type="text" name="usuario" class="validate keyboard-input"><label for="usuario">Usuario '+webs[i]+'</label></div></div><div class="row"><div class="input-field "><i class="mdi-action-lock-outline prefix"></i><input type="text" name="pass" class="validate keyboard-input pass"><label for="pass">Contraseña</label></div></div></div></div>');
+				$(formulario).append('<div class="col l6"><div class="card card-panel"><div class="row"><div class="input-field "><i class="mdi-action-account-circle prefix"></i><input type="hidden" value="'+webs[i]+'"><input type="text" name="usuario" class="validate keyboard-input"><label for="usuario">Usuario '+webs[i]+'</label></div></div><div class="row"><div class="input-field "><i class="mdi-action-lock-outline prefix"></i><input type="text" name="pass" class="validate keyboard-input pass"><label for="pass">Contraseña</label></div></div></div></div>');
 				
 			}else if ( webs.length == 2 ){
 				
@@ -85,7 +83,7 @@ $(document).on('click', '.continuaruno', function(event) {
 				$(formulario).append('<div class="col l4"><div class="card card-panel"><div class="row"><div class="input-field "><i class="mdi-action-account-circle prefix"></i><input type="hidden" value="'+webs[i]+'"><input type="text" name="usuario" class="validate keyboard-input"><label for="usuario">Usuario '+webs[i]+'</label></div></div><div class="row"><div class="input-field "><i class="mdi-action-lock-outline prefix"></i><input type="text" name="pass" class="validate keyboard-input pass"><label for="pass">Contraseña</label></div></div></div></div>');
 			}else if( webs.length >= 4 ){
 				
-				$(formulario).append('<div class="col l6"><div class="card card-panel"><div class="row"><div class="input-field "><i class="mdi-action-account-circle prefix"></i><input type="hidden" value="'+webs[i]+'"><input type="text" name="usuario" class="validate keyboard-input"><label for="usuario">Usuario '+webs[i]+'</label></div></div><div class="row"><div class="input-field "><i class="mdi-action-lock-outline prefix"></i><input type="text" name="pass" class="validate keyboard-input pass"><label for="pass">Contraseña</label></div></div></div></div>');
+				$(formulario).append('<div class="col l4"><div class="card card-panel"><div class="row"><div class="input-field "><i class="mdi-action-account-circle prefix"></i><input type="hidden" value="'+webs[i]+'"><input type="text" name="usuario" class="validate keyboard-input"><label for="usuario">Usuario '+webs[i]+'</label></div></div><div class="row"><div class="input-field "><i class="mdi-action-lock-outline prefix"></i><input type="text" name="pass" class="validate keyboard-input pass"><label for="pass">Contraseña</label></div></div></div></div>');
 				
 			}
 		

@@ -1,0 +1,13 @@
+<?php
+require("./".$prefijo."db/db.mpBrand.php");
+require("./".$prefijo."db/db.mpBrandXSocialNetwork.php");
+require("./".$prefijo."db/db.mpCategory.php");
+require("./".$prefijo."db/db.mpIdTemp.php");
+require("./".$prefijo."db/db.mpInteraction.php");
+require("./".$prefijo."db/db.mpReport.php");
+require("./".$prefijo."db/db.mpReportLog.php");
+require("./".$prefijo."db/db.mpSocialNetwork.php");
+require("./".$prefijo."db/db.mpToken.php");
+require("./".$prefijo."db/db.mpUserFb.php");
+require("./".$prefijo."db/db.mpViewFanpage.php");
+?>

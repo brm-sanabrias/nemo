@@ -11,8 +11,12 @@ if (is_dir($dir)){
       $archivo=$dir.$file;
       
       if(is_file($archivo) && $archivo!="search/pantallazo/.DS_Store"){
-       // echo "filename:" . $file . "<br>";
-        $images[$i]=$file;
+ 
+        $images[$i]['imagen']=$file;
+        $nombre=str_replace("'","",$file);
+        $nombre=str_replace(".png","",$nombre);
+       $images[$i]['nombre']=$nombre;
+        //$images[$i]->imagen=$file;
         $i++;
       }
     }

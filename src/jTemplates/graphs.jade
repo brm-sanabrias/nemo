@@ -8,11 +8,11 @@ block content
 	#contenedor-picker
 	div.container.container-graficas
 		//Graphs
-		div.row
+		div#print-pdf.row
 			//Timeline
 			div.col.s4.md.l6
 
-				div.card.uno.expand
+				div#print-timeline.card.uno.expand
 					div.card-content.waves-effect.waves-block.waves-light.cyan
 						div.close
 							i.fa.fa-times-circle
@@ -108,70 +108,94 @@ block content
 		///-Graphs
 		//Redes Sociales
 		div.row.row-numeros.row-numeros-2
-			div.col.l4
+			div.col.l3.stat-red 
 				div.card
-					div.card-content.blue.darken-1.waves-effect.waves-block.waves-light
-
-						//- div.switch
-						//- 	label.blue-text.text-lighten-5 Ocultar
-						//- 		input(type="checkbox", checked)
-						//- 		span.lever
-						//- 		| Mostrar
-
+					div.col.l3.icono
 						i.fa.fa-facebook.blue-text
-						p#total-fb 99999999
+					div.card-content.blue.darken-1.waves-effect.waves-block.waves-light
+					
+						div.col.l6
+							| {#assign var='random1' value=1|rand:99999999#}
+							| {#assign var='random2' value=1|rand:99999999#}
+							| {#assign var='random3' value=1|rand:99999999#}
+							| {#assign var='random4' value=1|rand:99999999#}
+							| {#assign var='random5' value=1|rand:99999999#}
+							| {#assign var='random6' value=1|rand:99999999#}
+							p.total-fb {#$random1#}
+							p.total-fb {#$random2#} 
+						
+						div.col.l2
+							i.mdi-action-trending-neutral
 
-			div.col.l4
+			div.col.l3.stat-red
 				div.card
+					div.col.l3.icono
+						i.fa.fa-twitter.light-blue-text.waves-effect.waves-block.waves-light
 					div.card-content.light-blue.lighten-2.waves-effect.waves-block.waves-light
 						
-						//- div.switch
-						//- 	label.light-blue-text.text-lighten-5 Ocultar
-						//- 		input(type="checkbox", checked)
-						//- 		span.lever
-						//- 		| Mostrar
-
-						i.fa.fa-twitter.light-blue-text.waves-effect.waves-block.waves-light
-						p#total-tw 99999999
-
-			div.col.l4
-				div.card
-					div.card-content.blue.darken-4.waves-effect.waves-block.waves-light
+						
+								
+						div.col.l6
+							p.total-tw {#$random3#}
+							p.total-tw {#$random4#} 
+						
+						div.col.l2
+							i.mdi-action-trending-up
+							
+			div.col.l3
+				div.card.stat-red
+					div.col.l3.icono
+						i.fa.fa-instagram.brown-text
+					
+					div.card-content.brown.lighten-1.waves-effect.waves-block.waves-light
 						
 						//- div.switch
 						//- 	label.red-text.text-lighten-5 Ocultar
 						//- 		input(type="checkbox", checked)
 						//- 		span.lever
 						//- 		| Mostrar
+						
+							
+						div.col.l6
+							p.tota-insta {#$random5#} 
+							p.tota-insta {#$random6#} 
+						
+						div.col.l2
+							i.mdi-action-trending-down
 
-						i.fa.fa-instagram.indigo-text.darken-4
-						p#tota-insta.blue-text.darken-4 99999999
-
-
+			div.col.l3.botones-fecha
+					a#dia.btn.waves-effect.waves-light.light-blue.darken-4.
+						<i class="mdi-toggle-radio-button-on"></i>	Día
+					a#mes.btn.waves-effect.waves-light.light-blue.darken-3.
+						<i class="mdi-toggle-radio-button-on"></i> Mes
+					a#year.btn.waves-effect.waves-light.light-blue.darken-2.
+						<i class="mdi-toggle-radio-button-on"></i> Año
 		///-Redes Sociales
 
 		div.row.filtros
 			div.card
 				//fecha inicial
-				div#desde.col.l3.date
-					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
+				div#desde.col.l1.date
 					span Desde
-					input.datepicker(type="date")
+					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
+					
+					input.datepicker.hide(type="date")
 				///-fecha inicial
 				//fecha final
-				div#hasta.col.l3.date
-					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
+				div#hasta.col.l1.date
 					span Hasta
-					input.datepicker(type="date")
+					button.btn-floating.waves-effect.waves-light.orange.mdi-editor-insert-invitation
+					
+					input.datepicker.hide(type="date")
 				///-fecha final
 				//dma
-				div.col.l3.botones-fecha
-					a#dia.btn.waves-effect.waves-light.light-blue.darken-4 Día
-					a#mes.btn.waves-effect.waves-light.light-blue.darken-3 Mes
-					a#year.btn.waves-effect.waves-light.light-blue.darken-2 Año
+				// div.col.l3.botones-fecha
+				// 	a#dia.btn.waves-effect.waves-light.light-blue.darken-4 Día
+				// 	a#mes.btn.waves-effect.waves-light.light-blue.darken-3 Mes
+				// 	a#year.btn.waves-effect.waves-light.light-blue.darken-2 Año
 				///-dma
 				//rango
-				div.col.l3.range
+				div.col.l9.range
 					p.range-field
 						input#rango.active(type="range")
 				///-rango
@@ -192,4 +216,6 @@ block Scripts
 	script(src='js/libs/pie.js')
 	script(src='js/libs/datepicker.js')
 	script(src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1.1","packages":["geochart"]}]}')
+	script(src='js/libs/html2canvas.js')
+	script(src='js/libs/jspdf.min.js')
 	script(src='js/nemo.graficas.js')

@@ -20,15 +20,15 @@ block content
 						li.screen
 							figure.z-depth-1
 									span.mdi-navigation-check.hide
-									img(src="search/pantallazo/{#$v#}")
-								p {#$v#}
+									img(src="search/pantallazo/{#$v.imagen#}")
+								p {#$v.nombre#}
 						{#/foreach#}
 
 
 		///-Screens de Casper
 		//Card de ingreso de sitio web
 		div.row.ingresar-url.animated.hide
-			div.col.s9.m9.l9
+			div.col.s12.m12.l12
 				div.card.card-panel
 					div
 						form(action="#")
@@ -37,10 +37,10 @@ block content
 									input.validate.keyboard-input(type="text", placeholder="Ingresa la URL de tu sitio web")
 
 								div.input-field.col.l2
-									button.btn.green.waves-effect.waves-light(type="submit", name="")
+									button.btn.green.waves-effect.waves-light.btn-url(type="submit", name="")
 										i.mdi-content-send
 
-			div.col.s3.m3.l3
+			div.col.s3.m3.l4.offset-l4
 				div.valign-wrapper
 
 					button.valign.waves-effect.waves-light.btn.blue.continuar.continuaruno.
@@ -49,48 +49,33 @@ block content
 		///-Card de ingreso de sitio web
 		//Botones
 		div.row.botonera
-			div.col.s6.m6.l6.push-l4
+		
+			div.col.s6.m6.l6
 				
 				button.waves-effect.waves-light.btn.green.mostrar-keyb.
 					No es ninguna
 					<i class="right mdi-hardware-keyboard"></i>
 
+			div.col.s6.m6.l6
 				button.valign.waves-effect.waves-light.btn.orange.darken-4.continuar.continuaruno.continuar-bottom.
 					No tengo sitio web
-					<i class="right mdi-navigation-close"></i>
+					<i class="right mdi-content-block"></i>
 
 		///-Botones
 		//Ingreso de cuenta de analytics
 		div.row.analytics.hide
 			img.responsive-img(src="images/g-analytics.svg", alt="Google Analytics", title="Google Analytics")
 			
-			form#analytics.col.s9.m9.l9
-				// div.col.s9.m9.l9
-				// 	div.card.card-panel
-				// 		div
-						
-							//div.row
-								div.input-field.col.l10
-									i.mdi-action-account-circle.prefix
-									input.validate.keyboard-input(type="text", name="usuario")
-									label(for="usuario") Usuario
-
-							//div.row
-								div.input-field.col.l10
-									i.mdi-action-lock-outline.prefix
-									input.validate.keyboard-input(type="text", name="pass")
-									label(for="pass") Contraseña
-
-							//div.row
-								div.input-field.col.l12
-									button.btn.green.waves-effect.waves-light.right(type="submit", name="")
-										i.mdi-content-send
-
-			div.col.s3.m3.l3
-
-
-				button.waves-effect.waves-light.btn.blue.continuar#send.
-					Terminé <i class="right mdi-navigation-arrow-forward"></i>
+			form#analytics.row
+			
+			
+			div.row
+			
+				div.col.s12.m12.l12
+	
+	
+					button.waves-effect.waves-light.btn.blue.continuar#send.
+						Terminé <i class="right mdi-navigation-arrow-forward"></i>
 
 				//button.waves-effect.waves-light.btn.orange.darken-4.continuar.
 					No tengo cuenta aquí

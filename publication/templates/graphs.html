@@ -116,10 +116,10 @@
   <div id="contenedor-picker"></div>
   <div class="container container-graficas">
     <!--Graphs-->
-    <div class="row">
+    <div id="print-pdf" class="row">
       <!--Timeline-->
       <div class="col s4 md l6">
-        <div class="card uno expand">
+        <div id="print-timeline" class="card uno expand">
           <div class="card-content waves-effect waves-block waves-light cyan">
             <div class="close"><i class="fa fa-times-circle"></i></div>
             <div class="switch right">
@@ -207,48 +207,73 @@
     <!--/-Graphs-->
     <!--Redes Sociales-->
     <div class="row row-numeros row-numeros-2">
-      <div class="col l4">
+      <div class="col l3 stat-red"> 
         <div class="card">
-          <div class="card-content blue darken-1 waves-effect waves-block waves-light"><i class="fa fa-facebook blue-text"></i>
-            <p id="total-fb">99999999</p>
+          <div class="col l3 icono"><i class="fa fa-facebook blue-text"></i></div>
+          <div class="card-content blue darken-1 waves-effect waves-block waves-light">
+            <div class="col l6">
+              {#assign var='random1' value=1|rand:99999999#}
+              {#assign var='random2' value=1|rand:99999999#}
+              {#assign var='random3' value=1|rand:99999999#}
+              {#assign var='random4' value=1|rand:99999999#}
+              {#assign var='random5' value=1|rand:99999999#}
+              {#assign var='random6' value=1|rand:99999999#}
+              <p class="total-fb">{#$random1#}</p>
+              <p class="total-fb">{#$random2#} </p>
+            </div>
+            <div class="col l2"><i class="mdi-action-trending-neutral"></i></div>
           </div>
         </div>
       </div>
-      <div class="col l4">
+      <div class="col l3 stat-red">
         <div class="card">
-          <div class="card-content light-blue lighten-2 waves-effect waves-block waves-light"><i class="fa fa-twitter light-blue-text waves-effect waves-block waves-light"></i>
-            <p id="total-tw">99999999</p>
+          <div class="col l3 icono"><i class="fa fa-twitter light-blue-text waves-effect waves-block waves-light"></i></div>
+          <div class="card-content light-blue lighten-2 waves-effect waves-block waves-light">
+            <div class="col l6">
+              <p class="total-tw">{#$random3#}</p>
+              <p class="total-tw">{#$random4#} </p>
+            </div>
+            <div class="col l2"><i class="mdi-action-trending-up"></i></div>
           </div>
         </div>
       </div>
-      <div class="col l4">
-        <div class="card">
-          <div class="card-content blue darken-4 waves-effect waves-block waves-light"><i class="fa fa-instagram indigo-text darken-4"></i>
-            <p id="tota-insta" class="blue-text darken-4">99999999</p>
+      <div class="col l3">
+        <div class="card stat-red">
+          <div class="col l3 icono"><i class="fa fa-instagram brown-text"></i></div>
+          <div class="card-content brown lighten-1 waves-effect waves-block waves-light">
+            <div class="col l6">
+              <p class="tota-insta">{#$random5#} </p>
+              <p class="tota-insta">{#$random6#} </p>
+            </div>
+            <div class="col l2"><i class="mdi-action-trending-down"></i></div>
           </div>
         </div>
       </div>
+      <div class="col l3 botones-fecha"><a id="dia" class="btn waves-effect waves-light light-blue darken-4"><i class="mdi-toggle-radio-button-on"></i>	Día</a><a id="mes" class="btn waves-effect waves-light light-blue darken-3"><i class="mdi-toggle-radio-button-on"></i> Mes</a><a id="year" class="btn waves-effect waves-light light-blue darken-2"><i class="mdi-toggle-radio-button-on"></i> Año</a></div>
     </div>
     <!--/-Redes Sociales-->
     <div class="row filtros">
       <div class="card">
         <!--fecha inicial-->
-        <div id="desde" class="col l3 date">
-          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Desde</span>
-          <input type="date" class="datepicker">
+        <div id="desde" class="col l1 date"><span>Desde</span>
+          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button>
+          <input type="date" class="datepicker hide">
         </div>
         <!--/-fecha inicial-->
         <!--fecha final-->
-        <div id="hasta" class="col l3 date">
-          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button><span>Hasta</span>
-          <input type="date" class="datepicker">
+        <div id="hasta" class="col l1 date"><span>Hasta</span>
+          <button class="btn-floating waves-effect waves-light orange mdi-editor-insert-invitation"></button>
+          <input type="date" class="datepicker hide">
         </div>
         <!--/-fecha final-->
         <!--dma-->
-        <div class="col l3 botones-fecha"><a id="dia" class="btn waves-effect waves-light light-blue darken-4">Día</a><a id="mes" class="btn waves-effect waves-light light-blue darken-3">Mes</a><a id="year" class="btn waves-effect waves-light light-blue darken-2">Año</a></div>
+        <!-- div.col.l3.botones-fecha-->
+        <!-- 	a#dia.btn.waves-effect.waves-light.light-blue.darken-4 Día-->
+        <!-- 	a#mes.btn.waves-effect.waves-light.light-blue.darken-3 Mes-->
+        <!-- 	a#year.btn.waves-effect.waves-light.light-blue.darken-2 Año-->
         <!--/-dma-->
         <!--rango-->
-        <div class="col l3 range">
+        <div class="col l9 range">
           <p class="range-field">
             <input id="rango" type="range" class="active">
           </p>
@@ -276,7 +301,7 @@
   <!--/-Footer-->
   <!--Scripts-->
   <script src="js/libs/jquery.js"></script>
-  <script src="js/libs/materialize.min.js"></script>
+  <script src="js/libs/materialize.min.js"></script><img src="images/brm.svg" alt="&lt; &gt; with &lt;3 by brm" title="&lt; &gt; with &lt;3 by brm" class="firma">
   <script src="js/libs/tagcanvas.js"></script>
   <script src="js/libs/d3.min.js"></script>
   <script src="js/libs/chart.min.js"></script>
@@ -284,5 +309,7 @@
   <script src="js/libs/pie.js"></script>
   <script src="js/libs/datepicker.js"></script>
   <script src="https://www.google.com/jsapi?autoload={&quot;modules&quot;:[{&quot;name&quot;:&quot;visualization&quot;,&quot;version&quot;:&quot;1.1&quot;,&quot;packages&quot;:[&quot;geochart&quot;]}]}"></script>
+  <script src="js/libs/html2canvas.js"></script>
+  <script src="js/libs/jspdf.min.js"></script>
   <script src="js/nemo.graficas.js"></script>
 </body></html>

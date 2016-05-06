@@ -12,6 +12,7 @@ class DataObject_MpBrand extends DB_DataObject
     public $idBrand;                         // int(11)  not_null primary_key auto_increment
     public $idCategory;                      // int(11)  not_null multiple_key
     public $name;                            // string(45)  not_null
+    public $picture;
     public $date;                            // datetime(19)  not_null binary
 
     /* Static get */
@@ -23,6 +24,7 @@ class DataObject_MpBrand extends DB_DataObject
              'idBrand' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'idCategory' =>  DB_DATAOBJECT_INT + DB_DATAOBJECT_NOTNULL,
              'name' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_NOTNULL,
+             'picture'=>DB_DATAOBJECT_STR,
              'date' =>  DB_DATAOBJECT_STR + DB_DATAOBJECT_DATE + DB_DATAOBJECT_TIME + DB_DATAOBJECT_NOTNULL,
          );
     }

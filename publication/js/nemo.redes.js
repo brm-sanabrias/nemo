@@ -1,5 +1,5 @@
 var Selection = new Array();
-var flag=0; //(0: Facebook , 1: Twitter , 2: Youtube)
+var flag=0; //(0: Facebook , 1: Twitter , 2: Instagram)
 var numMarcas=0;
 var totalLikes=0;
 var totalFollowers=0;
@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
 		var items = [];
 		$noTengo.attr('onclick','selectFacebook()');
 		$.each(data.data, function(index, val) {
-			 if(index<=5){
+			 if(index<=9){
 				var likes=numeral(val.likes).format('0.00a');
 				$marcasSuge.append('<li class="marca"  id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.picture.data.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.name + '</span><span class="num">'+likes+'</span></p></li>');
 			 }
@@ -45,9 +45,9 @@ jQuery(document).ready(function($) {
 	//cambio de click para hacer reveal card//
    	$(document).on('click', '.mostrar-keyb', function(e) {
    			$(this).addClass('disabled');
-   		    $(this).parent().find('.card-panel').css('overflow', 'hidden');
-   		    $(this).parent().find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});		    
-   		    $(this).parent().find('.card-reveal input').focus();
+   		    $(this).parent().parent().parent().find('.card-panel').css('overflow', 'hidden');
+   		    $(this).parent().parent().parent().find('.card-reveal').css({ display: 'block'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});		    
+   		    $(this).parent().parent().parent().find('.card-reveal input').focus();
    	});
 	// Pintamos check sobre marcas seleccionadas
    	$(document).on('click',  '.marca' , function () {
@@ -87,7 +87,7 @@ jQuery(document).ready(function($) {
 	   		$('.mdi-navigation-check', this).addClass('hide'); 		
    		};
    		if ($('.marca .hide').length == $('.mdi-navigation-check').length ) {
-   			$('.continuar').removeClass('blue').addClass('orange darken-4').html('No tengo cuenta aquí <i class="right mdi-navigation-close"></i>');
+   			$('.continuar').removeClass('blue').addClass('orange darken-4').html('No tengo cuenta aquí <i class="right mdi-content-block"></i>');
 	   		$('.mostrar-keyb').removeClass('disabled');
    		};
 
@@ -199,7 +199,7 @@ function finishFacebook(){
 			val.profile_image_url=val.profile_image_url.replace("_normal","");
 			var followers=numeral(val.followers_count).format('0.00a');
 			
-			if(index<=5){
+			if(index<=9){
 				$marcasSuge.append('<li class="marca" id="'+ val.id +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_image_url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.screen_name  + '</span><span class="num">'+followers+'</span></p></li>');		
 				pintarProg(barraProgreso, parseFloat(1/3), barraText);
 			}	
@@ -246,17 +246,25 @@ function finishTwitter(){
 	$('.mostrar-keyb').removeClass('disabled');
 	flag=2;
 	numMarcas=0;
-	$('.netbox-yt').parent().removeClass('u-inactivo').addClass('u-activo');
+	$('.netbox-ins').parent().removeClass('u-inactivo').addClass('u-activo');
 
-	$.getJSON( "search/results/resultYoutube.json?"+new Date().getTime(), function( data ) {
+	$.getJSON( "search/results/resultInstagram.json?"+new Date().getTime(), function( data ) {
 		$marcasSuge.html('');
-		$.each(data.items, function(index, val) {
-
-			if(index<=5){
+		console.log(data);
+		$.each(data, function(index, val) {
+					
+			if(index<=9){
+				console.log(val.username);
+				console.log(val.profile_picture);
+				console.log(val.id);
+					$marcasSuge.append('<li class="marca" id="'+ val.id+'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.profile_picture+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>@'+ val.username + '</span><span class="num hide">9999</span></p></li>');		
+						pintarProg(barraProgreso, parseFloat(2/3), barraText);
+			}
+			/*if(index<=5){
 				$marcasSuge.append('<li class="marca" id="'+ val.id.channelId +'"><figure><span class="mdi-navigation-check hide"></span><img src="'+val.snippet.thumbnails.default.url+'"  alt="logo-sample" title="logo-sample" class="circle responsive-img z-depth-1"></figure><p class="user"><span>'+ val.snippet.title  + '</span><span class="num hide">9999</span></p></li>');		
 						pintarProg(barraProgreso, parseFloat(2/3), barraText);
 				
-			}
+			}*/
 		});
 	});
 	$('.continuar').attr('onclick','endSteps()');
@@ -269,7 +277,7 @@ function selectYoutube(ytId){
 			$.each(data.items, function(index, val) {
 				if(val.id.channelId==ytId){
 					Selection.push(val);
-						$('.netbox-yt').append($('<img>',{class:'marca-seleccionada',src:val.snippet.thumbnails.default.url,id:val.id.channelId}))
+						$('.netbox-ins').append($('<img>',{class:'marca-seleccionada',src:val.snippet.thumbnails.default.url,id:val.id.channelId}))
 						numMarcas=numMarcas+1;
 						var porc=parseFloat((2/3)+((1/3)*(numMarcas/6)));
 						pintarProg(barraProgreso, porc, barraText);
@@ -287,7 +295,7 @@ function selectYoutube(ytId){
 function unselectYoutube(ytId){
 	for (i = 0; i < Selection.length; i++) {
         if (Selection[i].id.channelId== ytId) {
-			$(".netbox-yt >#"+Selection[i].id.channelId).remove();
+			$(".netbox-ins >#"+Selection[i].id.channelId).remove();
 			numMarcas=numMarcas+1;
 			var porc=parseFloat((2/3)+((1/3)*(numMarcas/6)));
 			pintarProg(barraProgreso, porc, barraText);
@@ -376,10 +384,10 @@ function ocultar(){
 	
 	 var nose=$('.mostrar-keyb');
    			$(nose).removeClass('enable');
-   		    $(nose).parent().find('.card-panel').css('overflow', 'auto');
-   		    $(nose).parent().find('.card-reveal').css({ display: 'none'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});		    
-   		    $(nose).parent().find('.card-reveal input').focus();
-   		   // $('.continuar').click();
+   		    $(nose).parent().parent().parent().parent().parent().find('.card-panel').css('overflow', 'auto');
+   		    $(nose).parent().parent().parent().parent().parent().find('.card-reveal').css({ display: 'none'}).velocity("stop", false).velocity({translateY: '-100%'}, {duration: 300, queue: false, easing: 'easeInOutQuad'});		    
+   		    $(nose).parent().parent().parent().parent().parent().find('.card-reveal input').focus();
+   		    // $('.continuar').click();
    
 }
 
@@ -477,7 +485,7 @@ $(document).on('click','.circle.netbox',function(){
 			$('.mostrar-keyb').removeClass('disabled');
 			flag=2;
 			numMarcas=0;
-			$('.netbox-yt').parent().removeClass('u-inactivo').addClass('u-activo');
+			$('.netbox-ins').parent().removeClass('u-inactivo').addClass('u-activo');
 			$.getJSON( "search/results/resultYoutube.json?"+new Date().getTime(), function( data ) {
 				$marcasSuge.html('');
 				$.each(data.items, function(index, val) {

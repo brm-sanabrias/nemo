@@ -16,7 +16,7 @@ require($prefijo."db/requires.ini.php");
 
 //Clases
 require($prefijo."class/class.General.inc.php");
-//require($prefijo."class/class.MongoNemo.inc.php");
+require($prefijo."class/class.MongoNemo.inc.php");
 require($prefijo."class/class.Util.Web.inc.php");
 require($prefijo."class/class.Util.MrPlow.inc.php");
 //require($prefijo."class/datosGrafica.php");

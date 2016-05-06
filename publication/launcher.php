@@ -5,8 +5,10 @@ require("db/requires.php");
 function launchFacebook($terminoBuscar){
    
 	$app_access_token=genToken();
-	$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=6&fields=id,name,picture.type(normal),likes&".$app_access_token);
+	$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=10&fields=id,name,picture.type(normal),likes&".$app_access_token);
 	$fp = fopen(/*$path.*/'/home/ubuntu/workspace/publication/search/results/resultFacebook.json', 'w');
+    //printVar($resultFacebook);
+    printVar($resultFacebook['data'][0]['picture']['data']['url']);
 	fwrite($fp, json_encode($resultFacebook));
 	fclose($fp);
 	$obj = DB_DataObject::Factory('MpBrand');
@@ -18,12 +20,10 @@ function launchFacebook($terminoBuscar){
 		if($find >0) {
 		   // echo 'entra al if';
 			while($obj->fetch()){
-			    if ($obj->picture=='N/A') {
-			       printVar($resultFacebook['data'][0]['picture']['data']['url']);
-			     $obj->picture= $resultFacebook['data'][0]['picture']['data']['url'];
+			    DB_DataObject::debugLevel(1);
+			     $obj->picture=$resultFacebook['data'][0]['picture']['data']['url'];
 			    $obj->update();
-			        
-			    }	
+			  	
 			}
 		}else{
 		    
@@ -119,6 +119,41 @@ function launchGoogle($terminoBuscar){
     fwrite($fp, json_encode($mathces[1]));
     fclose($fp);
 }
+/*Funcion callInstagram*/
+function callInstagram($url){
+    $ch = curl_init();
+    curl_setopt_array($ch, array(CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_SSL_VERIFYHOST => 2
+    ));
+
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+function launchInstagram($terminoBuscar){
+    $codea='3106448811.1677ed0.02f5e21af36e48719aac3932ffd35a68';
+    /*hace el llamado a instagram*/
+    $userarroa = $terminoBuscar;
+    $userarroa=strtolower($userarroa);
+    $client_id = "ab3366d4402245ac9da6ccc519c62a98";
+    //$urlCount = 'https://api.instagram.com/v1/tags/'.$tag.'?access_token='.$codea;
+    $url = 'https://api.instagram.com/v1/users/search?q='.$userarroa.'&access_token='.$codea.'&count=10';
+
+    $inst_stream = callInstagram($url);
+    //$inst_streamC = callInstagram($urlCount);
+    $results = json_decode($inst_stream, true);
+    /*Recorre la información de instagram*/
+    $dataR=$results['data'];
+    //print_r($dataR);
+    $armaUsuario=json_encode($dataR);
+    //var_dump($armaUsuario);
+    /*Creacion de archivo json de instagram*/
+    $fp = fopen('/home/ubuntu/workspace/publication/search/results/resultInstagram.json', 'w');
+    fwrite($fp, $armaUsuario);
+    fclose($fp);
+}
 
 if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	//BUSCO LA MARCA EN LA BASE DE DATOS
@@ -133,7 +168,8 @@ if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	$mrplow->lunchReport($id,2,1);
 	launchFacebook($terminoBuscar);
 	launchTwitter($terminoBuscar);
-	launchYoutube($terminoBuscar);
+	launchInstagram($terminoBuscar);
+	//launchYoutube($terminoBuscar);
 	launchGoogle($terminoBuscar);
 }
 ?>

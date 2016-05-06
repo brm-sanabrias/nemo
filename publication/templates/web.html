@@ -120,8 +120,8 @@
         <div class="mask">
           <ul class="content-pant">{#foreach from=$images key=k item=v#}
             <li class="screen">
-              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="search/pantallazo/{#$v#}"></figure>
-              <p>{#$v#}</p>
+              <figure class="z-depth-1"><span class="mdi-navigation-check hide"></span><img src="search/pantallazo/{#$v.imagen#}"></figure>
+              <p>{#$v.nombre#}</p>
             </li>{#/foreach#}
           </ul>
         </div>
@@ -130,7 +130,7 @@
     <!--/-Screens de Casper-->
     <!--Card de ingreso de sitio web-->
     <div class="row ingresar-url animated hide">
-      <div class="col s9 m9 l9">
+      <div class="col s12 m12 l12">
         <div class="card card-panel">
           <div>
             <form action="#">
@@ -139,14 +139,14 @@
                   <input type="text" placeholder="Ingresa la URL de tu sitio web" class="validate keyboard-input">
                 </div>
                 <div class="input-field col l2">
-                  <button type="submit" name="" class="btn green waves-effect waves-light"><i class="mdi-content-send"></i></button>
+                  <button type="submit" name="" class="btn green waves-effect waves-light btn-url"><i class="mdi-content-send"></i></button>
                 </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="col s3 m3 l3">
+      <div class="col s3 m3 l4 offset-l4">
         <div class="valign-wrapper">
           <button class="valign waves-effect waves-light btn blue continuar continuaruno">
             Terminé <i class="right mdi-navigation-arrow-forward"></i>
@@ -158,15 +158,17 @@
     <!--/-Card de ingreso de sitio web-->
     <!--Botones-->
     <div class="row botonera">
-      <div class="col s6 m6 l6 push-l4">
+      <div class="col s6 m6 l6">
         <button class="waves-effect waves-light btn green mostrar-keyb">
           No es ninguna
           <i class="right mdi-hardware-keyboard"></i>
           
         </button>
+      </div>
+      <div class="col s6 m6 l6">
         <button class="valign waves-effect waves-light btn orange darken-4 continuar continuaruno continuar-bottom">
           No tengo sitio web
-          <i class="right mdi-navigation-close"></i>
+          <i class="right mdi-content-block"></i>
           
         </button>
       </div>
@@ -174,35 +176,14 @@
     <!--/-Botones-->
     <!--Ingreso de cuenta de analytics-->
     <div class="row analytics hide"><img src="images/g-analytics.svg" alt="Google Analytics" title="Google Analytics" class="responsive-img">
-      <form id="analytics" class="col s9 m9 l9">
-        <!-- div.col.s9.m9.l9-->
-        <!-- 	div.card.card-panel-->
-        <!-- 		div
-        
-        	//div.row
-        		div.input-field.col.l10
-        			i.mdi-action-account-circle.prefix
-        			input.validate.keyboard-input(type="text", name="usuario")
-        			label(for="usuario") Usuario
-        
-        	//div.row
-        		div.input-field.col.l10
-        			i.mdi-action-lock-outline.prefix
-        			input.validate.keyboard-input(type="text", name="pass")
-        			label(for="pass") Contraseña
-        
-        	//div.row
-        		div.input-field.col.l12
-        			button.btn.green.waves-effect.waves-light.right(type="submit", name="")
-        				i.mdi-content-send
-        
-        -->
-      </form>
-      <div class="col s3 m3 l3">
-        <button id="send" class="waves-effect waves-light btn blue continuar">
-          Terminé <i class="right mdi-navigation-arrow-forward"></i>
-          
-        </button>
+      <form id="analytics" class="row"></form>
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <button id="send" class="waves-effect waves-light btn blue continuar">
+            Terminé <i class="right mdi-navigation-arrow-forward"></i>
+            
+          </button>
+        </div>
         <!--button.waves-effect.waves-light.btn.orange.darken-4.continuar.
         No tengo cuenta aquí
         <i class="right mdi-navigation-close"></i>
@@ -237,7 +218,6 @@
       <div class="col l4">
         <div class="paso">
           <div class="btn-floating disabled">
-            
           </div>
         </div>
       </div>
@@ -246,7 +226,7 @@
   <!--/-Footer-->
   <!--Scripts-->
   <script src="js/libs/jquery.js"></script>
-  <script src="js/libs/materialize.min.js"></script>
+  <script src="js/libs/materialize.min.js"></script><img src="images/brm.svg" alt="&lt; &gt; with &lt;3 by brm" title="&lt; &gt; with &lt;3 by brm" class="firma">
   <script src="js/nemo.js"></script>
   <script src="js/nemo.ini.js"></script>
   <script src="js/nemo.web.js"></script>

@@ -188,7 +188,7 @@ module.exports = function(grunt) {
 						'!publication/templates/*.*'
 						],
 
-				tasks : ["jade", "stylus", "cssmin","shell:clearTemp"],/*las tareas que se corren por defecto al observar cambios en los archivos*/
+				tasks : ["jade", "stylus", "cssmin"],/*las tareas que se corren por defecto al observar cambios en los archivos*/
 				task : ['shell:stats']
 			}
 		},
@@ -220,7 +220,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('observar', ['watch:brm','browserSync']);
 	grunt.registerTask('depurar', ['jshint']);
 
-    grunt.registerTask('default', ['php', 'browserSync:dev', 'watch:brm']);
+    // grunt.registerTask('default', ['php', 'browserSync:dev', 'watch:brm']);
+    grunt.registerTask('default', ['watch:brm']);
 	
 
 };

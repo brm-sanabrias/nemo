@@ -2,33 +2,64 @@
 
 //variable de control que guarda el numero de puntos en la ultima grafica, es usada para borrar esos puntos a la hora de actualizar la grafica 
 var puntosLinea=0;
-
+function mostrarLoader(){
+  $('.loader').removeClass('hide');
+  //setTimeout(function(){},);
+}
+/*funcion que oculta loader*/
+function ocultarLoader(){
+  $('.loader').addClass('hide');
+}
 $(document).ready(function () {
-  
+
+/*Se genera el pdf con los filtros*/
+jQuery('.descargar').on('click',function(){
+   /*Imprime todo el contenido*/
+    jQuery('.botones-fecha,.filtros,.descargar,.apagar, .close').hide();
+      html2canvas(jQuery('body'), {
+         background:'#e6e6e6',
+          onrendered: function (canvas) {
+            var imgData = canvas.toDataURL("image/jpeg", 1.0);
+            var pdf = new jsPDF("l", "pt",'legal');
+            pdf.addImage(imgData, 'JPEG', 0,0,1000,543);
+            pdf.save("reporte.pdf");
+            
+          }
+        
+      });
+        jQuery('.botones-fecha,.filtros,.descargar,.apagar, .close').show();
+
+
+});
+  /*funciones para crear pdf*/
+
+
+/*funcion para mostrar el loader*/
+
   /*botones de dia/mes/año para seleccionar rango  */
-   $('.filtros .btn').click(function(event) {
+   $('.botones-fecha .btn').click(function(event) {
      /*Para cambiar los rangos en el filtro*/
         event.preventDefault();
         event.stopPropagation();
         
         var tipo = $(this).attr('id');
-        var rango  = $('#rango');
+        var rango  = $('.filtros #rango');
          
         switch(tipo){
           case 'dia':
             var arreglo=ultimos15Dias();
-            var min=arreglo[14];
-            var max=arreglo[0];
-            rango.attr('max', max);
-            rango.attr('min', min);
-            $('.filtros .btn').removeClass('active');
+            var uno=arreglo[14]; //era el min
+            var dos=arreglo[0];  //era el max
+            rango.attr('max', 15);
+            rango.attr('min', 1);
+            $('.botones-fecha .btn').removeClass('active');
             $(this).addClass('active');
           break;
             
           case 'mes':
             rango.attr('max', '12');
             rango.attr('min', '01');
-            $('.filtros .btn').removeClass('active');
+            $('.botones-fecha .btn').removeClass('active');
             $(this).addClass('active');
           break;
             
@@ -38,7 +69,7 @@ $(document).ready(function () {
             var min=parseInt(ano)-2;
             rango.attr('max', ano);
             rango.attr('min', min);
-            $('.filtros .btn').removeClass('active');
+            $('.botones-fecha .btn').removeClass('active');
             $(this).addClass('active');
           break;
         };
@@ -49,7 +80,6 @@ $(document).ready(function () {
     event.stopPropagation();
 
     $(this).find('.card-content').toggleClass('grey');
-    $(this).find('.card-content').removeClass('darken-4');
 
   });
 
@@ -118,7 +148,7 @@ var margin = {
 var chart = AmCharts.makeChart( "pie", {
   "type": "pie",
   "theme": "light",
-  'colors': ['#4d6ab0','#5ba8df','#e2492a' ],
+  'colors': ['#4d6ab0','#5ba8df','#f57c00' ],
   // "titles": [ {
   //   "text": "# De conversaciones por propiedad",
   //   "size": 16
@@ -130,7 +160,7 @@ var chart = AmCharts.makeChart( "pie", {
     "platform": "Twitter",
     "visits": 3882
   }, {
-    "platform": "Youtube",
+    "platform": "Instagram",
     "visits": 1809
   }],
   "valueField": "visits",
@@ -391,10 +421,10 @@ function dibujaLineaTiempo(facebook,twitter,youtube,rango){
       data: twitter
     },
     {
-      label: "YouTube",
+      label: "Instagram",
       fillColor : "rgba(255, 255, 255, 0.15)",
-      strokeColor : "#e2492a",
-      pointColor : "#e2492a",
+      strokeColor : "#bcaaa4",
+      pointColor : "#bcaaa4",
       pointStrokeColor : "#ffffff",
       pointHighlightFill : "#80deea",
       pointHighlightStroke : "#80deea",
@@ -456,7 +486,10 @@ setTimeout(function(){
   type:'POST',
   data:{
     asd:'asd'
-  },success:function(data){
+  },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+          ocultarLoader();
      for (var i = 0; i < puntosLinea; i++) {
                 trendingLineChart.removeData();
               }
@@ -476,16 +509,30 @@ $(document).on('change','#rango',function(){
           case 'dia':
             var min = rango;
             var max = diaActual();
+            var actual = new Date();
+            var mes=actual.getMonth();
+            var ano=actual.getFullYear();
+            var ultDiaMesPasado='';
+            if (max<min) { // si la fecha actual el dia es meno a la fecha anterior ej max = 4 abr min =24 mar 
+              var fechaPasada= new Date(ano, mes, 0);//para obtener el ultimo dia del mes anterior al actual
+              ultDiaMesPasado=fechaPasada.getDate();
+            }
+            console.log(max);// fecha actual 
+            console.log(min);//rango seleccionado
+            console.log(ultDiaMesPasado);// por si la cuenta a tras de dias pasa al mes anterior
            $.ajax({
              url:'lineaTiempo.php',
              dataType:'json',
              type:'POST',
              data:{
                dia:'dia',
+               ultDiaMesPasado:ultDiaMesPasado,
                min:min,
                max:max
-             },success:function(data){
-             
+             },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+             ocultarLoader();
               /*For Para remover los datos de la anterior grafica*/
              for (var i = 0; i < puntosLinea; i++) {
                 trendingLineChart.removeData();
@@ -495,10 +542,10 @@ $(document).on('change','#rango',function(){
               *[data[0]->facebook,data[1]->twitter,data[2]->youtube]
               *addData segundo parametro unidades de medida sobre el eje x en este caso los ultimo quince dias (como maximo) 
               */
-              var dias=getArrDias(min,max);
-              puntosLinea=dias.length;
-              for (var i = 0; i < data[0].length; i++) {
-                trendingLineChart.addData([data[0][i], data[1][i],data[2][i] ], dias[i]);
+              //var dias=getArrDias(min,max);
+              puntosLinea=data[3].length;
+              for (var i = 0; i < data[3].length; i++) {
+                trendingLineChart.addData([data[0][i], data[1][i],data[2][i] ], data[3][i]);
               }
              }
            });
@@ -524,7 +571,10 @@ $(document).on('change','#rango',function(){
                mes:'mes',
                min:min,
                max:max
-             },success:function(data){
+             },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+          ocultarLoader();
                 //For Para remover los datos de la anterior grafica
                for (var i = 0; i < puntosLinea; i++) {
                   trendingLineChart.removeData();
@@ -556,7 +606,10 @@ $(document).on('change','#rango',function(){
                year:'year',
                min:min,
                max:max
-             },success:function(data){
+             },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+          ocultarLoader();
                 //For Para remover los datos de la anterior grafica
                for (var i = 0; i < puntosLinea; i++) {
                   trendingLineChart.removeData();
@@ -635,7 +688,10 @@ $(document).on('change',desde,function(){
        picker:'picker',
        min:fechaUno,
        max:fechaDos
-     },success:function(data){
+     },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+          ocultarLoader();
         //For Para remover los datos de la anterior grafica
        for (var i = 0; i < puntosLinea; i++) {
           trendingLineChart.removeData();
@@ -674,7 +730,10 @@ $(document).on('change',hasta,function(){
        picker:'picker',
        min:fechaUno,
        max:fechaDos
-     },success:function(data){
+     },beforeSend: function(){
+            mostrarLoader();
+        },success:function(data){
+          ocultarLoader();
         //For Para remover los datos de la anterior grafica
        for (var i = 0; i < puntosLinea; i++) {
           trendingLineChart.removeData();

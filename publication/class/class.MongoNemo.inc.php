@@ -5,7 +5,7 @@
 
      const HOST     = '127.0.0.1';
      const PORT     = 27017;
-     const DBNAME   = 'nemo';
+     const DBNAME   = 'donBarredora';
      public static $instance;
      public $connection;
      public $database;
@@ -50,7 +50,7 @@
     public function getWordsTw(){
     	//$tweetSearch=$this->barredoraTw->tweetSearch;
     	$db = $this->database;
-    	$tags = iterator_to_array($db->selectCollection('tweetTimeLine')->find()->sort(array('UScreatedAt' => -1))->limit(50));
+    	$tags = iterator_to_array($db->selectCollection('tweetSearch')->find()->sort(array('UScreatedAt' => -1))->limit(50));
         return $tags;
     }
  }
