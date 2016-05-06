@@ -21,6 +21,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-php": "^1.5.1",
     "grunt-shell": "^1.1.2",
-    "grunt-stylus-map": "^0.21.2"
+    "grunt-stylus-map": "^0.21.2",
+    "phantomjs": "^2.1.7"
   }
 }

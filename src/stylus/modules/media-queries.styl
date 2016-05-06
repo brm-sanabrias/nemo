@@ -14,10 +14,11 @@
 				width @height
 
 			.progreso
-				left 0.25rem
+				left 0.45rem
+				top 1.6rem
 				
 				canvas
-					width 6.4rem
+					width 6rem
 	
 	header
 
@@ -26,26 +27,30 @@
 			
 			.header-search-wrapper
 				margin 0.6rem auto 0 2rem
+				width calc(100% - 16rem)
 				
 	#analytics
+		margin-bottom -0.6rem
+		margin-top -1rem
+		
 		.card
 			margin 0rem 0 1rem 0
 			&-panel
 				padding 0.2rem
-				
+			
+			.row
+				margin-bottom 0
+
 		.l4, .l3, .l6
 			input
 				calc(100% - 9rem)
-				
-			.row
-				margin-bottom 0
 			
 	#buscarUrl
 		width auto
 	
 	#keyboard_parent
 		clear both
-		margin -120px auto
+		margin 30px auto
 		position relative
 		z-index 1
 
@@ -56,11 +61,8 @@
 		label
 			font-size 1rem
 			top 1rem
-			margin-left 5.9rem !important
+			margin-left 5rem !important
 
-		.input-field
-			margin-top 0
-			width 2.3rem
 
 		.prefix
 			width 2.3rem

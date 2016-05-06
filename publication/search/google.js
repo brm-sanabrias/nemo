@@ -10,7 +10,8 @@ var casper = require("casper").create({
         loadPlugins: true,
         localToRemoteUrlAccessEnabled: false,
         userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.48 Safari/537.36'
-    }
+    },
+    verbose: true
 });
 var url = casper.cli.get("url");
 //console.log(url+' - url');

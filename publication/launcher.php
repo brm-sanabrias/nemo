@@ -8,7 +8,7 @@ function launchFacebook($terminoBuscar){
 	$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=10&fields=id,name,picture.type(normal),likes&".$app_access_token);
 	$fp = fopen(/*$path.*/'/home/ubuntu/workspace/publication/search/results/resultFacebook.json', 'w');
     //printVar($resultFacebook);
-    printVar($resultFacebook['data'][0]['picture']['data']['url']);
+   // printVar($resultFacebook['data'][0]['picture']['data']['url']);
 	fwrite($fp, json_encode($resultFacebook));
 	fclose($fp);
 	$obj = DB_DataObject::Factory('MpBrand');
@@ -20,7 +20,7 @@ function launchFacebook($terminoBuscar){
 		if($find >0) {
 		   // echo 'entra al if';
 			while($obj->fetch()){
-			    DB_DataObject::debugLevel(1);
+			    //DB_DataObject::debugLevel(1);
 			     $obj->picture=$resultFacebook['data'][0]['picture']['data']['url'];
 			    $obj->update();
 			  	

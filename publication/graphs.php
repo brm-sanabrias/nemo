@@ -8,7 +8,7 @@ function random_color() {
     return random_color_part() . random_color_part() . random_color_part();
 }
 
-
+/*
 $MongoNemo=new MongoNemo();
 $twConversations=$MongoNemo->getWordsTw();
 $numTwitter=count($twConversations);
@@ -65,7 +65,7 @@ foreach ($orderWords as $key => $value) {
 		$wordCloud[$i]['med']=($wordCloud[$i]['perc']*30)/100;
 		$wordCloud[$i]['color']='#'.random_color();
 		$i++;}
-	
+*/	
 if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
 	//BUSCO LA MARCA EN LA BASE DE DATOS
 	$General= new General();

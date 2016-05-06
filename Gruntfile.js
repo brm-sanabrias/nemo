@@ -37,28 +37,7 @@ module.exports = function(grunt) {
 				dest: 'publication/js/libs.<%= pkg.name %>.min.js'
 			},
 		},
-		//Se utiliza para revisar el código js
-		qunit: {
-			files: ['test/**/*.html','publication/js/*.js']
-		},
-		//Depura el código js
-		jshint: {
-			options: {
-				jshintrc: true
-			},
-			gruntfile: {
-				src: 'Gruntfile.js'
-			},
-			src: {
-				src: ['publication/js/*.js','publication/**/*.js']
-			},
-			test: {
-				src: ['test/**/*.js']
-			},
-			css: {
-				src: ['publication/css/**/*.*','publication/css/*.*']
-			},
-		},
+	
 		stylus: {
 			map:{
 			  files: {
@@ -200,8 +179,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-php');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
+/*	grunt.loadNpmTasks('grunt-php');
+	grunt.loadNpmTasks('grunt-contrib-jshint');*/
 	grunt.loadNpmTasks('grunt-contrib-jade');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
