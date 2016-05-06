@@ -44,18 +44,20 @@ block content
 						div.close
 							i.fa.fa-times-circle
 						div.move-up
-							p.margin WordCloud
+							//p.margin WordCloud
 
 							div#tagCloud
 								//- h3.blue.waves-effect.waves-light.btn-large.title Titular
-								canvas#myCanvas()
+								
+								img.img-responsive(src="images/wordcloud.png", width="120")
+								//canvas#myCanvas()
 									p.
 										Su navegador no soporta canvas
-							div#tags(style="font-size: 20%;")
-								{#foreach from=$wordCloud item=word#}
-								a(href='#',style="font-size: {#$word.med#}ex;color:{#$word.color#}; ").
-									{#$word.word#}
-								{#/foreach#}
+							//div#tags(style="font-size: 20%;")
+								//{#foreach from=$wordCloud item=word#}
+								//a(href='#',style="font-size: {#$word.med#}ex;color:{#$word.color#}; ").
+								//	{#$word.word#}
+								//{#/foreach#}
 
 								//-- for (var x = 0; x < 30; x++)
 								//-	a(href='#',style="font-size: {#$word.med#}ex").
