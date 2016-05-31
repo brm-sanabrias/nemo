@@ -319,8 +319,8 @@ setLoader();
 			if (fantasma==true) {
 				clearInterval(inter);
 				window.setTimeout(function () {
-				window.location="web.php";
 				console.log("success");
+				window.location="web.php";
 				},1000);
 			}
 		},5000);

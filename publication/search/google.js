@@ -19,10 +19,10 @@ var url = casper.cli.get("url");
 var vector = url.split("/");//substring(11, lo);//
 //console.log(vector + ' -vector');
 var name = vector[2];//.replace(".", "_").replace(".", "_");
-//console.log(name);
+console.log(name);
 casper.start(url, function() {
   casper.thenOpen(url, function() {
-    this.capture("/home/ubuntu/workspace/publication/search/pantallazo/"+name+".png",{
+    this.capture("/home/n3m0/public_html/publication/search/pantallazo/"+name+".png",{
       top: 0,
       left: 0,
       width: 250,

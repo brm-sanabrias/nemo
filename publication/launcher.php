@@ -1,38 +1,30 @@
 <?php
-require "search/thread.php";
+//require "search/thread.php";
 require("db/requires.php"); 
-//@error_reporting(E_ALL);
+error_reporting(E_ALL);
 function launchFacebook($terminoBuscar){
-   
 	$app_access_token=genToken();
 	$resultFacebook=app_request("https://graph.facebook.com/v2.5/search?q=".$terminoBuscar."&type=page&limit=10&fields=id,name,picture.type(normal),likes&".$app_access_token);
-	$fp = fopen(/*$path.*/'/home/ubuntu/workspace/publication/search/results/resultFacebook.json', 'w');
-    //printVar($resultFacebook);
-   // printVar($resultFacebook['data'][0]['picture']['data']['url']);
-	fwrite($fp, json_encode($resultFacebook));
+	//printVar($resultFacebook,$_SERVER['SERVER_NAME'].'/publication/search/results/resultFacebook.json'); 
+    //printVar($_SERVER["DOCUMENT_ROOT"]);
+    $fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultFacebook.json', 'w');
+	$qpaso=fwrite($fp, json_encode($resultFacebook));
 	fclose($fp);
-	$obj = DB_DataObject::Factory('MpBrand');
-	//	DB_DataObject::debugLevel(1);
-		//printVar($obj);
+	//printVar($qpaso,'que paso');
+    $obj = DB_DataObject::Factory('MpBrand');
 		$obj->name=$terminoBuscar;
 		$find=$obj->find();
-	//	printVar($find,'find');
 		if($find >0) {
 		   // echo 'entra al if';
 			while($obj->fetch()){
 			    //DB_DataObject::debugLevel(1);
 			     $obj->picture=$resultFacebook['data'][0]['picture']['data']['url'];
 			    $obj->update();
-			  	
 			}
 		}else{
-		    
 		}
 		$obj->free();
-//	$obj = new General();
-//	$obj->picture($terminoBuscar);
-  //exit("End FACEBOOK ".PHP_EOL);
-	echo json_encode('');
+	//echo json_encode('');
 }
 function launchTwitter($terminoBuscar){
 	/*from tw.php*/
@@ -71,7 +63,7 @@ function launchTwitter($terminoBuscar){
     curl_close($feed);
     $resultTwitter=json_decode($json);
     
-	$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultTwitter.json', 'w');
+	$fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultTwitter.json', 'w');
 	fwrite($fp, json_encode($resultTwitter));
 	fclose($fp);
 	/*fin from tw.php */
@@ -96,7 +88,7 @@ function launchYoutube($terminoBuscar){
     curl_close($curl);
     $resultYoutube = json_decode($return, true);
     
-    $fp = fopen('/home/ubuntu/workspace/publication/search/results/resultYoutube.json', 'w');
+    $fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultYoutube.json', 'w');
     fwrite($fp, json_encode($resultYoutube));
     fclose($fp);
 	//exec('php search/yt.php '.$terminoBuscar);
@@ -115,7 +107,7 @@ function launchGoogle($terminoBuscar){
     curl_close($curl);
     $mathces=array();
     preg_match_all('|<h3 class="r">.*?href="/url\?q=(.*?)&amp;.*?".*?</h3>|', $data, $mathces);
-	$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultGoogle.json', 'w');
+	$fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultGoogle.json', 'w');
     fwrite($fp, json_encode($mathces[1]));
     fclose($fp);
 }
@@ -127,7 +119,6 @@ function callInstagram($url){
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => 2
     ));
-
     $result = curl_exec($ch);
     curl_close($ch);
     return $result;
@@ -138,38 +129,39 @@ function launchInstagram($terminoBuscar){
     $userarroa = $terminoBuscar;
     $userarroa=strtolower($userarroa);
     $client_id = "ab3366d4402245ac9da6ccc519c62a98";
-    //$urlCount = 'https://api.instagram.com/v1/tags/'.$tag.'?access_token='.$codea;
+
     $url = 'https://api.instagram.com/v1/users/search?q='.$userarroa.'&access_token='.$codea.'&count=10';
 
     $inst_stream = callInstagram($url);
-    //$inst_streamC = callInstagram($urlCount);
+
     $results = json_decode($inst_stream, true);
     /*Recorre la información de instagram*/
     $dataR=$results['data'];
-    //print_r($dataR);
+
     $armaUsuario=json_encode($dataR);
-    //var_dump($armaUsuario);
-    /*Creacion de archivo json de instagram*/
-    $fp = fopen('/home/ubuntu/workspace/publication/search/results/resultInstagram.json', 'w');
+    $fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultInstagram.json', 'w');
     fwrite($fp, $armaUsuario);
     fclose($fp);
 }
 
-if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand'])){
+if(isset($_COOKIE['idBrand']) && is_numeric($_COOKIE['idBrand']) ) {
 	//BUSCO LA MARCA EN LA BASE DE DATOS
+
 	$General= new General();
 	$marca=$General->getInstanciaWhere("MpBrand",'','idBrand='.$_COOKIE['idBrand']);
 	$terminoBuscar=$marca[0]->name;
 	//cambia estado para que mrplow haga lo suyo 
 	$mrplow =new Mrplow();
 	$id =$_COOKIE['idBrand'];
-
-	$mrplow->lunchReport($id,1,1); //lunchReport($idBrand,$idSocialNetwork,$idInteraction){
+	//$mrplow->lunchReport($id,1,1); //lunchReport($idBrand,$idSocialNetwork,$idInteraction){
 	$mrplow->lunchReport($id,2,1);
 	launchFacebook($terminoBuscar);
 	launchTwitter($terminoBuscar);
 	launchInstagram($terminoBuscar);
 	//launchYoutube($terminoBuscar);
 	launchGoogle($terminoBuscar);
+    echo json_encode('ok');
+}else{
+    echo 'no hay id';
 }
 ?>

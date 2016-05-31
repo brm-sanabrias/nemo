@@ -15,7 +15,7 @@
                     }
                 }
             }else{
-                $report->snID="Aquí va algo";
+                $report->snID="Aqui va algo";
                 $report->ownedBrand='N';
                 $report->status='E';
                 $report->date=date('Y-m-d h:i:s');

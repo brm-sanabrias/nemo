@@ -22,7 +22,7 @@ if (isset($_POST['red']) &&
         	 //   printVar($url,'url recortada');
         	 //  printVar($resultFacebook['data'][$i]['link']);
         	    if ($resultFacebook['data'][$i]['link'] == $url || $resultFacebook['data'][$i]['link'] == $url.'/' ){
-            	$fp = fopen(/*$path.*/'/home/ubuntu/workspace/publication/search/results/resultFacebook.json', 'w');
+            	$fp = fopen(/*$path.*/$_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultFacebook.json', 'w');
             	fwrite($fp, json_encode($resultFacebook));
             	fclose($fp);
             	$find='1';
@@ -72,7 +72,7 @@ if (isset($_POST['red']) &&
            for ($i = 0; $i < count($resultTwitter); $i++) {
                  if ($resultTwitter[$i]->screen_name == $terminoBuscar) {
                     	$resultTwitter=$resultTwitter[$i];
-                    	$fp = fopen('/home/ubuntu/workspace/publication/search/results/resultTwitter.json', 'w');
+                    	$fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultTwitter.json', 'w');
             	        $arr[0]=$resultTwitter;
             	        fwrite($fp, json_encode($arr));
             	        fclose($fp);
@@ -109,7 +109,7 @@ if (isset($_POST['red']) &&
                    
                     $resultYoutube= $resultYoutube['items'][$i];
                     $arr['items'][0] =$resultYoutube;
-                   $fp = fopen('/home/ubuntu/workspace/publication/search/results/resultYoutube.json', 'w');
+                   $fp = fopen($_SERVER["DOCUMENT_ROOT"].'/publication/search/results/resultYoutube.json', 'w');
                      fwrite($fp, json_encode($arr));
                     fclose($fp);
                 }

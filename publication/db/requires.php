@@ -1,10 +1,10 @@
 <?php
-@ini_set("display_errors","1");
-error_reporting(1);
-ini_set('max_execution_time', 0);
-ini_set('memory_limit', '-1');
-session_start();
-$_SESSION['email']="HOLA";
+//ini_set("display_errors","1");
+//error_reporting(1);
+//ini_set('max_execution_time', 0);
+//ini_set('memory_limit', '-1');
+//session_start();
+//$_SESSION['email']="HOLA";
 
 global $prefijo;
 
@@ -23,8 +23,8 @@ require($prefijo."class/class.Util.MrPlow.inc.php");
 
 //Smarty
 //echo $_SERVER["DOCUMENT_ROOT"];
-//require($_SERVER["DOCUMENT_ROOT"]."/Smarty/libs/Smarty.class.php");
-require("../Smarty/libs/Smarty.class.php");
+require($_SERVER["DOCUMENT_ROOT"]."/Smarty/libs/Smarty.class.php");
+//require("../Smarty/libs/Smarty.class.php");
 $smarty = new Smarty();
 
 $smarty->compile_check = true;

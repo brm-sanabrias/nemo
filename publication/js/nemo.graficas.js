@@ -642,10 +642,10 @@ var hasta=''; // objeto input del date picker hasta
 /*recorrer los span para obtener los inputs*/
 for (var i = 0; i < spans.length; i++) {
   if ($(spans[i]).html()=='Desde') {
-    desde=$(spans[i]).next();
+    desde=$(spans[i]).next().next();
   }
   if ($(spans[i]).html()=='Hasta') {
-    hasta=$(spans[i]).next();
+    hasta=$(spans[i]).next().next();
   }
 }
 /*funcion que cambia el formato de la fecha obtenido de los pickers ej 23 April, 2016 => 2016-04-23*/
@@ -674,12 +674,13 @@ function cambiaFormatoFecha(input){
 }
 /*Pendiente al cambio en el input de picker uno (desde)*/
 $(document).on('change',desde,function(){
+  console.log('cambio el desde');
   inputUno=$(desde).val();
+  console.log(inputUno);
   //inUno=true;
   if (inputDos!='' && inputUno!='') {
    var fechaUno=cambiaFormatoFecha(inputUno);
    var fechaDos=cambiaFormatoFecha(inputDos);
-   
    $.ajax({
      url:'lineaTiempo.php',
      dataType:'json',
@@ -712,12 +713,16 @@ $(document).on('change',desde,function(){
      }//fn success
    });
    
+  }else{
+    console.log('falta una fecha');
   }//fin if 
 });
 
 /*Pendiente al cambio en el input de picker dos (hasta)*/
 $(document).on('change',hasta,function(){
+  console.log('cambio el hasta');
   inputDos=$(hasta).val();
+  console.log(inputDos);
  // inDos=true;
   if (inputDos!='' && inputUno!='') {
    var fechaUno=cambiaFormatoFecha(inputUno);
