@@ -11,8 +11,8 @@ block content
 		a.icon-detalle.btn-floating.btn-large.blue
 			i.fa.fa-facebook
 		div.row
-			//Timeline Graphs
-			div.col.s4.md.l6
+			//Timeline Graph
+			div.col.s4.md.l8
 
 				div.card.uno.expand
 					div.card-content.waves-effect.waves-block.waves-light.cyan
@@ -27,25 +27,18 @@ block content
 							//- div.graph-demo
 							canvas#timeline-growth-facebook(height="70")
 							///-Grafica
+
+			///-Timeline Graph
+
+			div.col.l4.datos-extra
+				button.btn.red(type="button") # de Seguidores
+				button.btn.indigo.darken-4(type="button") Nuevos Seguidores
+				button.btn.pink(type="button") Personas Hablando
+				button.btn.teal(type="button") Reach
+				button.btn.amber(type="button") Impresiones
+				button.btn.green(type="button") Interacciones
+				button.btn.deep-purple(type="button") Engagement
 			
-			div.col.s4.md.l6
-
-				div.card.uno.expand
-					div.card-content.waves-effect.waves-block.waves-light.cyan
-						div.close
-							i.fa.fa-times-circle
-
-						div.move-up
-							p.margin Interacciones
-
-						div.trending-line-chart-wrapper
-							//Grafica
-							//- div.graph-demo
-							canvas#timeline-interact-facebook(height="70")
-							///-Grafica
-
-			
-			///-Timeline Graphs
 			
 										
 		///-Graphs
