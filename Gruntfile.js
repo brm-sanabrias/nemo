@@ -179,8 +179,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-/*	grunt.loadNpmTasks('grunt-php');
-	grunt.loadNpmTasks('grunt-contrib-jshint');*/
+	grunt.loadNpmTasks('grunt-php');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-jade');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-shell');
@@ -199,7 +199,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('observar', ['watch:brm','browserSync']);
 	grunt.registerTask('depurar', ['jshint']);
 
-    // grunt.registerTask('default', ['php', 'browserSync:dev', 'watch:brm']);
+    //grunt.registerTask('default', ['php', 'browserSync:dev', 'watch:brm']);
     grunt.registerTask('default', ['watch:brm']);
 	
 

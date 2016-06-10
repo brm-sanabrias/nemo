@@ -1,0 +1,100 @@
+@keyframes cara
+	from
+		transform scale(1.5) translateX(-50%) translateY(-39%)
+		opacity 0
+		
+	to
+		transform none
+		opacity 1
+
+@keyframes letras-der
+	from
+		transform translateX(50%)
+		opacity 0
+		
+	to
+		transform translateX(0)
+		opacity 1
+
+@keyframes letras-izq
+	from
+		transform translateX(-50%)
+		opacity 0
+		
+	to
+		transform translateX(0)
+		opacity 1
+		
+
+
+@keyframes linea-der
+	from
+		opacity 0
+		width 0
+	
+	to
+		opacity 1
+		width 210px	
+		
+@keyframes linea-izq
+	from
+		opacity 0
+		width 0
+	
+	to
+		opacity 1
+		width 186px	
+
+@keyframes timon
+	0%
+		opacity 0
+		fill transparent
+		stroke #fff
+		stroke-dasharray  3037
+		stroke-dashoffset  3037
+		stroke-width 0.2rem
+		
+	19.9%
+		opacity 1
+		
+	20%
+		fill transparent
+		stroke #fff
+		stroke-dasharray  3037
+		stroke-dashoffset  3037
+		stroke-width 0.2rem
+
+	88%
+		fill transparent
+		stroke-dasharray  3037
+		stroke-dashoffset 0
+		stroke #fff
+		stroke-width 0.2rem
+			
+	100%
+		stroke-dashoffset 0
+		stroke-width 0
+		stroke transparent
+		fill #fff
+		opacity 1
+		
+
+@keyframes full-ancho
+	from
+		opacity 1
+		
+	to
+		left 0%
+		opacity 1
+		top 0%
+		transform translate3d(-50%,-50%,0%), scale(1.5)
+		width 100%
+		
+
+@keyframes hide-card
+	from
+		opacity 1
+		
+	to
+		opacity 0
+		transform scale3d(0,1,0)
